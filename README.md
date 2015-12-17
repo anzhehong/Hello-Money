@@ -22,6 +22,6 @@
 
 
 ##Members:
-<strong><a href="https://github.com/Yiiinsh">鄞韶涵</a>,
+<strong><a href="https://github.com/Yiiinsh">鄞劭涵</a>,
 <strong><a href="https://github.com/yue9944882">金敏</a>,
 <strong><a href="https://github.com/HermanZzz">张航</a>
