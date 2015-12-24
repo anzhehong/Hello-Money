@@ -98,6 +98,9 @@
       <DependentUpon>PageHeader.xaml</DependentUpon>
     </Compile>
     <Compile Include="NavMenuItem.cs" />
+    <Compile Include="Views\ChartPage.xaml.cs">
+      <DependentUpon>ChartPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\BasicPage.xaml.cs">
       <DependentUpon>BasicPage.xaml</DependentUpon>
     </Compile>
@@ -139,10 +142,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Styles\Styles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Views\ChartPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\BasicPage.xaml">
       <SubType>Designer</SubType>

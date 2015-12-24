@@ -51,7 +51,7 @@ namespace NavigationMenuSample
                 {
                     Symbol = Symbol.Contact,
                     Label = "Chart",
-                    DestPage = typeof(BasicPage)
+                    DestPage = typeof(ChartPage)
                 },
                 new NavMenuItem()
                 {
