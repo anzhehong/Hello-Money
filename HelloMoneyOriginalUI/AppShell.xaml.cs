@@ -31,31 +31,31 @@ namespace NavigationMenuSample
             {
                 new NavMenuItem()
                 {
-                    Symbol = Symbol.Contact,
+                    Symbol = Symbol.AllApps,
                     Label = "Wallet",
                     DestPage = typeof(BasicPage)
                 },
                 new NavMenuItem()
                 {
-                    Symbol = Symbol.Contact,
+                    Symbol = Symbol.ContactInfo,
                     Label = "Bill",
                     DestPage = typeof(BasicPage)
                 },
                 new NavMenuItem()
                 {
-                    Symbol = Symbol.Edit,
+                    Symbol = Symbol.Add,
                     Label = "ADD",
-                    DestPage = typeof(CommandBarPage)
+                    DestPage = typeof(ADDPage)
                 },
                 new NavMenuItem()
                 {
-                    Symbol = Symbol.Contact,
+                    Symbol = Symbol.TwoBars,
                     Label = "Chart",
                     DestPage = typeof(ChartPage)
                 },
                 new NavMenuItem()
                 {
-                    Symbol = Symbol.Contact,
+                    Symbol = Symbol.Calendar,
                     Label = "Analysis",
                     DestPage = typeof(BasicPage)
                 },
