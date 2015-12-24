@@ -45,7 +45,7 @@ namespace NavigationMenuSample
                 {
                     Symbol = Symbol.Edit,
                     Label = "ADD",
-                    DestPage = typeof(CommandBarPage)
+                    DestPage = typeof(RecordPage)
                 },
                 new NavMenuItem()
                 {

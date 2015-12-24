@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+﻿using Windows.UI.Xaml.Controls;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,9 +9,32 @@ namespace NavigationMenuSample.Views
     /// </summary>
     public sealed partial class ChartPage : Page
     {
+        private RecordHelper rh;
         public ChartPage()
         {
             this.InitializeComponent();
+            rh = new RecordHelper();
+
+            this.ShowBlockInfo();
+        }
+
+        private async void ShowBlockInfo()
+        {
+            double sumIncome = 0;
+            double sumOutcome = 0;
+            foreach(Record rec in await rh.GetData())
+            {
+                if(rec.Type == 0)
+                {
+                    sumIncome += rec.Amount;
+                }
+                else if(rec.Type == 1)
+                {
+                    sumOutcome += rec.Amount;
+                }
+            }
+            ShowBlock.Text = "Income:" + sumIncome + "\nOutcome:" + sumOutcome;
+            
         }
     }
 }

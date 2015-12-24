@@ -41,8 +41,7 @@
 
             <Pivot Grid.Row="1">
                 <PivotItem Header="Day">
-                    <TextBlock>When headers are in 'Dynamic' mode, hovering a mouse over the pivot headers will show mouse flippers for easy tab switching
-                    </TextBlock>
+                    <TextBlock x:Name="ShowBlock" Text="" />
                 </PivotItem>
                 <PivotItem Header="Week">
                     <TextBlock>
