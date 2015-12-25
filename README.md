@@ -43,7 +43,8 @@
         - 收入和支出是否应该分开按照类别进行绘图分析？
         - 是否应该对支出或者收入画折线图预测走势？
         - 开源库（非原先的）
-            - [Live-Charts](https://github.com/beto-rodriguez/Live-Charts)
+            - [Live-Charts](https://github.com/beto-rodriguez/Live-Charts)  can't fit in Win10
+            - [WinRTXamlToolkit](https://github.com/xyzzer/WinRTXamlToolkit)
 
     - 定时提醒记账功能
     - 预算？

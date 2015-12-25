@@ -32,51 +32,25 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <StackPanel Margin="0,0,0,10">
+            <!--<StackPanel Margin="0,0,0,10">
                 <TextBlock Text="Report Chart Diagram:" Style="{StaticResource SampleHeaderTextStyle}"/>
                 <TextBlock Style="{StaticResource ScenarioDescriptionTextStyle}" TextWrapping="Wrap">
           Pivot - Updated for Destkop
                 </TextBlock>
-            </StackPanel>
+            </StackPanel>-->
 
             <Pivot Grid.Row="1">
                 <PivotItem Header="Day">
+<<<<<<< HEAD
                     <TextBlock x:Name="ShowBlock" Text="" />
+=======
+>>>>>>> origin/master
                 </PivotItem>
                 <PivotItem Header="Week">
-                    <TextBlock>
-                    <Run>Pivot now supports the following keyboard behaviors</Run><LineBreak/>
-                    <Run> * While the HeaderPanel is focused:</Run><LineBreak/>
-                    <Run> * * Left, Right, Ctrl+PgUp, Ctrl+PgDown: Changes the currently selected PivotItem</Run><LineBreak/>
-                    <Run> * * Down: Sets focus in the content area</Run><LineBreak/>
-                    <Run> * While the Content area is focused:</Run><LineBreak/>
-                    <Run> * * Ctrl+PgUp, Ctrl+PgDown: Changes the currently selected PivotItem</Run>
-                    </TextBlock>
                 </PivotItem>
                 <PivotItem Header="Month">
-                    <StackPanel>
-                        <TextBlock>To provide a great experience from mobile to desktop, Pivot now supports two header styles, Dynamic Headers and Static Headers.<LineBreak/></TextBlock>
-
-                        <TextBlock Style="{StaticResource SubheaderTextBlockStyle}">Dynamic Headers</TextBlock>
-                        <TextBlock>
-                        <Run>With a focus on mobile and small screen, dynamic headers automatically revolve in the header area with the currently selected PivotItem always the first item.</Run><LineBreak/>
-                        <Run>Dynamic headers are automatically enabled when the combined width of your PivotItem.Header elements exceeds the width availabe to the Pivot control.</Run><LineBreak/>
-                        </TextBlock>
-                        <Image Source="/Assets/DynamicHeader.png" Width="350" Stretch="Uniform" HorizontalAlignment="Left" />
-
-                        <TextBlock Style="{StaticResource SubheaderTextBlockStyle}">Static Headers</TextBlock>
-                        <TextBlock>                   
-                        <Run>Targeting devices with larger displays, static headers keep a fixed position in the header area, regardless of which item is currently selected.</Run><LineBreak/>
-                        <Run>Static headers are automatically enabled when the combined width of your PivotItem.Header elements fits within the width available to the Pivot control</Run><LineBreak/>
-                        </TextBlock>
-                        <Image Source="/Assets/StaticHeader.png" Width="350" Stretch="Uniform" HorizontalAlignment="Left" />
-
-                    </StackPanel>
                 </PivotItem>
                 <PivotItem Header="Year">
-                    <TextBlock>
-                    <Run>Pivot now supports custom content to the left and right of the PivotHeaderPanel.  For more information, see </Run> <Hyperlink Click="Scenario2_Click">Scenario #2: Pivot with Header Content</Hyperlink>
-                    </TextBlock>
                 </PivotItem>
                 <!--<PivotItem Header="Pivot Styling">
                     <TextBlock>
