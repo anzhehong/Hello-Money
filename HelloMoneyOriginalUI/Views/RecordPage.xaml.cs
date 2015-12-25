@@ -54,7 +54,7 @@ namespace NavigationMenuSample.Views
                             double amount = 0;
                             try
                             {
-                                amount = double.Parse(RecordAmount.Text);
+                               // amount = double.Parse(RecordAmount.Text);
                             }
                             catch (Exception ex)
                             {

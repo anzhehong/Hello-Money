@@ -45,11 +45,7 @@ namespace NavigationMenuSample
                 {
                     Symbol = Symbol.Add,
                     Label = "ADD",
-<<<<<<< HEAD
                     DestPage = typeof(RecordPage)
-=======
-                    DestPage = typeof(ADDPage)
->>>>>>> origin/master
                 },
                 new NavMenuItem()
                 {

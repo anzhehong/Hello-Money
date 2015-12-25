@@ -18,7 +18,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    
+
     <Page.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="TextWrapping" Value="WrapWholeWords" />
@@ -38,19 +38,17 @@
           Pivot - Updated for Destkop
                 </TextBlock>
             </StackPanel>-->
-
+            <StackPanel>
+                <TextBlock Text="" Style="{StaticResource SampleHeaderTextStyle}"/>
+               
+            </StackPanel>
             <Pivot Grid.Row="1">
-                <PivotItem Header="Day">
-<<<<<<< HEAD
+                <PivotItem Header="Bar Chart">
+
                     <TextBlock x:Name="ShowBlock" Text="" />
-=======
->>>>>>> origin/master
+
                 </PivotItem>
-                <PivotItem Header="Week">
-                </PivotItem>
-                <PivotItem Header="Month">
-                </PivotItem>
-                <PivotItem Header="Year">
+                <PivotItem Header="Pie Chart">
                 </PivotItem>
                 <!--<PivotItem Header="Pivot Styling">
                     <TextBlock>
@@ -59,10 +57,24 @@
                 </PivotItem>-->
             </Pivot>
 
+            <CommandBar x:Name="topbar" VerticalAlignment="Bottom" HorizontalContentAlignment="Stretch" Grid.Row="1">
+                <!--<AppBarButton Icon="CalendarDay" Label="Edit" />
+                <AppBarButton Icon="CalendarReply" Label="Delete"/>-->
+                <!--<AppBarSeparator/>-->
+                <!--<AppBarToggleButton Icon="Sort" Label="Sort"/>-->
+                <CommandBar.SecondaryCommands>
+                    <AppBarButton Label="Day"/>
+                    <AppBarButton Label="Month"/>
+                    <AppBarButton Label="Year"/>
+                </CommandBar.SecondaryCommands>
+
+            </CommandBar>
             <!-- Status Block for providing messages to the user.  Use the
              NotifyUser() method to populate the message -->
             <Border x:Name="ErrorBorder" Background="Red" Grid.Row="2"/>
             <TextBlock x:Name="StatusBlock" Grid.Row="2" Margin="12, 10, 12, 10" Visibility="Collapsed"/>
         </Grid>
+
     </Grid>
+
 </Page>
