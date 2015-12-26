@@ -30,6 +30,7 @@ namespace NavigationMenuSample
         // Save records list
         public async void SaveToFile()
         {
+            if(_records!=null)
             await DataStorageHelper.WriteAsync<List<Record>>(this._records, "Records.dat");
         }
 

@@ -31,13 +31,13 @@ namespace NavigationMenuSample
             {
                 new NavMenuItem()
                 {
-                    Symbol = Symbol.AllApps,
+                    Symbol = Symbol.Shop,
                     Label = "Wallet",
                     DestPage = typeof(BasicPage)
                 },
                 new NavMenuItem()
                 {
-                    Symbol = Symbol.ContactInfo,
+                    Symbol = Symbol.AllApps,
                     Label = "Bill",
                     DestPage = typeof(BasicPage)
                 },

@@ -15,10 +15,32 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:NavigationMenuSample.Views"
+    xmlns:amq="using:AmCharts.Windows.QuickCharts"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.BottomAppBar>
+        <AppBar x:Name="appBar" IsSticky="True" Padding="20,0">
+            <StackPanel Name="buttonPanel" Orientation="Horizontal" HorizontalAlignment="Right">
+
+                <AppBarButton Icon="Emoji2" Label="Day" />
+                <AppBarSeparator />
+                <AppBarButton Icon="Emoji2" Label="Month" />
+                <AppBarSeparator />
+                <AppBarButton Icon="Emoji2" Label="Year" />
+                <!--
+                    Icon 来自一个图片
+                --><!--
+                <AppBarButton Label="BitmapIcon" >
+                    <AppBarButton.Icon>
+                        <BitmapIcon UriSource="Assets/Logo.png"/>
+                    </AppBarButton.Icon>
+                </AppBarButton>-->
+     
+            </StackPanel>
+        </AppBar>
+    </Page.BottomAppBar>
     <Page.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="TextWrapping" Value="WrapWholeWords" />
@@ -44,11 +66,34 @@
             </StackPanel>
             <Pivot Grid.Row="1">
                 <PivotItem Header="Bar Chart">
-
-                    <TextBlock x:Name="ShowBlock" Text="" />
-
+                  <!--<TextBlock x:Name="ShowBlock" Text="" />-->
+                    <amq:SerialChart x:Name="chart1" DataSource="{Binding SData}" CategoryValueMemberPath="cat1"
+                            AxisForeground="White"
+                            PlotAreaBackground="Gray"
+                            GridStroke="Black">
+                        <amq:SerialChart.Graphs>
+                            <!--<amq:LineGraph ValueMemberPath="val1" Title="#1" Brush="Blue" />
+                            <amq:AreaGraph ValueMemberPath="val3" Title="#3" Brush="#80FF0000" />-->
+                            <amq:ColumnGraph ValueMemberPath="val1" Title="#1" Brush="#8000FF00" ColumnWidthAllocation="0.4" />
+                            <amq:ColumnGraph  ValueMemberPath="val2" Title="#2" Brush="AliceBlue"  ColumnWidthAllocation="0.4" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </amq:SerialChart.Graphs>
+                        
+                    </amq:SerialChart>
                 </PivotItem>
+                
                 <PivotItem Header="Pie Chart">
+                <amq:PieChart x:Name="pie1" TitleMemberPath="title" ValueMemberPath="value"></amq:PieChart>
+                </PivotItem>
+                
+                <PivotItem Header="Line Chart">
+                    <amq:SerialChart x:Name="chart3" DataSource="{Binding SData}" CategoryValueMemberPath="cat1"
+                            AxisForeground="White"
+                            PlotAreaBackground="Gray"
+                            GridStroke="Black">
+                        <amq:SerialChart.Graphs>
+                            <amq:LineGraph ValueMemberPath="val3" Title="#1" Brush="Blue" />
+                        </amq:SerialChart.Graphs>
+                    </amq:SerialChart>
                 </PivotItem>
                 <!--<PivotItem Header="Pivot Styling">
                     <TextBlock>
@@ -56,25 +101,29 @@
                     </TextBlock>
                 </PivotItem>-->
             </Pivot>
-
-            <CommandBar x:Name="topbar" VerticalAlignment="Bottom" HorizontalContentAlignment="Stretch" Grid.Row="1">
-                <!--<AppBarButton Icon="CalendarDay" Label="Edit" />
-                <AppBarButton Icon="CalendarReply" Label="Delete"/>-->
-                <!--<AppBarSeparator/>-->
-                <!--<AppBarToggleButton Icon="Sort" Label="Sort"/>-->
+           
+            <!--<CommandBar x:Name="topbar" VerticalAlignment="Bottom" HorizontalContentAlignment="Stretch" Grid.Row="1" Opened="topbar_Opened">
+                --><!--<AppBarButton Icon="CalendarDay" Label="Edit" />
+                <AppBarButton Icon="CalendarReply" Label="Delete"/>
+                <AppBarSeparator/>
+                <AppBarToggleButton Icon="Sort" Label="Sort"/>--><!--
                 <CommandBar.SecondaryCommands>
                     <AppBarButton Label="Day"/>
                     <AppBarButton Label="Month"/>
                     <AppBarButton Label="Year"/>
                 </CommandBar.SecondaryCommands>
 
-            </CommandBar>
+            </CommandBar>-->
             <!-- Status Block for providing messages to the user.  Use the
              NotifyUser() method to populate the message -->
             <Border x:Name="ErrorBorder" Background="Red" Grid.Row="2"/>
             <TextBlock x:Name="StatusBlock" Grid.Row="2" Margin="12, 10, 12, 10" Visibility="Collapsed"/>
         </Grid>
-
+        
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+          
+        </Grid>
+        
     </Grid>
 
 </Page>
