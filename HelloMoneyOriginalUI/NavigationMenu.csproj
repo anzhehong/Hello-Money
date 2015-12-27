@@ -100,6 +100,9 @@
     <Compile Include="DataStorageHelper.cs" />
     <Compile Include="NavMenuItem.cs" />
     <Compile Include="RecordHelper.cs" />
+    <Compile Include="Views\BillPage.xaml.cs">
+      <DependentUpon>BillPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ChartPage.xaml.cs">
       <DependentUpon>ChartPage.xaml</DependentUpon>
     </Compile>
@@ -153,6 +156,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Views\BillPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ChartPage.xaml">
       <Generator>MSBuild:Compile</Generator>

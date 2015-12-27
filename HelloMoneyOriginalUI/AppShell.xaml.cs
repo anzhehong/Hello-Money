@@ -39,7 +39,7 @@ namespace NavigationMenuSample
                 {
                     Symbol = Symbol.AllApps,
                     Label = "Bill",
-                    DestPage = typeof(BasicPage)
+                    DestPage = typeof(BillPage)
                 },
                 new NavMenuItem()
                 {

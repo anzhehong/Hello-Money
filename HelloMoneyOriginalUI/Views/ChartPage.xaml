@@ -67,6 +67,7 @@
             <Pivot Grid.Row="1">
                 <PivotItem Header="Bar Chart">
                   <!--<TextBlock x:Name="ShowBlock" Text="" />-->
+                    <Grid>
                     <amq:SerialChart x:Name="chart1" DataSource="{Binding SData}" CategoryValueMemberPath="cat1"
                             AxisForeground="White"
                             PlotAreaBackground="Gray"
@@ -79,6 +80,7 @@
                         </amq:SerialChart.Graphs>
                         
                     </amq:SerialChart>
+                    </Grid>
                 </PivotItem>
                 
                 <PivotItem Header="Pie Chart">
