@@ -100,6 +100,9 @@
     <Compile Include="DataStorageHelper.cs" />
     <Compile Include="NavMenuItem.cs" />
     <Compile Include="RecordHelper.cs" />
+    <Compile Include="Views\SearchPage.xaml.cs">
+      <DependentUpon>SearchPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\BillPage.xaml.cs">
       <DependentUpon>BillPage.xaml</DependentUpon>
     </Compile>
@@ -137,9 +140,9 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\cash.png" />
-    <Content Include="Assets\creditcard.png" />
-    <Content Include="Assets\others.png" />
+    <Content Include="Assets\Dollar_Sign_512px_1177551_easyicon.net.png" />
+    <Content Include="Assets\icon1.png" />
+    <Content Include="Assets\openPic.jpg" />
     <Content Include="Assets\smalltile-sdk.png" />
     <Content Include="Assets\splash-sdk.png" />
     <Content Include="Assets\squaretile-sdk.png" />
@@ -156,14 +159,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Styles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Styles\Styles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Views\SearchPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\BillPage.xaml">
       <Generator>MSBuild:Compile</Generator>

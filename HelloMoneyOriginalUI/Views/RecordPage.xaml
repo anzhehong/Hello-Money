@@ -17,7 +17,7 @@
         </CommandBar>
     </Page.BottomAppBar>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"   EntranceNavigationTransitionInfo.IsTargetElement="True">
         <Grid x:Name="RootGrid" Margin="12,10,12,12">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
