@@ -33,7 +33,7 @@ namespace NavigationMenuSample
                 {
                     Symbol = Symbol.Shop,
                     Label = "Wallet",
-                    DestPage = typeof(BasicPage)
+                    DestPage = typeof(WalletPage)
                 },
                 new NavMenuItem()
                 {

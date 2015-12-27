@@ -1,0 +1,59 @@
+﻿<Page
+    x:Class="NavigationMenuSample.Views.WalletPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NavigationMenuSample"
+    xmlns:ctl="using:NavigationMenuSample.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:NavigationMenuSample.Models"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <DataTemplate  x:DataType="data:Wallet" x:Key="walletTemplate">
+            <StackPanel HorizontalAlignment="Center">
+                <Image Width="150" Height="150" Source="{x:Bind walletImg}"/>
+                <TextBlock FontSize="16" Text="{x:Bind walletName}" HorizontalAlignment="Center"/>
+                <TextBlock FontSize="12" Text="{x:Bind walletDescription}" HorizontalAlignment="Center"/>
+                <TextBlock FontSize="14" Text="{x:Bind walletValue}"  HorizontalAlignment="Center"/>
+            </StackPanel>
+
+        </DataTemplate>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ctl:PageHeader>
+            <ctl:PageHeader.HeaderContent>
+                <TextBlock x:Name="title" Style="{ThemeResource PageTitleTextBlockStyle}" Text="Wallet Page"/>
+            </ctl:PageHeader.HeaderContent>
+        </ctl:PageHeader>
+
+        <!--<ListView Grid.Row="1" Header="Click A Wallet To Show Detail"
+                  EntranceNavigationTransitionInfo.IsTargetElement="True"
+                  IsItemClickEnabled="True"
+                  ItemClick="ListView_ItemClick">
+            <ListView.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Margin="12,4" Text="{Binding}"/>
+                </DataTemplate>
+            </ListView.HeaderTemplate>
+            <ListViewItem>Item 1</ListViewItem>
+            <ListViewItem>Item 2</ListViewItem>
+            <ListViewItem>Item 3</ListViewItem>
+            <ListViewItem>Item 4</ListViewItem>
+
+            
+        </ListView>-->
+
+        <GridView Grid.Row="1" Header="Click A Wallet To Show Detail"
+                  ItemsSource="{x:Bind Wallets}"
+                  IsItemClickEnabled="True"
+                  ItemClick="ListView_ItemClick"
+                  ItemTemplate="{StaticResource walletTemplate}">
+        </GridView>
+
+    </Grid>
+</Page>

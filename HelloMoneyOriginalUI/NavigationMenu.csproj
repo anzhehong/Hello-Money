@@ -126,6 +126,10 @@
     <Compile Include="Views\RecordPage.xaml.cs">
       <DependentUpon>RecordPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\WalletPage.xaml.cs">
+      <DependentUpon>WalletPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Wallet.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -137,6 +141,7 @@
     <Content Include="Assets\splash-sdk.png" />
     <Content Include="Assets\squaretile-sdk.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\zhifubao.png" />
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -186,6 +191,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\RecordPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WalletPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
