@@ -9,17 +9,15 @@
     mc:Ignorable="d">
 
     <Page.BottomAppBar>
-        <AppBar x:Name="appBar" IsSticky="True" Padding="20,0">
-            <StackPanel Name="buttonPanel" Orientation="Horizontal" HorizontalAlignment="Right">
-                <AppBarButton Icon="Back" Label="Last" />
+        <CommandBar>
+            <AppBarButton Icon="Back" Label="Last" />
                 <AppBarSeparator />
-                <AppBarButton Icon="Forward" Label="Next" />
-            </StackPanel>
-        </AppBar>
+            <AppBarButton Icon="Forward" Label="Next" />
+        </CommandBar>
     </Page.BottomAppBar>
-    
+   
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"  EntranceNavigationTransitionInfo.IsTargetElement="True">
-        <Grid x:Name="RootGrid" Margin="12,10,12,12">
+        <Grid x:Name="RootGrid" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -31,10 +29,11 @@
           Pivot - Updated for Destkop
                 </TextBlock>
             </StackPanel>-->
+            
             <StackPanel>
                 <TextBlock Text="" Style="{StaticResource SampleHeaderTextStyle}"/>
-
             </StackPanel>
+            
             <Pivot Grid.Row="1">
                 <PivotItem Header="Month Bill">
                     <!--<TextBlock x:Name="ShowBlock" Text="" />-->

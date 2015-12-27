@@ -55,9 +55,9 @@ namespace NavigationMenuSample
                 },
                 new NavMenuItem()
                 {
-                    Symbol = Symbol.Calendar,
-                    Label = "Analysis",
-                    DestPage = typeof(BasicPage)
+                    Symbol = Symbol.Zoom,
+                    Label = "Search",
+                    DestPage = typeof(SearchPage)
                 },
                 new NavMenuItem()
                 {

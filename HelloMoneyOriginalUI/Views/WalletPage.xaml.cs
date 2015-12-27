@@ -17,7 +17,7 @@ namespace NavigationMenuSample.Views
             this.InitializeComponent();
             Wallets = WalletHelper.testGet();
             Balance = 199;
-            //FIXME: bug!!!
+
             //Balance = WalletHelper.getPresentBalance().Result;
         }
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
