@@ -23,9 +23,7 @@ namespace NavigationMenuSample.Models
     public class WalletHelper
     {
         private List<Wallet> _walletData;
-
         public double balance = 123; //{ get; set; }
-
         // load wallet.dat
         public async Task<bool> LoadFromFile()
         {
@@ -68,7 +66,6 @@ namespace NavigationMenuSample.Models
 
         }
 
-
         // return balance
         internal static async Task<double> getPresentBalance()
         {
@@ -84,19 +81,6 @@ namespace NavigationMenuSample.Models
             return helper.balance;
             //return helper.balance;
         }
-
-
-        //public async List<Wallet>testGet()
-        //{
-        //    List<Wallet> temp = new List<Wallet>();
-        //    Wallet ttt = new Wallet();
-        //    ttt.walletName = "zhifubao";
-        //    ttt.walletDescription = "ali zhifubao";
-        //    ttt.walletImg = "zhifubao.img";
-        //    ttt.walletValue = 1111;
-        //    temp.Add(ttt);
-        //    return temp;
-        //}
 
     }
 }

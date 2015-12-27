@@ -11,18 +11,14 @@ namespace NavigationMenuSample.Views
     public sealed partial class WalletPage : Page
     {
         private List<Wallet> Wallets;
-
         private double Balance = 0;
-
         public WalletPage()
         {
             this.InitializeComponent();
             Wallets = WalletHelper.testGet();
-
             Balance = 199;
 
             Balance = WalletHelper.getPresentBalance().Result;
-
         }
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
