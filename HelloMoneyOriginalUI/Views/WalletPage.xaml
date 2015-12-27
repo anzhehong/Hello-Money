@@ -23,11 +23,13 @@
             
         </DataTemplate>-->
     </Page.Resources>
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
+
         </Grid.RowDefinitions>
         <ctl:PageHeader>
             <ctl:PageHeader.HeaderContent>
@@ -51,6 +53,7 @@
 
             
         </ListView>-->
+
         
         <GridView Grid.Row="1" Header="Click A Wallet To Show Detail"
                   ItemsSource="{x:Bind Wallets}"
@@ -58,6 +61,7 @@
                   ItemClick="ListView_ItemClick"
                   ItemTemplate="{StaticResource walletTemplate}">
         </GridView>
+
         <GridView Grid.Row="2" Header="余额"
                   IsItemClickEnabled="False">
             
