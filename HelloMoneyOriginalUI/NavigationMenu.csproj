@@ -140,9 +140,12 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\cash.png" />
+    <Content Include="Assets\creditcard.png" />
     <Content Include="Assets\Dollar_Sign_512px_1177551_easyicon.net.png" />
     <Content Include="Assets\icon1.png" />
     <Content Include="Assets\openPic.jpg" />
+    <Content Include="Assets\others.png" />
     <Content Include="Assets\smalltile-sdk.png" />
     <Content Include="Assets\splash-sdk.png" />
     <Content Include="Assets\squaretile-sdk.png" />
