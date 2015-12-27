@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 namespace NavigationMenuSample.Views
 {
@@ -12,14 +13,25 @@ namespace NavigationMenuSample.Views
     {
         private List<Wallet> Wallets;
         private double Balance = 0;
-        public WalletPage()
+        
+        public  WalletPage()
         {
             this.InitializeComponent();
-            Wallets = WalletHelper.testGet();
-            Balance = 199;
-            //FIXME: bug!!!
-            //Balance = WalletHelper.getPresentBalance().Result;
         }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+            IEnumerable<Wallet> allWallets = await WalletManager.GetAllWallets();
+            // read wallets
+            Wallets =( await WalletManager.GetAllWallets()).ToList();
+            // read balance according to wallets
+            foreach (var item in Wallets)
+            {
+                Balance += item.walletValue;
+            }
+        }
+
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             this.Frame.Navigate(

@@ -19,6 +19,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace NavigationMenuSample
 {
+    using Models;
     using Views;
 
     /// <summary>
@@ -30,9 +31,11 @@ namespace NavigationMenuSample
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
+        public static WalletHelper walletHelper;
         public App()
         {
             this.InitializeComponent();
+            walletHelper = new WalletHelper();
             this.Suspending += OnSuspending;
         }
 
@@ -107,6 +110,7 @@ namespace NavigationMenuSample
         {
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
+            walletHelper.SaveToFile();
             deferral.Complete();
         }
     }
