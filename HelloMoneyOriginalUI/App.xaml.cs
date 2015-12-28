@@ -31,11 +31,13 @@ namespace NavigationMenuSample
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
-        public static WalletHelper walletHelper;
+        public static WalletHelper walletHelper; 
+        public static RecordHelper recordHelper;
         public App()
         {
             this.InitializeComponent();
             walletHelper = new WalletHelper();
+            recordHelper = new RecordHelper();
             this.Suspending += OnSuspending;
         }
 

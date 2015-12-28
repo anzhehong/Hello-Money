@@ -93,13 +93,16 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ChartData.cs" />
     <Compile Include="Controls\NavMenuListView.cs" />
     <Compile Include="Controls\PageHeader.xaml.cs">
       <DependentUpon>PageHeader.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataStorageHelper.cs" />
+    <Compile Include="LINQ.cs" />
     <Compile Include="NavMenuItem.cs" />
     <Compile Include="RecordHelper.cs" />
+    <Compile Include="RecordTypeConverter.cs" />
     <Compile Include="Views\SearchPage.xaml.cs">
       <DependentUpon>SearchPage.xaml</DependentUpon>
     </Compile>

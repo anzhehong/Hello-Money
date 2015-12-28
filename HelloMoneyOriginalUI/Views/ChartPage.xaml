@@ -65,45 +65,53 @@
                
             </StackPanel>
             <Pivot Grid.Row="1">
+                
+                <PivotItem Header="Pie Chart">
+                    <amq:PieChart x:Name="pieChart" TitleMemberPath="Type" ValueMemberPath="Account" ></amq:PieChart>
+                    <!--<amq:PieChart x:Name="pie1" TitleMemberPath="title" ValueMemberPath="value"></amq:PieChart>-->
+                </PivotItem>
+                
                 <PivotItem Header="Bar Chart">
-                  <!--<TextBlock x:Name="ShowBlock" Text="" />-->
-                    <Grid>
+                    <!--<TextBlock x:Name="ShowBlock" Text="" />-->
+                    <!--<Grid>
                     <amq:SerialChart x:Name="chart1" DataSource="{Binding SData}" CategoryValueMemberPath="cat1"
                             AxisForeground="White"
                             PlotAreaBackground="Gray"
                             GridStroke="Black">
-                        <amq:SerialChart.Graphs>
-                            <!--<amq:LineGraph ValueMemberPath="val1" Title="#1" Brush="Blue" />
+                            <amq:SerialChart.Graphs>
+                                -->
+                    <!--<amq:LineGraph ValueMemberPath="val1" Title="#1" Brush="Blue" />
                             <amq:AreaGraph ValueMemberPath="val3" Title="#3" Brush="#80FF0000" />-->
-                            <amq:ColumnGraph ValueMemberPath="val1" Title="#1" Brush="#8000FF00" ColumnWidthAllocation="0.4" />
-                            <amq:ColumnGraph  ValueMemberPath="val2" Title="#2" Brush="AliceBlue"  ColumnWidthAllocation="0.4" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </amq:SerialChart.Graphs>
-                        
-                    </amq:SerialChart>
+                    <!--
+                                <amq:ColumnGraph ValueMemberPath="val1" Title="#1" Brush="#8000FF00" ColumnWidthAllocation="0.4" />
+                                <amq:ColumnGraph  ValueMemberPath="val2" Title="#2" Brush="AliceBlue"  ColumnWidthAllocation="0.4" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </amq:SerialChart.Graphs>
+                        </amq:SerialChart>
+                    </Grid>-->
+                    <Grid>
+                        <amq:SerialChart x:Name="barChart" CategoryValueMemberPath="Type"
+                            AxisForeground="White"
+                            PlotAreaBackground="Black"
+                            GridStroke="DarkGray">
+                            <amq:SerialChart.Graphs>
+                                <amq:ColumnGraph ValueMemberPath="Account" Brush="#8000FF00" ColumnWidthAllocation="0.4" />
+                            </amq:SerialChart.Graphs>
+                        </amq:SerialChart>
                     </Grid>
                 </PivotItem>
-                
-                <PivotItem Header="Pie Chart">
-                <amq:PieChart x:Name="pie1" TitleMemberPath="title" ValueMemberPath="value"></amq:PieChart>
-                </PivotItem>
-                
+
                 <PivotItem Header="Line Chart">
-                    <amq:SerialChart x:Name="chart3" DataSource="{Binding SData}" CategoryValueMemberPath="cat1"
+                    <!--<amq:SerialChart x:Name="chart3" DataSource="{Binding SData}" CategoryValueMemberPath="cat1"
                             AxisForeground="White"
                             PlotAreaBackground="Gray"
                             GridStroke="Black">
                         <amq:SerialChart.Graphs>
                             <amq:LineGraph ValueMemberPath="val3" Title="#1" Brush="Blue" />
                         </amq:SerialChart.Graphs>
-                    </amq:SerialChart>
+                    </amq:SerialChart>-->
                 </PivotItem>
-                <!--<PivotItem Header="Pivot Styling">
-                    <TextBlock>
-                    <Run>It is easier than ever to create custom Pivot experiences for your users.  For an example of a 'Tabs' experience created with pivot, see </Run> <Hyperlink Click="Scenario3_Click">Scenario #3: Pivot 'Tabs' styling</Hyperlink>
-                    </TextBlock>
-                </PivotItem>-->
+
             </Pivot>
-           
             <!--<CommandBar x:Name="topbar" VerticalAlignment="Bottom" HorizontalContentAlignment="Stretch" Grid.Row="1" Opened="topbar_Opened">
                 --><!--<AppBarButton Icon="CalendarDay" Label="Edit" />
                 <AppBarButton Icon="CalendarReply" Label="Delete"/>

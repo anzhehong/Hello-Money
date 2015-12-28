@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NavigationMenuSample
 {
-    class RecordHelper
+    public class RecordHelper
     {
         // Record list
         private List<Record> _records;

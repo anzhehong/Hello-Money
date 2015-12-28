@@ -101,12 +101,9 @@
                 <DatePicker x:Name="DatePickerEnd" Grid.Row="1" HorizontalAlignment="Center" />
 
                 <Grid  Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                        <ColumnDefinition Width="8*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="search:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <TextBox x:Name="keyWords" Grid.Column="1" />
+                   
+                   
+                    <TextBox Header="Keywords" x:Name="keyWords" Grid.Column="1" />
                 </Grid>
 
             </Grid>

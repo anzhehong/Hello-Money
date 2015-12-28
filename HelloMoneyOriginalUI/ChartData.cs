@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QuickCharts
+namespace NavigationMenuSample
 {
-    public class Class1
+    class ChartData
     {
+
+        public double Account { get; set; }
+
+        public string Type { get; set; }
     }
 }

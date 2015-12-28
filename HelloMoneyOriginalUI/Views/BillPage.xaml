@@ -3,19 +3,15 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:NavigationMenuSample.Views"
+    xmlns:converter="using:NavigationMenuSample"
     xmlns:ctl="using:NavigationMenuSample.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <!--<Page.Resources>
+        <converter:RecordTypeConverter  x:Key="RecordTypeConverter"/>
+    </Page.Resources>-->
 
-    <Page.BottomAppBar>
-        <CommandBar>
-            <AppBarButton Icon="Back" Label="Last" />
-                <AppBarSeparator />
-            <AppBarButton Icon="Forward" Label="Next" />
-        </CommandBar>
-    </Page.BottomAppBar>
-   
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"  EntranceNavigationTransitionInfo.IsTargetElement="True">
         <Grid x:Name="RootGrid" >
             <Grid.RowDefinitions>
@@ -29,12 +25,12 @@
           Pivot - Updated for Destkop
                 </TextBlock>
             </StackPanel>-->
-            
+
             <StackPanel>
-                <TextBlock Text="" Style="{StaticResource SampleHeaderTextStyle}"/>
+                <TextBlock x:Name="BillPageTitle" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             </StackPanel>
-            
-            <Pivot Grid.Row="1">
+
+            <Pivot  Grid.Row="1">
                 <PivotItem Header="Month Bill">
                     <!--<TextBlock x:Name="ShowBlock" Text="" />-->
                     <Grid x:Name="ContentPanel" Grid.Row="1">
@@ -45,25 +41,51 @@
                         </Grid.RowDefinitions>
                         <!--记账记录列表头项目-->
                         <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"></ColumnDefinition>
-                            <ColumnDefinition Width="2*"></ColumnDefinition>
-                            <ColumnDefinition Width="5*"></ColumnDefinition>
-                            <ColumnDefinition Width="3*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Border Grid.Column="0" Background="Gray">
-                            <TextBlock Text="Type" Foreground="White" />
-                        </Border>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                                <ColumnDefinition Width="5*"></ColumnDefinition>
+                                <ColumnDefinition Width="3*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Background="Gray">
+                                <TextBlock Text="Type" Foreground="White" />
+                            </Border>
                             <Border Grid.Column="1" Background="Gray">
-                            <TextBlock Text="Amount" Foreground="White"/>
-                        </Border>
+                                <TextBlock Text="Amount" Foreground="White"/>
+                            </Border>
                             <Border Grid.Column="2" Background="Gray">
-                            <TextBlock Text="Remark" Foreground="White"/>
-                        </Border>
+                                <TextBlock Text="Time" Foreground="White"/>
+                            </Border>
                             <Border Grid.Column="3" Background="Gray">
                                 <TextBlock Text="Category" Foreground="White"/>
                             </Border>
                         </Grid>
+                        <ListView Grid.Row="1" x:Name="listMouthReport" Margin="0,8,0,8">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid  HorizontalAlignment="Stretch">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="5*"></ColumnDefinition>
+                                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <!--<TextBlock  Grid.Column="0" Text="{Binding Type, Converter={StaticResource RecordTypeConverter}}" />-->
+                                        <TextBlock  Grid.Column="0" Text="{Binding Type}" />
+                                        <TextBlock Grid.Column="1" Text="{Binding Amount}"/>
+                                        <!--<TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Desc,  Converter={StaticResource VoucherDescConverter}}"/>-->
+                                        <TextBlock Grid.Column="2" Text="{Binding RecordTime}" />
+                                        <TextBlock Grid.Column="3" Text="{Binding Category}"/>
+
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                         <!--显示本月收入、支出和结余-->
                         <Grid Grid.Row="2">
                             <Grid.ColumnDefinitions>
@@ -72,7 +94,7 @@
                                 <ColumnDefinition Width="1*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Border Grid.Column="0" Background="Gray">
-                                <TextBlock  x:Name="inTB" Foreground="Gray" />
+                                <TextBlock  x:Name="inTB" Foreground="White" />
                             </Border>
                             <Border Grid.Column="1" Background="Gray">
                                 <TextBlock  x:Name="exTB" Foreground="White"/>
@@ -81,21 +103,26 @@
                                 <TextBlock x:Name="balanceTB" Foreground="White"/>
                             </Border>
                         </Grid>
-                        
+
                     </Grid>
                 </PivotItem>
 
                 <PivotItem Header="Year Bill">
 
                 </PivotItem>
-          
+
             </Pivot>
             <Border x:Name="ErrorBorder" Background="Red" Grid.Row="2"/>
             <TextBlock x:Name="StatusBlock" Grid.Row="2" Margin="12, 10, 12, 10" Visibility="Collapsed"/>
         </Grid>
 
-
-     
-
     </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Back" Label="Last"  Click="ApplicationBarIconButton_Click" />
+            <AppBarSeparator />
+            <AppBarButton Icon="Forward" Label="Next"  Click="ApplicationBarIconButton_Click" />
+        </CommandBar>
+    </Page.BottomAppBar>
+
 </Page>
