@@ -15,6 +15,10 @@ namespace NavigationMenuSample.Views
             this.InitializeComponent();
             rh = new RecordHelper();
             datePicker.MaxYear = DateTime.Now;
+            IncomeType.SelectedValue = "Salary";
+            RecordSource.SelectedValue = "Cash";
+            ExpendType.SelectedValue = "Food";
+            ExpendRecordSource.SelectedValue = "Cash";
         }
 
         private RecordHelper rh;
@@ -23,7 +27,7 @@ namespace NavigationMenuSample.Views
         private List<string> _incomeCategory = new List<string>()
         {
             "Salary",
-            "Bonux",
+            "Bonus",
             "Investments",
             "Interests",
             "Others"
@@ -35,9 +39,35 @@ namespace NavigationMenuSample.Views
                 return _incomeCategory;
             }
         }
-
-        // Record types
-        private string _recordType = "";
+        // Record sources
+        private List<string> _recordSources = new List<string>()
+        {
+            "Cash",
+            "Bank Card",
+            "Alipay" ,
+            "Others"
+        };
+        public List<string> RecordSources
+        {
+            get
+            {
+                return _recordSources;
+            }
+        }
+        // expend category
+        private List<string> _expendCategories = new List<string>()
+        {
+            "Food",
+            "Shopping",
+            "Others"
+        };
+        public List<string> ExpendCategories
+        {
+            get
+            {
+                return this._expendCategories;
+            }
+        }
 
         // Perform corresponding confirm & cancel actions to click event
         private async void RecordButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -54,7 +84,9 @@ namespace NavigationMenuSample.Views
                             double amount = 0;
                             try
                             {
-                               // amount = double.Parse(RecordAmount.Text);
+                               amount = (PivotIndex.SelectedIndex == 0) ? 
+                                    double.Parse(RecordAmount.Text) 
+                                    : double.Parse(ExpendsRecordAmount.Text);
                             }
                             catch (Exception ex)
                             {
@@ -65,10 +97,18 @@ namespace NavigationMenuSample.Views
                             Record rec = new Record()
                             {
                                 Amount = amount,
-                                Type = 0,
-                                Category = this._recordType,
-                                RecordTime = new DateTime(datePicker.Date.Year, datePicker.Date.Month, datePicker.Date.Day,
-                                timePicker.Time.Hours, timePicker.Time.Minutes, timePicker.Time.Seconds)
+                                Type = PivotIndex.SelectedIndex,
+                                Category = (PivotIndex.SelectedIndex == 0) ? (string)IncomeType.SelectedValue 
+                                    : (string)ExpendType.SelectedValue,
+                                RecordSource = (PivotIndex.SelectedIndex == 0) ? (string)RecordSource.SelectedValue 
+                                    : (string)ExpendRecordSource.SelectedValue,
+                                RecordTime = (PivotIndex.SelectedIndex == 0) ? 
+                                    new DateTime(datePicker.Date.Year,datePicker.Date.Month,datePicker.Date.Day,
+                                        timePicker.Time.Hours,timePicker.Time.Minutes,timePicker.Time.Seconds)
+                                    : new DateTime(ExpendDatePicker.Date.Year, ExpendDatePicker.Date.Month, ExpendDatePicker.Date.Day,
+                                        ExpendTimePicker.Time.Hours, ExpendTimePicker.Time.Minutes, ExpendTimePicker.Time.Seconds) ,
+                                RecordNotes = (PivotIndex.SelectedIndex == 0) ?
+                                    RecordNotes.Text : ExpendRecordNotes.Text
                             };
 
                             rh.AddNewRecord(rec);
@@ -83,30 +123,6 @@ namespace NavigationMenuSample.Views
                         break;
                 }
             }
-        }
-
-        // Get record type
-        private void IncomeType_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            string iType = e.AddedItems[0].ToString();
-            switch (iType)
-            {
-                case "Salary":
-                    this._recordType = "Salary";
-                    break;
-                case "Bonus":
-                    this._recordType = "Bonus";
-                    break;
-                case "Investments":
-                    this._recordType = "Investments";
-                    break;
-                case "Others":
-                    this._recordType = "Others";
-                    break;
-                default:
-                    this._recordType = "Others";
-                    break;
-            }
-        }
+        }        
     }
 }

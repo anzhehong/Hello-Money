@@ -12,8 +12,8 @@
             <CommandBar.Content>
                 <Grid/>
             </CommandBar.Content>
-            <AppBarButton Icon="Accept" x:Name="RecordConfirmButton" Label="RecordConfirmButton" Click="RecordButton_Click" />
-            <AppBarButton Icon="Cancel" x:Name="RecordCancelButton" Label="RecordCancelButton" Click="RecordButton_Click"/>
+            <AppBarButton Icon="Accept" x:Name="RecordConfirmButton" Click="RecordButton_Click" />
+            <AppBarButton Icon="Cancel" x:Name="RecordCancelButton"  Click="RecordButton_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
 
@@ -35,30 +35,26 @@
                 <TextBlock Text="" Style="{StaticResource SampleHeaderTextStyle}"/>
 
             </StackPanel>
-            <Pivot Grid.Row="1">
+            <Pivot x:Name="PivotIndex" Grid.Row="1">
                 <PivotItem Header="Income" Margin="12,-2,12,2">
                     <StackPanel Margin="4,3,12,16" Width="296">
-                        <!--<TextBox x:Name="RecordAmount" PlaceholderText="Amount" TextWrapping="Wrap" Height="51" Margin="2,0,19,0" TextChanged="RecordAmount_TextChanged" />-->
-                        <ComboBox x:Name="IncomeType" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="120" SelectionChanged="IncomeType_SelectionChanged">
-                            <ComboBoxItem  IsSelected="True">Salary</ComboBoxItem>
-                            <ComboBoxItem>Bonus</ComboBoxItem>
-                            <ComboBoxItem>Investments</ComboBoxItem>
-                            <ComboBoxItem>Others</ComboBoxItem>
-                        </ComboBox>
-                        <DatePicker Name="datePicker" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                        <TimePicker Name="timePicker" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                        <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="TextBlock" Height="138"/>
+                        <TextBox x:Name="RecordAmount" PlaceholderText="Amount" TextWrapping="Wrap" Height="30" Margin="2,0,-1,0" />
+                        <ComboBox x:Name="IncomeType" PlaceholderText="Salary" ItemsSource="{x:Bind IncomeCategory}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,-1,0" Height="30"/>
+                        <ComboBox x:Name="RecordSource" PlaceholderText="Cash" ItemsSource="{x:Bind RecordSources}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <DatePicker x:Name="datePicker" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <TimePicker x:Name="timePicker" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <TextBox x:Name="RecordNotes" TextWrapping="Wrap" PlaceholderText="Notes"  Height="69" Margin="0,0,-1,0"/>
 
                     </StackPanel>
                 </PivotItem>
-                <PivotItem Header="Outcome">
+                <PivotItem Header="Expend">
                     <StackPanel>
-                        <!--<TextBox x:Name="RecordAmount" PlaceholderText="Amount" TextWrapping="Wrap" Height="51" Margin="2,0,19,0"/>
-                        <ComboBox x:Name="IncomeType" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="120" SelectionChanged="IncomeType_SelectionChanged"/>
-                        <DatePicker Name="datePicker" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                        <TimePicker Name="timePicker" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                        <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="TextBlock" Height="138"/>
-                    -->
+                        <TextBox x:Name="ExpendsRecordAmount" PlaceholderText="Amount" TextWrapping="Wrap" Height="51" Margin="2,0,19,0"/>
+                        <ComboBox x:Name="ExpendType" PlaceholderText="food" ItemsSource="{x:Bind ExpendCategories}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="120" />
+                        <ComboBox x:Name="ExpendRecordSource" PlaceholderText="Cash" ItemsSource="{x:Bind RecordSources}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <DatePicker Name="ExpendDatePicker" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <TimePicker Name="ExpendTimePicker" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <TextBox x:Name="ExpendRecordNotes" TextWrapping="Wrap" PlaceholderText="Notes" Height="69"/>
                     </StackPanel>
                 </PivotItem>
             </Pivot>
