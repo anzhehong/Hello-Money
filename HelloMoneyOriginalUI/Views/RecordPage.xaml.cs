@@ -13,7 +13,7 @@ namespace NavigationMenuSample.Views
         public RecordPage()
         {
             this.InitializeComponent();
-            rh = new RecordHelper();
+          //  rh = new RecordHelper();
             datePicker.MaxYear = DateTime.Now;
             IncomeType.SelectedValue = "Salary";
             RecordSource.SelectedValue = "Cash";
@@ -21,7 +21,7 @@ namespace NavigationMenuSample.Views
             ExpendRecordSource.SelectedValue = "Cash";
         }
 
-        private RecordHelper rh;
+       // private RecordHelper rh;
 
         // Income types
         private List<string> _incomeCategory = new List<string>()
@@ -111,7 +111,7 @@ namespace NavigationMenuSample.Views
                                     RecordNotes.Text : ExpendRecordNotes.Text
                             };
 
-                            rh.AddNewRecord(rec);
+                            App.recordHelper.AddNewRecord(rec);
                             await new MessageDialog("Save success!").ShowAsync();
                             
                         }
