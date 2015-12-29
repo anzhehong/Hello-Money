@@ -20,6 +20,14 @@ namespace NavigationMenuSample
             this.SaveToFile();
         }
 
+        // Delete an exist record
+        public async void DeleteRecord(Record record)
+        {
+            await GetData();
+            this._records.Remove(record);
+            this.SaveToFile();
+        }
+
         // Read record list
         public async Task<bool> LoadFromFile()
         {

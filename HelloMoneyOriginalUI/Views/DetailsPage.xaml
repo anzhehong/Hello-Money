@@ -32,8 +32,8 @@
             <Grid>
                 <StackPanel>
                     <TextBox x:Name="DetailAmount" PlaceholderText="Amount" TextWrapping="Wrap" Height="51" Margin="2,0,19,0"/>
-                    <ComboBox x:Name="DetailType" PlaceholderText="food" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="120" />
-                    <ComboBox x:Name="DetailSource" PlaceholderText="Cash"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    <ComboBox x:Name="DetailType" SelectedValue="Food" PlaceholderText="Food" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="120" />
+                    <ComboBox x:Name="DetailSource" SelectedValue ="Cash" PlaceholderText="Cash"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                     <DatePicker Name="DetailDatePicker" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                     <TimePicker Name="DetailTimePicker" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                     <TextBox x:Name="DetailRecordNotes" TextWrapping="Wrap" PlaceholderText="Notes" Height="69"/>

@@ -33,6 +33,52 @@ namespace NavigationMenuSample
         /// </summary>
         public static WalletHelper walletHelper; 
         public static RecordHelper recordHelper;
+
+        // Income types
+        private static List<string> _incomeCategory = new List<string>()
+        {
+            "Salary",
+            "Bonus",
+            "Investments",
+            "Interests",
+            "Others"
+        };
+        public static List<string> IncomeCategory
+        {
+            get
+            {
+                return _incomeCategory;
+            }
+        }
+        // Record sources
+        private static List<string> _recordSources = new List<string>()
+        {
+            "Cash",
+            "Credit Card",
+            "Alipay" ,
+            "Others"
+        };
+        public static List<string> RecordSources
+        {
+            get
+            {
+                return _recordSources;
+            }
+        }
+        // expend category
+        private static List<string> _expendCategories = new List<string>()
+        {
+            "Food",
+            "Shopping",
+            "Others"
+        };
+        public static List<string> ExpendCategories
+        {
+            get
+            {
+                return _expendCategories;
+            }
+        }
         public App()
         {
             this.InitializeComponent();
