@@ -13,4 +13,16 @@ namespace NavigationMenuSample
 
         public string Type { get; set; }
     }
+    class ChartDataForBar
+    {
+
+        public double Account { get; set; }
+
+    }
+    class ChartDataForLine
+    {
+
+        public double Account { get; set; }
+
+    }
 }

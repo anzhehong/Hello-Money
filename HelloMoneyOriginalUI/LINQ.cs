@@ -29,6 +29,7 @@ namespace NavigationMenuSample
                     where (c.RecordTime.Month == month) && (c.RecordTime.Year == year)
                     select c);
         }
+
         /// <summary>
         /// Fetch all incomes for a specific month
         /// </summary>
@@ -124,22 +125,46 @@ namespace NavigationMenuSample
         /// 获取本月的支出
         /// </summary>
         /// <returns></returns>
-        public static async Task<double> GetThisMouthSummaryExpenses()
+        public static async Task<double> GetThismonthSummaryExpenses()
         {
             return ((IEnumerable<double>)(from c in await App.recordHelper.GetData()
                                           where ((c.RecordTime.Year == DateTime.Now.Year)) && ((c.RecordTime.Month == DateTime.Now.Month)) && (c.Type == 1)
                                           select c.Amount)).Sum();
         }
         /// <summary>
-        /// 获取某月的支出
+        /// 获取本天的支出
         /// </summary>
-        /// <param name="mouth">月份</param>
-        /// <param name="year">年份</param>
         /// <returns></returns>
-        public static async Task<double> GetMouthSummaryExpenses(int mouth, int year)
+        public static async Task<double> GetThisdaySummaryExpenses()
         {
             return ((IEnumerable<double>)(from c in await App.recordHelper.GetData()
-                                          where ((c.RecordTime.Year == year)) && ((c.RecordTime.Month == mouth)) && (c.Type == 1)
+                                          where ((c.RecordTime.Year == DateTime.Now.Year)) && ((c.RecordTime.Month == DateTime.Now.Month)) &&
+                                          ((c.RecordTime.Day == DateTime.Now.Day)) && (c.Type == 1)
+                                          select c.Amount)).Sum();
+        }
+        /// <summary>
+        /// 获取某月的支出
+        /// </summary>
+        /// <param name="month">月份</param>
+        /// <param name="year">年份</param>
+        /// <returns></returns>
+        public static async Task<double> GetmonthSummaryExpenses(int month, int year)
+        {
+            return ((IEnumerable<double>)(from c in await App.recordHelper.GetData()
+                                          where ((c.RecordTime.Year == year)) && ((c.RecordTime.Month == month)) && (c.Type == 1)
+                                          select c.Amount)).Sum();
+        }
+        /// <summary>
+        /// 获取某天的支出
+        /// </summary>
+        /// <param name="month">月份</param>
+        /// <param name="year">年份</param>
+        /// <returns></returns>
+        public static async Task<double> GetdaySummaryExpenses(int day,int month, int year)
+        {
+            return ((IEnumerable<double>)(from c in await App.recordHelper.GetData()
+                                          where ((c.RecordTime.Year == year)) && ((c.RecordTime.Month == month))
+                                          && ((c.RecordTime.Day == day)) && (c.Type == 1)
                                           select c.Amount)).Sum();
         }
         /// <summary>
@@ -177,22 +202,45 @@ namespace NavigationMenuSample
         /// 获取本月的收入
         /// </summary>
         /// <returns>金额</returns>
-        public static async Task<double> GetThisMouthSummaryIncome()
+        public static async Task<double> GetThismonthSummaryIncome()
         {
             return ((IEnumerable<double>)(from c in await App.recordHelper.GetData()
                                           where ((c.RecordTime.Year == DateTime.Now.Year)) && ((c.RecordTime.Month == DateTime.Now.Month)) && (c.Type == 0)
                                           select c.Amount)).Sum();
         }
         /// <summary>
-        /// 获取某月的收入
+        /// 获取本天的收入
         /// </summary>
-        /// <param name="mouth">月份</param>
-        /// <param name="year">年份</param>
-        /// <returns></returns>
-        public static async Task<double> GetMouthSummaryIncome(int mouth, int year)
+        /// <returns>金额</returns>
+        public static async Task<double> GetThisdaySummaryIncome()
         {
             return ((IEnumerable<double>)(from c in await App.recordHelper.GetData()
-                                          where ((c.RecordTime.Year == year)) && ((c.RecordTime.Month == mouth)) && (c.Type == 0)
+                                          where ((c.RecordTime.Year == DateTime.Now.Year)) && ((c.RecordTime.Month == DateTime.Now.Month))
+                                          && ((c.RecordTime.Day == DateTime.Now.Day)) && (c.Type == 0)
+                                          select c.Amount)).Sum();
+        }
+        /// <summary>
+        /// 获取某月的收入
+        /// </summary>
+        /// <param name="month">月份</param>
+        /// <param name="year">年份</param>
+        /// <returns></returns>
+        public static async Task<double> GetmonthSummaryIncome(int month, int year)
+        {
+            return ((IEnumerable<double>)(from c in await App.recordHelper.GetData()
+                                          where ((c.RecordTime.Year == year)) && ((c.RecordTime.Month == month)) && (c.Type == 0)
+                                          select c.Amount)).Sum();
+        }
+        /// 获取某天的收入
+        /// </summary>
+        /// <param name="month">月份</param>
+        /// <param name="year">年份</param>
+        /// <returns></returns>
+        public static async Task<double> GetdaySummaryIncome(int day,int month, int year)
+        {
+            return ((IEnumerable<double>)(from c in await App.recordHelper.GetData()
+                                          where ((c.RecordTime.Year == year)) && ((c.RecordTime.Month == month))
+                                           && ((c.RecordTime.Day == day)) && (c.Type == 0)
                                           select c.Amount)).Sum();
         }
         /// <summary>

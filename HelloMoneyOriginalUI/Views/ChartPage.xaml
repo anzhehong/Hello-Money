@@ -20,7 +20,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Page.BottomAppBar>
+    <!--<Page.BottomAppBar>
         <AppBar x:Name="appBar" IsSticky="True" Padding="20,0">
             <StackPanel Name="buttonPanel" Orientation="Horizontal" HorizontalAlignment="Right">
 
@@ -29,18 +29,9 @@
                 <AppBarButton Icon="Emoji2" Label="Month" />
                 <AppBarSeparator />
                 <AppBarButton Icon="Emoji2" Label="Year" />
-                <!--
-                    Icon 来自一个图片
-                --><!--
-                <AppBarButton Label="BitmapIcon" >
-                    <AppBarButton.Icon>
-                        <BitmapIcon UriSource="Assets/Logo.png"/>
-                    </AppBarButton.Icon>
-                </AppBarButton>-->
-     
             </StackPanel>
         </AppBar>
-    </Page.BottomAppBar>
+    </Page.BottomAppBar>-->
     <Page.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="TextWrapping" Value="WrapWholeWords" />
@@ -67,10 +58,29 @@
             <Pivot Grid.Row="1">
                 
                 <PivotItem Header="Pie Chart">
-                    <StackPanel>
-                        <amq:PieChart x:Name="pieChart" TitleMemberPath="Type" ValueMemberPath="Account" ></amq:PieChart>
-                        <amq:PieChart x:Name="expandPieChart" TitleMemberPath="Type" ValueMemberPath="Account" ></amq:PieChart>
-                    </StackPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid  Grid.Row="0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="6*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="INCOME" Grid.Column="0" Opacity="0.6" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                            <amq:PieChart Grid.Column="1" x:Name="pieChart" TitleMemberPath="Type" ValueMemberPath="Account" ></amq:PieChart>
+                        </Grid>
+                        <Grid  Grid.Row="1" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="6*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="EXPAND" Grid.Column="0" Opacity="0.6" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                            <amq:PieChart Grid.Column="1" x:Name="expandPieChart" TitleMemberPath="Type" ValueMemberPath="Account" ></amq:PieChart>
+                        </Grid>
+                       
+                    </Grid>
                 </PivotItem>
                 
                 <PivotItem Header="Bar Chart">
@@ -90,37 +100,50 @@
                             </amq:SerialChart.Graphs>
                         </amq:SerialChart>
                     </Grid>-->
-                    <StackPanel>
-                        <amq:SerialChart x:Name="barChart" CategoryValueMemberPath="Type"
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="12*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <amq:SerialChart Grid.Row="0" x:Name="barChart"
                             AxisForeground="White"
-                            PlotAreaBackground="Black"
+                            PlotAreaBackground="Gray"
                             GridStroke="DarkGray">
                             <amq:SerialChart.Graphs>
-                                <amq:ColumnGraph ValueMemberPath="Account" Brush="#8000FF00" ColumnWidthAllocation="0.4" />
+                                <amq:ColumnGraph    ValueMemberPath="Account" Brush="AliceBlue" ColumnWidthAllocation="0.4" />
                             </amq:SerialChart.Graphs>
                         </amq:SerialChart>
-                        <amq:SerialChart x:Name="barChartForExpend" CategoryValueMemberPath="Type"
-                            AxisForeground="White"
-                            PlotAreaBackground="Black"
-                            GridStroke="DarkGray">
-                            <amq:SerialChart.Graphs>
-                                <amq:ColumnGraph ValueMemberPath="Account" Brush="#8000FF00" ColumnWidthAllocation="0.4" />
-                            </amq:SerialChart.Graphs>
-                        </amq:SerialChart>
-                    </StackPanel>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="INCOME" Opacity="0.6" HorizontalAlignment="Center" VerticalAlignment="Top"></TextBlock>
+                            <TextBlock Grid.Column="1" Text="EXPEND" Opacity="0.6" HorizontalAlignment="Center" VerticalAlignment="Top"></TextBlock>
+                        </Grid>
+                       
+                    </Grid>
                 </PivotItem>
-<!--
+                
                 <PivotItem Header="Line Chart">
-                    <amq:SerialChart x:Name="chart3" CategoryValueMemberPath="cat1"
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="12*"/>
+                            <RowDefinition Height="1*"/>
+                            <!--<RowDefinition Height="1*"/>-->
+                        </Grid.RowDefinitions>
+                        <amq:SerialChart Grid.Row="0" x:Name="lineChart" 
                             AxisForeground="White"
                             PlotAreaBackground="Gray"
                             GridStroke="Black">
-                        <amq:SerialChart.Graphs>
-                            <amq:LineGraph ValueMemberPath="val3" Title="#1" Brush="Blue" />
-                        </amq:SerialChart.Graphs>
-                    </amq:SerialChart>
+                            <amq:SerialChart.Graphs>
+                                <amq:LineGraph ValueMemberPath="Account" Title="Balance" Brush="AliceBlue" />
+                            </amq:SerialChart.Graphs>
+                        </amq:SerialChart>
+                        <TextBlock Grid.Row="1" Text="BALANCE TREND" Opacity="0.6" HorizontalAlignment="Center" VerticalAlignment="Top" ></TextBlock>
+                       
+                    </Grid>
                 </PivotItem>
--->
             </Pivot>
             <!--<CommandBar x:Name="topbar" VerticalAlignment="Bottom" HorizontalContentAlignment="Stretch" Grid.Row="1" Opened="topbar_Opened">
                 --><!--<AppBarButton Icon="CalendarDay" Label="Edit" />

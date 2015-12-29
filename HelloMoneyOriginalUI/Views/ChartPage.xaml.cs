@@ -35,6 +35,8 @@ namespace NavigationMenuSample.Views
             // 创建图表的数据源对象
             ObservableCollection<ChartData> collection = new ObservableCollection<ChartData>();
             ObservableCollection<ChartData> collectionForExpend = new ObservableCollection<ChartData>();
+            ObservableCollection<ChartDataForBar> collectionForBar = new ObservableCollection<ChartDataForBar>();
+            ObservableCollection<ChartDataForLine> collectionForLine = new ObservableCollection<ChartDataForLine>();
             // 获取所有的记账记录
             IEnumerable<Record> allRecords = await LINQ.GetAllRecords();
             IEnumerable<Record> allIncomeRecords = await LINQ.GetThisMonthAllRecordsForType(DateTime.Now.Month, DateTime.Now.Year, 0);
@@ -57,17 +59,55 @@ namespace NavigationMenuSample.Views
                 {
                     Account = amountsForExpend.Sum(),
                     Type = item
-                };
+                };             
                 collection.Add(data);
                 collectionForExpend.Add(dataForExpend);
             }
+            //ba chartr 对比总的 income expend
+            double incomeAll = ((IEnumerable<double>)(from c in await App.recordHelper.GetData()
+                                                      where c.Type == 0
+                                                      select c.Amount)).Sum();
+            double expendAll =  ((IEnumerable<double>)(from c in await App.recordHelper.GetData()
+                                          where c.Type == 1
+                                          select c.Amount)).Sum();
+           
+            ChartDataForBar incomeForBar = new ChartDataForBar
+            {
+                Account = incomeAll
+            };
+            ChartDataForBar expendForBar = new ChartDataForBar
+            {
+                Account = expendAll
+            };
+            collectionForBar.Add(incomeForBar);
+            collectionForBar.Add(expendForBar);
+
+            //line chart 显示每日余额趋势
+            // 获取所有记账记录里面的时间
+            IEnumerable<int> dayTime = (from c in allRecords select c.RecordTime.Day).Distinct<int>();
+            foreach (var item in dayTime)
+            {
+              
+                IEnumerable<double> amounts = from c in allIncomeRecords.Where<Record>(c => c.RecordTime.Day == item) select c.Amount;
+                IEnumerable<double> amountsForExpend = from c in allExpendRecords.Where<Record>(c => c.RecordTime.Day == item) select c.Amount;
+                // 添加一条图表的数据
+                ChartDataForLine data = new ChartDataForLine
+                {
+                    Account = amounts.Sum() - amountsForExpend.Sum()               
+                };
+                collectionForLine.Add(data);
+
+            }
+
             // 设置图形的数据源
             pieChart.DataSource = collection;
             expandPieChart.DataSource = collectionForExpend;
 
-            barChart.DataSource = collection;
-            barChartForExpend.DataSource = collectionForExpend;
-
+            barChart.DataSource = collectionForBar;
+            //barChartForExpend.DataSource = collectionForExpend;
+ 
+            lineChart.DataSource = collectionForLine;
+           // lineChartForExpend.DataSource = collectionForExpend;
             //chart3.DataSource = from c in collectionForExpend.Where<ChartData>(c => c.Account != 0) select c;
 
         }

@@ -8,9 +8,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    <!--<Page.Resources>
+    <Page.Resources>
         <converter:RecordTypeConverter  x:Key="RecordTypeConverter"/>
-    </Page.Resources>-->
+    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"  EntranceNavigationTransitionInfo.IsTargetElement="True">
         <Grid x:Name="RootGrid" >
@@ -30,8 +30,10 @@
                 <TextBlock x:Name="BillPageTitle" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             </StackPanel>
 
-            <Pivot  Grid.Row="1">
-                <PivotItem Header="Month Bill">
+            <Pivot x:Name="PivotIndex"  Grid.Row="1" >
+              
+                <PivotItem Header="Daily Bill" >
+
                     <!--<TextBlock x:Name="ShowBlock" Text="" />-->
                     <Grid x:Name="ContentPanel" Grid.Row="1">
                         <Grid.RowDefinitions>
@@ -60,9 +62,9 @@
                                 <TextBlock Text="Category" Foreground="White"/>
                             </Border>
                         </Grid>
-                        
-                        
-                        <ListView Grid.Row="1" x:Name="listMouthReport" Margin="0,8,0,8" ItemClick="NavToItemDetail">
+
+
+                        <ListView Grid.Row="1" x:Name="listDayReport" Margin="0,8,0,8" ItemClick="NavToItemDetail">
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
                                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -77,8 +79,8 @@
                                             <ColumnDefinition Width="5*"></ColumnDefinition>
                                             <ColumnDefinition Width="3*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
-                                       
-                                        <TextBlock  Grid.Column="0" Text="{Binding Type}" />
+
+                                        <TextBlock  Grid.Column="0" Text="{Binding Type,Converter={StaticResource RecordTypeConverter}}" />
                                         <TextBlock Grid.Column="1" Text="{Binding Amount}"/>
                                         <TextBlock Grid.Column="2" Text="{Binding RecordTime}" />
                                         <TextBlock Grid.Column="3" Text="{Binding Category}"/>
@@ -87,8 +89,84 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        
-                       
+
+
+                        <!--显示本天收入、支出和结余-->
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Background="Gray">
+                                <TextBlock  x:Name="dayInTB" Foreground="White" />
+                            </Border>
+                            <Border Grid.Column="1" Background="Gray">
+                                <TextBlock  x:Name="dayExTB" Foreground="White"/>
+                            </Border>
+                            <Border Grid.Column="2" Background="Gray">
+                                <TextBlock x:Name="dayBalanceTB" Foreground="White"/>
+                            </Border>
+                        </Grid>
+
+                    </Grid>
+                </PivotItem>
+                <PivotItem Header="Monthly Bill">
+                    <!--<TextBlock x:Name="ShowBlock" Text="" />-->
+                    <Grid x:Name="ContentPanel2" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <!--记账记录列表头项目-->
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                                <ColumnDefinition Width="5*"></ColumnDefinition>
+                                <ColumnDefinition Width="3*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Background="Gray">
+                                <TextBlock Text="Type" Foreground="White" />
+                            </Border>
+                            <Border Grid.Column="1" Background="Gray">
+                                <TextBlock Text="Amount" Foreground="White"/>
+                            </Border>
+                            <Border Grid.Column="2" Background="Gray">
+                                <TextBlock Text="Time" Foreground="White"/>
+                            </Border>
+                            <Border Grid.Column="3" Background="Gray">
+                                <TextBlock Text="Category" Foreground="White"/>
+                            </Border>
+                        </Grid>
+
+
+                        <ListView Grid.Row="1" x:Name="listMonthReport" Margin="0,8,0,8" ItemClick="NavToItemDetail">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid  HorizontalAlignment="Stretch">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="5*"></ColumnDefinition>
+                                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock  Grid.Column="0" Text="{Binding Type, Converter={StaticResource RecordTypeConverter}}" />
+                                        <TextBlock Grid.Column="1" Text="{Binding Amount}"/>
+                                        <TextBlock Grid.Column="2" Text="{Binding RecordTime}" />
+                                        <TextBlock Grid.Column="3" Text="{Binding Category}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+
                         <!--显示本月收入、支出和结余-->
                         <Grid Grid.Row="2">
                             <Grid.ColumnDefinitions>
@@ -108,10 +186,6 @@
                         </Grid>
 
                     </Grid>
-                </PivotItem>
-
-                <PivotItem Header="Year Bill">
-
                 </PivotItem>
 
             </Pivot>
