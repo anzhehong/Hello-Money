@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="NavigationMenuSample.App">
-      <uap:VisualElements DisplayName="Hello,Money!" Square150x150Logo="Assets\icon1.png" Square44x44Logo="Assets\Dollar_Sign_512px_1177551_easyicon.net.png" Description="XAML Navigation Menu CS Sample" BackgroundColor="#00B2F0">
+      <uap:VisualElements DisplayName="Hello-Money" Square150x150Logo="Assets\icon1.png" Square44x44Logo="Assets\Dollar_Sign_512px_1177551_easyicon.net.png" Description="XAML Navigation Menu CS Sample" BackgroundColor="#00B2F0">
         <uap:DefaultTile>
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
@@ -23,9 +23,16 @@
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\openPic.jpg" />
       </uap:VisualElements>
+      <Extensions>
+        <uap:Extension Category="windows.personalAssistantLaunch" />
+        <uap:Extension Category="windows.appService" EntryPoint="HelloMoney.VoiceCommands.HelloMoneyVoiceCommandService">
+          <uap:AppService Name="HelloMoneyVoiceCommandService" />
+        </uap:Extension>
+      </Extensions>
     </Application>
   </Applications>
   <Capabilities>
     <Capability Name="internetClient" />
+    <DeviceCapability Name="microphone" />
   </Capabilities>
 </Package>

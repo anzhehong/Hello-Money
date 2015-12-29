@@ -20,11 +20,13 @@ using Windows.UI.Xaml.Navigation;
 namespace NavigationMenuSample
 {
     using Models;
+    using System.Threading.Tasks;
     using Views;
-
-    /// <summary>
-    /// Provides application-specific behavior to supplement the default Application class.
-    /// </summary>
+    using Windows.ApplicationModel.VoiceCommands;
+    using Windows.Media.SpeechRecognition;
+    using Windows.Storage;    /// <summary>
+                              /// Provides application-specific behavior to supplement the default Application class.
+                              /// </summary>
     sealed partial class App : Application
     {
         /// <summary>
@@ -92,7 +94,7 @@ namespace NavigationMenuSample
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
 
 #if DEBUG
@@ -135,6 +137,20 @@ namespace NavigationMenuSample
 
             // Ensure the current window is active
             Window.Current.Activate();
+
+            // register voice commands
+            try
+            {
+                // Install the main VCD. Since there's no simple way to test that the VCD has been imported, or that it's your most recent
+                // version, it's not unreasonable to do this upon app load.
+                StorageFile vcdStorageFile = await Package.Current.InstalledLocation.GetFileAsync(@"VoiceCommandFile.xml");
+
+                await Windows.ApplicationModel.VoiceCommands.VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(vcdStorageFile);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Installing Voice Commands Failed: " + ex.ToString());
+            }
         }
 
         /// <summary>
@@ -161,5 +177,124 @@ namespace NavigationMenuSample
             walletHelper.SaveToFile();
             deferral.Complete();
         }
+
+
+        /// <summary>
+        /// OnActivated is the entry point for an application when it is launched via
+        /// means other normal user interaction. This includes Voice Commands, URI activation,
+        /// being used as a share target from another app, etc. Here, we're going to handle the
+        /// Voice Command activation from Cortana.
+        /// 
+        /// Note: Be aware that an older VCD could still be in place for your application if you
+        /// modify it and update your app via the store. You should be aware that you could get 
+        /// activations that include commands in older versions of your VCD, and you should try
+        /// to handle them gracefully.
+        /// </summary>
+        /// <param name="args">Details about the activation method, including the activation
+        /// phrase (for voice commands) and the semantic interpretation, parameters, etc.</param>
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+            base.OnActivated(args);
+
+            Type navigationToPageType = typeof(WalletPage);
+            //ViewModel.TripVoiceCommand? navigationCommand = null;
+
+            // If the app was launched via a Voice Command, this corresponds to the "show trip to <location>" command. 
+            // Protocol activation occurs when a tile is clicked within Cortana (via the background task)
+            if (args.Kind == ActivationKind.VoiceCommand)
+            {
+                // The arguments can represent many different activation types. Cast it so we can get the
+                // parameters we care about out.
+                var commandArgs = args as VoiceCommandActivatedEventArgs;
+
+                Windows.Media.SpeechRecognition.SpeechRecognitionResult speechRecognitionResult = commandArgs.Result;
+
+                // Get the name of the voice command and the text spoken. See AdventureWorksCommands.xml for
+                // the <Command> tags this can be filled with.
+                string voiceCommandName = speechRecognitionResult.RulePath[0];
+                string textSpoken = speechRecognitionResult.Text;
+
+                // The commandMode is either "voice" or "text", and it indictes how the voice command
+                // was entered by the user.
+                // Apps should respect "text" mode by providing feedback in silent form.
+                string commandMode = this.SemanticInterpretation("commandMode", speechRecognitionResult);
+
+                switch (voiceCommandName)
+                {
+                    case "showWallet":
+                        // Set the page to navigate to for this voice command.                        
+                        navigationToPageType = typeof(WalletPage);
+                        break;
+                    case "addRecord":
+                        navigationToPageType = typeof(RecordPage);
+                        break;
+                    case "showBill":
+                        navigationToPageType = typeof(BillPage);
+                        break;
+                    default:
+                        // If we can't determine what page to launch, go to the default entry point.
+                        navigationToPageType = typeof(BillPage);
+                        break;
+                }
+            }
+            else if (args.Kind == ActivationKind.Protocol)
+            {
+                // Extract the launch context. In this case, we're just using the destination from the phrase set (passed
+                // along in the background task inside Cortana), which makes no attempt to be unique. A unique id or 
+                // identifier is ideal for more complex scenarios. We let the destination page check if the 
+                // destination trip still exists, and navigate back to the trip list if it doesn't.
+                var commandArgs = args as ProtocolActivatedEventArgs;
+                Windows.Foundation.WwwFormUrlDecoder decoder = new Windows.Foundation.WwwFormUrlDecoder(commandArgs.Uri.Query);
+                var destination = decoder.GetFirstValueByName("LaunchContext");
+
+            }
+            else
+            {
+                // If we were launched via any other mechanism, fall back to the main page view.
+                // Otherwise, we'll hang at a splash screen.
+                navigationToPageType = typeof(WalletPage);
+            }
+
+            AppShell shell = Window.Current.Content as AppShell;
+
+            // Do not repeat app initialization when the Window already has content,
+            // just ensure that the window is active
+            if (shell == null)
+            {
+                // Create a AppShell to act as the navigation context and navigate to the first page
+                shell = new AppShell();
+
+                // Set the default language
+                shell.Language = Windows.Globalization.ApplicationLanguages.Languages[0];
+
+                shell.AppFrame.NavigationFailed += OnNavigationFailed;
+            }
+
+            // Place our app shell in the current Window
+            Window.Current.Content = shell;
+
+            if (shell.AppFrame.Content == null)
+            {
+                // When the navigation stack isn't restored, navigate to the first page
+                // suppressing the initial entrance animation.
+                shell.AppFrame.Navigate(typeof(WalletPage));
+            }
+
+            // Ensure the current window is active
+            Window.Current.Activate();
+        }
+
+        /// <summary>
+        /// Returns the semantic interpretation of a speech result. Returns null if there is no interpretation for
+        /// that key.
+        /// </summary>
+        /// <param name="interpretationKey">The interpretation key.</param>
+        /// <param name="speechRecognitionResult">The result to get an interpretation from.</param>
+        /// <returns></returns>
+        private string SemanticInterpretation(string interpretationKey, SpeechRecognitionResult speechRecognitionResult)
+        {
+            return speechRecognitionResult.SemanticInterpretation.Properties[interpretationKey].FirstOrDefault();
+        }
     }
 }
+
