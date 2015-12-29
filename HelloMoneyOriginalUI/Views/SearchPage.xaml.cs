@@ -25,7 +25,42 @@ namespace NavigationMenuSample.Views
         public SearchPage()
         {
             this.InitializeComponent();
+            listReport.IsItemClickEnabled = true;
+            DatePickerBegin.Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, DateTime.Now.Day);
+            DatePickerEnd.Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day + 1);
         }
 
+        private async void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            // fetch search restriction
+            DateTime startDate = new DateTime(DatePickerBegin.Date.Year, DatePickerBegin.Date.Month, DatePickerBegin.Date.Day);
+            DateTime endDate = new DateTime(DatePickerEnd.Date.Year, DatePickerEnd.Date.Month, DatePickerEnd.Date.Day);
+            string keywords = (keyWords.Text == null) ? "" : keyWords.Text.ToLower();
+
+            // find records that match the given restriction
+            var allRecords = await LINQ.GetAllRecords();
+            var dateResult = allRecords.Where(r => (r.RecordTime <= endDate) &&
+                                (r.RecordTime >= startDate));
+
+            var queryResult = dateResult;
+            if(keywords != null)
+            {
+                if(keywords != "")
+                {
+                    queryResult = dateResult.Where(r => (r.Category.ToLower().Contains(keywords) ||
+                                        r.RecordNotes.ToLower().Contains(keywords) ||
+                                        r.RecordSource.ToLower().Contains(keywords)));
+                }
+                
+            }
+            listReport.ItemsSource = queryResult;
+
+        }
+
+        // redirect to details page
+        private void NavToItemDetails(object sender, ItemClickEventArgs e)
+        {
+            Frame.Navigate(typeof(DetailsPage), e.ClickedItem);
+        }
     }
 }

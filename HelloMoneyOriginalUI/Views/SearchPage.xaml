@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"    EntranceNavigationTransitionInfo.IsTargetElement="True" Margin="10">
+    <Grid  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" EntranceNavigationTransitionInfo.IsTargetElement="True" Margin="10">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState>
@@ -16,7 +16,7 @@
                         <AdaptiveTrigger MinWindowWidth="800" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="searchStackPanel.Orientation" Value="Horizontal"/>
+                        <!--<Setter Target="searchStackPanel.Orientation" Value="Horizontal"/>-->
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
@@ -59,7 +59,7 @@
                 </Border>
             </Grid>
             <!--记账记录数据绑定列表-->
-            <ListView Grid.Row="1" x:Name="listReport" >
+            <ListView Grid.Row="1" x:Name="listReport" ItemClick="NavToItemDetails">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -78,6 +78,10 @@
                                 <ColumnDefinition Width="5*"></ColumnDefinition>
                                 <ColumnDefinition Width="3*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
+                            <TextBlock  Grid.Column="0" Text="{Binding Type}" />
+                            <TextBlock Grid.Column="1" Text="{Binding Amount}"/>
+                            <TextBlock Grid.Column="2" Text="{Binding RecordTime}" />
+                            <TextBlock Grid.Column="3" Text="{Binding Category}"/>
                             <!--<TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Type,  Converter={StaticResource VoucherTypeConverter}}" />
                             <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Money}"/>
                             <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Desc,  Converter={StaticResource VoucherDescConverter}}"/>
@@ -112,8 +116,7 @@
     </Grid>
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton Icon="Zoom" Label="Search" />
-
+            <AppBarButton x:Name="SearchButton" Icon="Zoom" Label="Search" Click="SearchButton_Click" />
         </CommandBar>
     </Page.BottomAppBar>
 </Page>
