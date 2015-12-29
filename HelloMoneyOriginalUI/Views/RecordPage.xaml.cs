@@ -113,12 +113,12 @@ namespace NavigationMenuSample.Views
 
                             App.recordHelper.AddNewRecord(rec);
                             await new MessageDialog("Save success!").ShowAsync();
-                            
+                            Frame.Navigate(typeof(BillPage));
                         }
                         break;
                     case "RecordCancelButton":
                         {
-
+                            Frame.Navigate(typeof(BillPage));
                         }
                         break;
                 }
