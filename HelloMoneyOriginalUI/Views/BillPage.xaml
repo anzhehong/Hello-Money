@@ -60,7 +60,9 @@
                                 <TextBlock Text="Category" Foreground="White"/>
                             </Border>
                         </Grid>
-                        <ListView Grid.Row="1" x:Name="listMouthReport" Margin="0,8,0,8">
+                        
+                        
+                        <ListView Grid.Row="1" x:Name="listMouthReport" Margin="0,8,0,8" ItemClick="NavToItemDetail">
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
                                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -75,10 +77,9 @@
                                             <ColumnDefinition Width="5*"></ColumnDefinition>
                                             <ColumnDefinition Width="3*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
-                                        <!--<TextBlock  Grid.Column="0" Text="{Binding Type, Converter={StaticResource RecordTypeConverter}}" />-->
+                                       
                                         <TextBlock  Grid.Column="0" Text="{Binding Type}" />
                                         <TextBlock Grid.Column="1" Text="{Binding Amount}"/>
-                                        <!--<TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Desc,  Converter={StaticResource VoucherDescConverter}}"/>-->
                                         <TextBlock Grid.Column="2" Text="{Binding RecordTime}" />
                                         <TextBlock Grid.Column="3" Text="{Binding Category}"/>
 
@@ -86,6 +87,8 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                        
+                       
                         <!--显示本月收入、支出和结余-->
                         <Grid Grid.Row="2">
                             <Grid.ColumnDefinitions>

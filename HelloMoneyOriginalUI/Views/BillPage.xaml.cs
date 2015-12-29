@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NavigationMenuSample.Controls;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace NavigationMenuSample.Views
         public BillPage()
         {
             this.InitializeComponent();
+            listMouthReport.IsItemClickEnabled = true;
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
@@ -93,6 +95,13 @@ namespace NavigationMenuSample.Views
             listMouthReport.ItemsSource = await LINQ.GetThisMonthAllRecords(mouth, year);
             BillPageTitle.Text = year + "-" + mouth ;
         }
+
+        // Redirect to details page
+        private void NavToItemDetail(object sender , ItemClickEventArgs e)
+        {
+            Frame.Navigate(typeof(DetailsPage),e.ClickedItem);
+        }
+
     }
 }
 

@@ -43,7 +43,7 @@ namespace NavigationMenuSample.Views
         private List<string> _recordSources = new List<string>()
         {
             "Cash",
-            "Bank Card",
+            "Credit Card",
             "Alipay" ,
             "Others"
         };
