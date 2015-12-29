@@ -17,8 +17,9 @@
         </CommandBar>
     </Page.BottomAppBar>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"   EntranceNavigationTransitionInfo.IsTargetElement="True">
-        <Grid x:Name="RootGrid" Margin="12,10,12,12">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"   EntranceNavigationTransitionInfo.IsTargetElement="True"
+          Margin="12,-2,12,2">
+        <Grid x:Name="RootGrid" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -26,19 +27,67 @@
             </Grid.RowDefinitions>
             
             <StackPanel>
-                <TextBlock Text="Details" HorizontalAlignment="Center" Style="{StaticResource SampleHeaderTextStyle}"/>
+                <TextBlock Text="DETAILS" HorizontalAlignment="Center" Style="{StaticResource SampleHeaderTextStyle}" Opacity="0.6" RequestedTheme="Light"/>
             </StackPanel>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="4*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="Amount:" Opacity="0.6" HorizontalAlignment="Left" VerticalAlignment="Bottom"></TextBlock>
+                    <TextBox Grid.Row="1" x:Name="DetailAmount" PlaceholderText="Amount" TextWrapping="Wrap"/>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="Type:" Opacity="0.6" HorizontalAlignment="Left" VerticalAlignment="Bottom"></TextBlock>
+                    <ComboBox Grid.Row="1" x:Name="DetailType" SelectedValue="Food" PlaceholderText="Food" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                    <TextBlock Grid.Row="2" Text="Record Source:" Opacity="0.6" HorizontalAlignment="Left" VerticalAlignment="Bottom"></TextBlock>
+                    <ComboBox Grid.Row="3" x:Name="DetailSource" SelectedValue ="Cash" PlaceholderText="Cash"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="Date:" Opacity="0.6" HorizontalAlignment="Left" VerticalAlignment="Bottom"></TextBlock>
+                    <DatePicker Grid.Row="1" Name="DetailDatePicker" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    <TextBlock Grid.Row="2" Text="Clock:" Opacity="0.6" HorizontalAlignment="Left" VerticalAlignment="Bottom"></TextBlock>
+                    <TimePicker Grid.Row="3" Name="DetailTimePicker" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="Note:" Opacity="0.6" HorizontalAlignment="Left" VerticalAlignment="Bottom"></TextBlock>
+                    <TextBox Grid.Row="1" x:Name="DetailRecordNotes" TextWrapping="Wrap" PlaceholderText="Notes"/>
+                </Grid>
 
-            <Grid>
-                <StackPanel>
-                    <TextBox x:Name="DetailAmount" PlaceholderText="Amount" TextWrapping="Wrap" Height="51" Margin="2,0,19,0"/>
-                    <ComboBox x:Name="DetailType" SelectedValue="Food" PlaceholderText="Food" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="120" />
-                    <ComboBox x:Name="DetailSource" SelectedValue ="Cash" PlaceholderText="Cash"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                    <DatePicker Name="DetailDatePicker" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                    <TimePicker Name="DetailTimePicker" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                    <TextBox x:Name="DetailRecordNotes" TextWrapping="Wrap" PlaceholderText="Notes" Height="69"/>
-                </StackPanel>
             </Grid>
+          
+                <StackPanel>
+                  
+                  
+                   
+                   
+                   
+                    
+                </StackPanel>
+           
 
             <!-- Status Block for providing messages to the user.  Use the
              NotifyUser() method to populate the message -->

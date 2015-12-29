@@ -25,10 +25,11 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        
+
         <StackPanel>
-            <TextBlock Text="" Style="{StaticResource SampleHeaderTextStyle}" />
+            <TextBlock Text="SEARCH" HorizontalAlignment="Center" Style="{StaticResource SampleHeaderTextStyle}" Opacity="0.6" RequestedTheme="Light" VerticalAlignment="Center"/>
         </StackPanel>
+
 
         <Grid x:Name="ContentPanel" Grid.Row="1">
             <Grid.RowDefinitions>

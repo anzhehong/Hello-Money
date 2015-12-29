@@ -29,12 +29,16 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <ctl:PageHeader>
+        <!--<ctl:PageHeader>
             <ctl:PageHeader.HeaderContent>
-                <TextBlock x:Name="title" Style="{ThemeResource PageTitleTextBlockStyle}" Text="Wallet Page"/>
+                <TextBlock x:Name="title" FontSize="20" Style="{ThemeResource PageTitleTextBlockStyle}" Text="WALLET" Opacity="0.6" RequestedTheme="Light" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+               
             </ctl:PageHeader.HeaderContent>
-        </ctl:PageHeader>
+        </ctl:PageHeader>-->
 
+        <StackPanel>
+            <TextBlock Text="WALLET" HorizontalAlignment="Center" Style="{StaticResource SampleHeaderTextStyle}" Opacity="0.6" RequestedTheme="Light" VerticalAlignment="Center"/>
+        </StackPanel>
         <GridView Grid.Row="1" Header="Click A Wallet To Show Detail"
                    x:Name="Wallets"
                   IsItemClickEnabled="True"
