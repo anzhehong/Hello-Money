@@ -11,8 +11,7 @@ namespace NavigationMenuSample.Views
 {
     public sealed partial class WalletPage : Page
     {
-        private List<Wallet> Wallets;
-        private double Balance = 0;
+        private double tempBalance = 0;
         
         public  WalletPage()
         {
@@ -21,15 +20,17 @@ namespace NavigationMenuSample.Views
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            base.OnNavigatedFrom(e);
             IEnumerable<Wallet> allWallets = await WalletManager.GetAllWallets();
             // read wallets
-            Wallets =( await WalletManager.GetAllWallets()).ToList();
+            Wallets.ItemsSource = (await WalletManager.GetAllWallets()).ToList();
+            List<Wallet> tempW = (await WalletManager.GetAllWallets()).ToList();
             // read balance according to wallets
-            foreach (var item in Wallets)
+            foreach (var item in tempW)
             {
-                Balance += item.walletValue;
+                tempBalance += item.walletValue;
+                Balance.Text = tempBalance.ToString();
             }
+            base.OnNavigatedFrom(e);
         }
 
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)

@@ -24,6 +24,10 @@ namespace NavigationMenuSample.Models
     {
         public List<Wallet> _walletData;
         public double balance = 123; //{ get; set; }
+        public List<Record> _recordData;
+        public RecordHelper recordHelper;
+
+        // load record.dat to read data
 
 
         // load wallet.dat
@@ -44,10 +48,10 @@ namespace NavigationMenuSample.Models
         internal static List<Wallet> getWallets()
         {
             List<Wallet> list = new List<Wallet>();
-            list.Add(new Wallet { walletName = "支付宝", walletDescription = "阿里公司支付宝", walletImg = "/Assets/zhifubao.png", walletValue = 111 });
-            list.Add(new Wallet { walletName = "现金", walletDescription = "口袋money", walletImg = "/Assets/cash.png", walletValue = 0 });
-            list.Add(new Wallet { walletName = "银行卡", walletDescription = "各种银行卡", walletImg = "/Assets/creditcard.png", walletValue = 0 });
-            list.Add(new Wallet { walletName = "其它", walletDescription = "除了上面的所有money", walletImg = "/Assets/others.png", walletValue = 0 });
+            list.Add(new Wallet { walletName = "Alipay", walletDescription = "阿里公司支付宝", walletImg = "/Assets/zhifubao.png", walletValue = 0 });
+            list.Add(new Wallet { walletName = "Cash", walletDescription = "口袋money", walletImg = "/Assets/cash.png", walletValue = 0 });
+            list.Add(new Wallet { walletName = "Credit Card", walletDescription = "各种银行卡", walletImg = "/Assets/creditcard.png", walletValue = 0 });
+            list.Add(new Wallet { walletName = "Others", walletDescription = "除了上面的所有money", walletImg = "/Assets/others.png", walletValue = 0 });
             return list;
         }
 
@@ -60,8 +64,33 @@ namespace NavigationMenuSample.Models
                 if (!isExist)
                 {
                     this._walletData = getWallets();
+                    IEnumerable<Record> allRecords = await LINQ.GetAllRecords();
+                    this._recordData = (await LINQ.GetAllRecords()).ToList();
+                    foreach (var item in this._recordData)
+                    {
+                        // 0 means income
+                        if (item.Type == 0)
+                        {
+                            for (int i = 0; i < this._walletData.Count; i++)
+                            {
+                                if (this._walletData[i].walletName.Equals(item.RecordSource))
+                                    this._walletData[i].walletValue += item.Amount;
+                            }
+
+                        }
+                        else
+                        {
+                            for (int i = 0; i < this._walletData.Count; i++)
+                            {
+                                if (this._walletData[i].walletName.Equals(item.RecordSource))
+                                    this._walletData[i].walletValue -= item.Amount;
+                            }
+                        }
+
+                    }
                 }
             }
+            
             return this._walletData;
         }
         
@@ -69,6 +98,7 @@ namespace NavigationMenuSample.Models
 
     public class WalletManager
     {
+
         // read all wallet record
         public static async Task<IEnumerable<Wallet>> GetAllWallets()
         {

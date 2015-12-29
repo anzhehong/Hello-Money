@@ -35,25 +35,8 @@
             </ctl:PageHeader.HeaderContent>
         </ctl:PageHeader>
 
-        <!--<ListView Grid.Row="1" Header="Click A Wallet To Show Detail"
-                  EntranceNavigationTransitionInfo.IsTargetElement="True"
-                  IsItemClickEnabled="True"
-                  ItemClick="ListView_ItemClick">
-            <ListView.HeaderTemplate>
-                <DataTemplate>
-                    <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Margin="12,4" Text="{Binding}"/>
-                </DataTemplate>
-            </ListView.HeaderTemplate>
-            <ListViewItem>Item 1</ListViewItem>
-            <ListViewItem>Item 2</ListViewItem>
-            <ListViewItem>Item 3</ListViewItem>
-            <ListViewItem>Item 4</ListViewItem>
-
-            
-        </ListView>-->
-        
         <GridView Grid.Row="1" Header="Click A Wallet To Show Detail"
-                  ItemsSource="{x:Bind Wallets}"
+                   x:Name="Wallets"
                   IsItemClickEnabled="True"
                   ItemClick="ListView_ItemClick"
                   ItemTemplate="{StaticResource walletTemplate}">
@@ -62,7 +45,8 @@
                   IsItemClickEnabled="False">
             
             <StackPanel HorizontalAlignment="Left">
-                <TextBlock FontSize="15" Text="{x:Bind Balance}" HorizontalAlignment="Center"/>
+                <!--<TextBlock FontSize="15" Text="{x:Bind Balance}" HorizontalAlignment="Center"/>-->
+                <TextBlock FontSize="15" x:Name="Balance" HorizontalAlignment="Center"/>
             </StackPanel>
         </GridView>
         
