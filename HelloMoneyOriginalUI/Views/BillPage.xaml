@@ -27,7 +27,7 @@
             </StackPanel>-->
 
             <StackPanel>
-                <TextBlock x:Name="BillPageTitle" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                <TextBlock x:Name="BillPageTitle" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.6"></TextBlock>
             </StackPanel>
 
             <Pivot x:Name="PivotIndex"  Grid.Row="1" >
@@ -80,10 +80,10 @@
                                             <ColumnDefinition Width="3*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
 
-                                        <TextBlock  Grid.Column="0" Text="{Binding Type,Converter={StaticResource RecordTypeConverter}}" />
-                                        <TextBlock Grid.Column="1" Text="{Binding Amount}"/>
-                                        <TextBlock Grid.Column="2" Text="{Binding RecordTime}" />
-                                        <TextBlock Grid.Column="3" Text="{Binding Category}"/>
+                                        <TextBlock Grid.Column="0" Text="{Binding Type,Converter={StaticResource RecordTypeConverter}}" Opacity="0.7" />
+                                        <TextBlock Grid.Column="1" Text="{Binding Amount}" Opacity="0.7"/>
+                                        <TextBlock Grid.Column="2" Text="{Binding RecordTime}" Opacity="0.7" />
+                                        <TextBlock Grid.Column="3" Text="{Binding Category}" Opacity="0.7"/>
 
                                     </Grid>
                                 </DataTemplate>
@@ -157,10 +157,10 @@
                                             <ColumnDefinition Width="5*"></ColumnDefinition>
                                             <ColumnDefinition Width="3*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock  Grid.Column="0" Text="{Binding Type, Converter={StaticResource RecordTypeConverter}}" />
-                                        <TextBlock Grid.Column="1" Text="{Binding Amount}"/>
-                                        <TextBlock Grid.Column="2" Text="{Binding RecordTime}" />
-                                        <TextBlock Grid.Column="3" Text="{Binding Category}"/>
+                                        <TextBlock Grid.Column="0" Text="{Binding Type, Converter={StaticResource RecordTypeConverter}}" Opacity="0.7" />
+                                        <TextBlock Grid.Column="1" Text="{Binding Amount}" Opacity="0.7"/>
+                                        <TextBlock Grid.Column="2" Text="{Binding RecordTime}" Opacity="0.7" />
+                                        <TextBlock Grid.Column="3" Text="{Binding Category}" Opacity="0.7"/>
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>

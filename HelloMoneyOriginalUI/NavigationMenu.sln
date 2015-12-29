@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavigationMenu", "NavigationMenu.csproj", "{B08D337A-AF9F-4705-B8C1-C7F07FACD8C5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloMoney", "HelloMoney.csproj", "{B08D337A-AF9F-4705-B8C1-C7F07FACD8C5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickCharts", "QuickCharts\QuickCharts.csproj", "{B919568A-58FE-413E-B1C4-358BF550414C}"
 EndProject

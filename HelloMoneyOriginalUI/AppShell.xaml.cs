@@ -44,7 +44,7 @@ namespace NavigationMenuSample
                 new NavMenuItem()
                 {
                     Symbol = Symbol.Add,
-                    Label = "ADD",
+                    Label = "Add",
                     DestPage = typeof(RecordPage)
                 },
                 new NavMenuItem()
@@ -58,13 +58,7 @@ namespace NavigationMenuSample
                     Symbol = Symbol.Zoom,
                     Label = "Search",
                     DestPage = typeof(SearchPage)
-                },
-                new NavMenuItem()
-                {
-                    Symbol = Symbol.Favorite,
-                    Label = "sha wan yi?",
-                    DestPage = typeof(DrillInPage)
-                },
+                },               
             });
 
         public static AppShell Current = null;
