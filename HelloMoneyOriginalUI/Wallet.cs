@@ -116,10 +116,21 @@ namespace NavigationMenuSample.Models
     public class WalletManager
     {
 
-        // read all wallet record
+        // read all wallet 
         public static async Task<IEnumerable<Wallet>> GetAllWallets()
         {
             return (from c in await App.walletHelper.GetData() select c);
+        }
+
+        //read wallet record by wallet name
+        public static async Task<IEnumerable<Record>> getAllWalletRecordByName(int thisIndex)
+        {
+            List<Wallet> tempWalletList =( from c in await App.walletHelper.GetData() select c).ToList();
+            string name = tempWalletList[thisIndex].walletName;
+            return (from c in await App.recordHelper.GetData()
+                    where c.RecordSource == name
+                    select c);
+
         }
 
         // set value according to wallet name

@@ -1,6 +1,7 @@
 ﻿using NavigationMenuSample.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,11 +36,14 @@ namespace NavigationMenuSample.Views
 
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
+            int walletIndex = ((GridView)sender).Items.IndexOf(e.ClickedItem);
+            Debug.WriteLine("目前点选的是:" + walletIndex);
             this.Frame.Navigate(
                 typeof(BasicSubPage),
-                e.ClickedItem,
+                walletIndex,
                 new Windows.UI.Xaml.Media.Animation.DrillInNavigationTransitionInfo());
-            var wallet = (Wallet)e.ClickedItem;
+            //var wallet = (Wallet)e.ClickedItem;
+            //Frame.Navigate(typeof(BasicSubPage),"laladdd");
 
         }
     }

@@ -6,22 +6,46 @@
     xmlns:ctl="using:NavigationMenuSample.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:NavigationMenuSample"
     mc:Ignorable="d">
 
+    <!--<Page.Resources>
+        <DataTemplate  x:DataType="data:Record" x:Key="walletRecordTemplate">
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock FontSize="16" Text="{x:Bind Category}" HorizontalAlignment="Center"/>
+                --><!--<TextBlock FontSize="12" Text="{x:Bind Amount}" HorizontalAlignment="Center"/>
+                <TextBlock FontSize="14" Text="{x:Bind type}"  HorizontalAlignment="Center"/>--><!--
+            </StackPanel>
+
+        </DataTemplate>
+        --><!--<DataTemplate x:DataType="data:WalletHelper" x:Key="balanceTemplate">
+            
+        </DataTemplate>--><!--
+    </Page.Resources>-->
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <ctl:PageHeader Grid.ColumnSpan="2">
+        <!--<ctl:PageHeader Grid.ColumnSpan="2">
             <ctl:PageHeader.HeaderContent>
                 <TextBlock Text="BASIC SUBPAGE" Style="{ThemeResource PageTitleTextBlockStyle}" TextWrapping="NoWrap"/>
             </ctl:PageHeader.HeaderContent>
-        </ctl:PageHeader>
+        </ctl:PageHeader>-->
 
         <Grid Grid.Row="1">
-            <TextBlock Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{x:Bind Message}"/>
+            <TextBlock Style="{ThemeResource TitleTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="walletName"/>
+            
+        </Grid>
+        <Grid Grid.Row="2">
+            <ListView IsItemClickEnabled="False"
+                      ItemClick="ListView_ItemClick"
+                      x:Name="records">
+            </ListView>
+            
         </Grid>
 
     </Grid>

@@ -26,5 +26,16 @@ namespace NavigationMenuSample.Views
         {
             this.InitializeComponent();
         }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            //var wallet = (wallet)e.
+            //var test = (string)e.Parameter;
+        }
+
+        //private void Page_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    walletName.Text = 
+        //}
     }
 }
