@@ -67,8 +67,10 @@
             <Pivot Grid.Row="1">
                 
                 <PivotItem Header="Pie Chart">
-                    <amq:PieChart x:Name="pieChart" TitleMemberPath="Type" ValueMemberPath="Account" ></amq:PieChart>
-                    <!--<amq:PieChart x:Name="pie1" TitleMemberPath="title" ValueMemberPath="value"></amq:PieChart>-->
+                    <StackPanel>
+                        <amq:PieChart x:Name="pieChart" TitleMemberPath="Type" ValueMemberPath="Account" ></amq:PieChart>
+                        <amq:PieChart x:Name="expandPieChart" TitleMemberPath="Type" ValueMemberPath="Account" ></amq:PieChart>
+                    </StackPanel>
                 </PivotItem>
                 
                 <PivotItem Header="Bar Chart">
@@ -88,7 +90,7 @@
                             </amq:SerialChart.Graphs>
                         </amq:SerialChart>
                     </Grid>-->
-                    <Grid>
+                    <StackPanel>
                         <amq:SerialChart x:Name="barChart" CategoryValueMemberPath="Type"
                             AxisForeground="White"
                             PlotAreaBackground="Black"
@@ -97,20 +99,28 @@
                                 <amq:ColumnGraph ValueMemberPath="Account" Brush="#8000FF00" ColumnWidthAllocation="0.4" />
                             </amq:SerialChart.Graphs>
                         </amq:SerialChart>
-                    </Grid>
+                        <amq:SerialChart x:Name="barChartForExpend" CategoryValueMemberPath="Type"
+                            AxisForeground="White"
+                            PlotAreaBackground="Black"
+                            GridStroke="DarkGray">
+                            <amq:SerialChart.Graphs>
+                                <amq:ColumnGraph ValueMemberPath="Account" Brush="#8000FF00" ColumnWidthAllocation="0.4" />
+                            </amq:SerialChart.Graphs>
+                        </amq:SerialChart>
+                    </StackPanel>
                 </PivotItem>
-
+<!--
                 <PivotItem Header="Line Chart">
-                    <!--<amq:SerialChart x:Name="chart3" DataSource="{Binding SData}" CategoryValueMemberPath="cat1"
+                    <amq:SerialChart x:Name="chart3" CategoryValueMemberPath="cat1"
                             AxisForeground="White"
                             PlotAreaBackground="Gray"
                             GridStroke="Black">
                         <amq:SerialChart.Graphs>
                             <amq:LineGraph ValueMemberPath="val3" Title="#1" Brush="Blue" />
                         </amq:SerialChart.Graphs>
-                    </amq:SerialChart>-->
+                    </amq:SerialChart>
                 </PivotItem>
-
+-->
             </Pivot>
             <!--<CommandBar x:Name="topbar" VerticalAlignment="Bottom" HorizontalContentAlignment="Stretch" Grid.Row="1" Opened="topbar_Opened">
                 --><!--<AppBarButton Icon="CalendarDay" Label="Edit" />

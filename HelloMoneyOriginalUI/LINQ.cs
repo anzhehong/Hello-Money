@@ -30,6 +30,17 @@ namespace NavigationMenuSample
                     select c);
         }
         /// <summary>
+        /// Fetch all incomes for a specific month
+        /// </summary>
+        public static async Task<IEnumerable<Record>> GetThisMonthAllRecordsForType(int month , int year , int type)
+        {
+            return (from c in await GetThisMonthAllRecords(month, year)
+                    where c.Type == type
+                    select c);
+        }
+        
+            
+        /// <summary>
         /// 获取某日的所有记录
         /// </summary>
         /// <param name="day">日</param>

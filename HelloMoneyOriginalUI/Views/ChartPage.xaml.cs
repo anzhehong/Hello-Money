@@ -27,97 +27,49 @@ namespace NavigationMenuSample.Views
         {
             this.InitializeComponent();
             rh = new RecordHelper();
-            //this.Loaded += PhoneApplicationPage_Loaded;
-
-           // this.ShowBlockInfo();
         }
 
         // 导航进入界面的事件处理程序
         protected async override void OnNavigatedTo (NavigationEventArgs e)
         {
             // 创建图表的数据源对象
-            ObservableCollection<ChartData> collecion = new ObservableCollection<ChartData>();
+            ObservableCollection<ChartData> collection = new ObservableCollection<ChartData>();
+            ObservableCollection<ChartData> collectionForExpend = new ObservableCollection<ChartData>();
             // 获取所有的记账记录
             IEnumerable<Record> allRecords = await LINQ.GetAllRecords();
+            IEnumerable<Record> allIncomeRecords = await LINQ.GetThisMonthAllRecordsForType(DateTime.Now.Month, DateTime.Now.Year, 0);
+            IEnumerable<Record> allExpendRecords = await LINQ.GetThisMonthAllRecordsForType(DateTime.Now.Month, DateTime.Now.Year, 1);
             // 获取所有记账记录里面的类别
-            IEnumerable<string> enumerable2 = (from c in allRecords select c.Category).Distinct<string>();
+            IEnumerable<string> categories = (from c in allRecords select c.Category).Distinct<string>();
             // 按照类别来统计记账的数目
-            foreach (var item in enumerable2)
+            foreach (var item in categories)
             {
                 // 获取该类别下的钱的枚举集合
-                IEnumerable<double> enumerable3 = from c in allRecords.Where<Record>(c => c.Category == item) select c.Amount;
+                IEnumerable<double> amounts = from c in allIncomeRecords.Where<Record>(c => c.Category == item) select c.Amount;
+                IEnumerable<double> amountsForExpend = from c in allExpendRecords.Where<Record>(c => c.Category == item) select c.Amount;
                 // 添加一条图表的数据
                 ChartData data = new ChartData
                 {
-                    Account = enumerable3.Sum(),
+                    Account = amounts.Sum(),
                     Type = item
                 };
-                collecion.Add(data);
+                ChartData dataForExpend = new ChartData
+                {
+                    Account = amountsForExpend.Sum(),
+                    Type = item
+                };
+                collection.Add(data);
+                collectionForExpend.Add(dataForExpend);
             }
-            // 设置柱形图形的数据源
-            barChart.DataSource = collecion;
+            // 设置图形的数据源
+            pieChart.DataSource = collection;
+            expandPieChart.DataSource = collectionForExpend;
 
-            pieChart.DataSource = collecion;
+            barChart.DataSource = collection;
+            barChartForExpend.DataSource = collectionForExpend;
+
+            //chart3.DataSource = from c in collectionForExpend.Where<ChartData>(c => c.Account != 0) select c;
+
         }
-
-        //    private async void ShowBlockInfo()
-        //    {
-        //        double sumIncome = 0;
-        //        double sumOutcome = 0;
-        //        foreach(Record rec in await rh.GetData())
-        //        {
-        //            if(rec.Type == 0)
-        //            {
-        //                sumIncome += rec.Amount;
-        //            }
-        //            else if(rec.Type == 1)
-        //            {
-        //                sumOutcome += rec.Amount;
-        //            }
-        //        }
-        //      //  ShowBlock.Text = "Income:" + sumIncome + "\nOutcome:" + sumOutcome;
-
-        //    }
-
-        //    //pie
-        //    public ObservableCollection<PData> PData = new ObservableCollection<PData>()
-        //    {
-        //        new PData() { title = "#1", value = 30 },
-        //        new PData() { title = "#2", value = 60 },
-        //        new PData() { title = "#3", value = 40 },
-        //        new PData() { title = "#4", value = 10 },
-        //    };
-
-        //    private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
-        //    {
-        //        pie1.DataSource = PData;
-        //        this.DataContext = this;
-        //    }
-
-        //    //bar
-        //    private ObservableCollection<SData> _data = new ObservableCollection<SData>()
-        //    {
-        //        new SData() { cat1 = "cat1", val1=1, val2=15, val3=12},
-        //        new SData() { cat1 = "cat2", val1=4, val2=1.5, val3=2.1M},
-        //        new SData() { cat1 = "cat3", val1=25, val2=5, val3=2},
-        //        new SData() { cat1 = "cat4", val1=8.1, val2=1, val3=8},
-        //        new SData() { cat1 = "cat5", val1=8.1, val2=1, val3=4},
-        //        new SData() { cat1 = "cat6", val1=8.1, val2=1, val3=10},
-        //    };
-
-        //    public ObservableCollection<SData> SData { get { return _data; } }
-        //}
-        //public class PData
-        //{
-        //    public string title { get; set; }
-        //    public double value { get; set; }
-        //}
-        //public class SData
-        //{
-        //    public string cat1 { get; set; }
-        //    public double val1 { get; set; }
-        //    public double val2 { get; set; }
-        //    public decimal val3 { get; set; }
-        //}
     }
 }
