@@ -36,7 +36,7 @@ namespace NavigationMenuSample.Models
             this._walletData = await DataStorageHelper.ReadAsync<List<Wallet>>("Wallet.dat");
             return (this._walletData != null);
         }
-        
+
 
         // save to wallet.dat
         public async void SaveToFile()
@@ -66,34 +66,51 @@ namespace NavigationMenuSample.Models
                     this._walletData = getWallets();
                     IEnumerable<Record> allRecords = await LINQ.GetAllRecords();
                     this._recordData = (await LINQ.GetAllRecords()).ToList();
-                    foreach (var item in this._recordData)
-                    {
-                        // 0 means income
-                        if (item.Type == 0)
-                        {
-                            for (int i = 0; i < this._walletData.Count; i++)
-                            {
-                                if (this._walletData[i].walletName.Equals(item.RecordSource))
-                                    this._walletData[i].walletValue += item.Amount;
-                            }
-
-                        }
-                        else
-                        {
-                            for (int i = 0; i < this._walletData.Count; i++)
-                            {
-                                if (this._walletData[i].walletName.Equals(item.RecordSource))
-                                    this._walletData[i].walletValue -= item.Amount;
-                            }
-                        }
-
-                    }
+                    addFunc();
                 }
+                else
+                {
+                    // TODO
+                }
+
             }
-            
+            else
+            {
+                this._walletData = getWallets();
+                this._recordData = (await LINQ.GetAllRecords()).ToList();
+                addFunc();
+            }
+
             return this._walletData;
         }
-        
+
+        public void addFunc()
+        {
+
+            foreach (var item in this._recordData)
+            {
+                // 0 means income
+                if (item.Type == 0)
+                {
+                    for (int i = 0; i < this._walletData.Count; i++)
+                    {
+                        if (this._walletData[i].walletName.Equals(item.RecordSource))
+                            this._walletData[i].walletValue += item.Amount;
+                    }
+
+                }
+                else
+                {
+                    for (int i = 0; i < this._walletData.Count; i++)
+                    {
+                        if (this._walletData[i].walletName.Equals(item.RecordSource))
+                            this._walletData[i].walletValue -= item.Amount;
+                    }
+                }
+
+            }
+        }
+
     }
 
     public class WalletManager
@@ -109,7 +126,7 @@ namespace NavigationMenuSample.Models
         public async Task<string> setValueByName(string walletName, double newValue)
         {
             IEnumerable<Wallet> wallets = (from c in await App.walletHelper.GetData() select c);
-           
+
             List<Wallet> tempList = wallets.ToList();
             for (int i = 0; i < tempList.Count(); i++)
             {
