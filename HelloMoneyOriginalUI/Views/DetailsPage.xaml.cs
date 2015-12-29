@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -26,8 +27,19 @@ namespace NavigationMenuSample.Views
 
             this._item = e.Parameter as Record;
 
+            // set item sources
+            if(_item.Type == 0)
+            {
+                DetailType.ItemsSource = App.IncomeCategory;
+            }
+            else
+            {
+                DetailType.ItemsSource = App.ExpendCategories;
+            }
+            DetailSource.ItemsSource = App.RecordSources;
+
+
             // Update details view
-            
             DetailAmount.Text = Convert.ToString(_item.Amount);
             DetailType.SelectedValue = _item.Category;
             DetailType.PlaceholderText = _item.Category;
@@ -42,7 +54,7 @@ namespace NavigationMenuSample.Views
         }
 
         // Perform corresponding confirm & cancel actions to click event
-        private void RecordButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void RecordButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             Button btn = sender as Button;
 
@@ -53,12 +65,37 @@ namespace NavigationMenuSample.Views
                 {
                     case "RecordSaveButton":
                         {
-                            
+                            var rec_tmp = (from c in await App.recordHelper.GetData()
+                                       where (c.ID == _item.ID)
+                                       select c);
+
+                            Record rec = rec_tmp.Last();
+
+                            rec.Amount = Convert.ToDouble(DetailAmount.Text);
+                            rec.Category = (string)DetailType.SelectedValue;
+                            rec.RecordSource = (string)DetailSource.SelectedValue;
+                            rec.RecordTime = new DateTime(DetailDatePicker.Date.Year, DetailDatePicker.Date.Month, DetailDatePicker.Date.Day,
+                                        DetailTimePicker.Time.Hours, DetailTimePicker.Time.Minutes, DetailTimePicker.Time.Seconds);
+                            rec.RecordNotes = DetailRecordNotes.Text;
+
+                            // update records
+                            App.recordHelper.SaveToFile();
+                            // redirect
+                            Frame.Navigate(typeof(BillPage));
                         }
                         break;
                     case "RecordDeleteButton":
                         {
-                            
+                            var rec_tmp = (from c in await App.recordHelper.GetData()
+                                           where (c.ID == _item.ID)
+                                           select c);
+
+                            Record rec = rec_tmp.Last();
+
+                            // delete record
+                            App.recordHelper.DeleteRecord(rec);
+                            // redirect
+                            Frame.Navigate(typeof(BillPage));
                         }
                         break;
                 }
