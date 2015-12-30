@@ -5,21 +5,21 @@
     <Example>Open Hello-Money</Example>
 
     <Command Name="showWallet">
-      <Example>Show my wallet</Example>
+      <Example>MyMoney wallet</Example>
       <ListenFor RequireAppName="ExplicitlySpecified">{builtin:AppName} wallet</ListenFor>
       <Feedback>Showing your wallet</Feedback>
       <Navigate/>
     </Command>
     
     <Command Name="addRecord">
-      <Example>Turn to record page</Example>
+      <Example>MyMoney new record</Example>
       <ListenFor RequireAppName="ExplicitlySpecified">{builtin:AppName} new record</ListenFor>
       <Feedback>Turning to record page</Feedback>
       <Navigate/>
     </Command>
 
     <Command Name="showBill">
-      <Example>Show bill for this month</Example>
+      <Example>MyMoney bill</Example>
       <ListenFor RequireAppName="ExplicitlySpecified">{builtin:AppName} bill</ListenFor>
       <Feedback>Showing your bill</Feedback>
       <Navigate/>
