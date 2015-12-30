@@ -59,6 +59,12 @@ namespace NavigationMenuSample
                     Label = "Search",
                     DestPage = typeof(SearchPage)
                 },               
+                new NavMenuItem()
+                {
+                    Symbol = Symbol.Setting,
+                    Label = "Settings",
+                    DestPage = typeof(SettingPage)
+                },
             });
 
         public static AppShell Current = null;

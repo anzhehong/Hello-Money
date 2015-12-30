@@ -48,10 +48,10 @@ namespace NavigationMenuSample.Models
         internal static List<Wallet> getWallets()
         {
             List<Wallet> list = new List<Wallet>();
-            list.Add(new Wallet { walletName = "Alipay", walletDescription = "阿里公司支付宝", walletImg = "/Assets/zhifubao.png", walletValue = 0 });
-            list.Add(new Wallet { walletName = "Cash", walletDescription = "口袋money", walletImg = "/Assets/cash.png", walletValue = 0 });
-            list.Add(new Wallet { walletName = "Credit Card", walletDescription = "各种银行卡", walletImg = "/Assets/creditcard.png", walletValue = 0 });
-            list.Add(new Wallet { walletName = "Others", walletDescription = "除了上面的所有money", walletImg = "/Assets/others.png", walletValue = 0 });
+            list.Add(new Wallet { walletName = "Alipay", walletDescription = "Supported by Ali Inc.", walletImg = "/Assets/zhifubao.png", walletValue = 0 });
+            list.Add(new Wallet { walletName = "Cash", walletDescription = "Money in Pocket", walletImg = "/Assets/cash.png", walletValue = 0 });
+            list.Add(new Wallet { walletName = "Credit Card", walletDescription = "All Bank Cards", walletImg = "/Assets/creditcard.png", walletValue = 0 });
+            list.Add(new Wallet { walletName = "Others", walletDescription = "All Money Except Things Above", walletImg = "/Assets/others.png", walletValue = 0 });
             return list;
         }
 

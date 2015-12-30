@@ -35,20 +35,31 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Pivot x:Name="PivotIndex" Grid.Row="0">
-            <PivotItem Header="Income">
-                <Grid x:Name="ContentPanel" 
-                  Grid.Row="1">
+        <StackPanel Grid.Row="0">
+            <TextBlock x:Name="walletName" 
+                       HorizontalAlignment="Center"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       Style="{ThemeResource PageTitleTextBlockStyle}" 
+                       Opacity="0.6" VerticalAlignment="Center"
+                       Margin="10,10,10,10"/>
+        </StackPanel>
 
+        <Pivot Grid.Row="1"
+               x:Name="PivotIndex">
+            <!--incoming-->
+            <PivotItem Header="Income"
+                       FontSize="18"
+                       FontWeight="Medium">
+                <Grid x:Name="ContentPanel">
                     <Grid.RowDefinitions>
                         <!--<RowDefinition Height="20"></RowDefinition>-->
                         <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
+                        <!--<RowDefinition Height="Auto"></RowDefinition>-->
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <!--记账记录列表头项目-->
-                    <Grid Grid.Row="1">
+                    <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <!--<ColumnDefinition Width="4*"></ColumnDefinition>-->
                             <ColumnDefinition Width="2.5*"></ColumnDefinition>
@@ -58,20 +69,40 @@
                         <!--<Border Grid.Column="0" Background="Gray">
                         <TextBlock Text="Wallet Name" Foreground="White" />
                     </Border>-->
-                        <Border Grid.Column="0" Background="Gray">
-                            <TextBlock Text="Amount" Foreground="White"/>
+                        <Border Grid.Column="0" Background="#222222"
+                                RequestedTheme="Dark">
+                            <TextBlock Text="Amount" 
+                                       FontSize="15"
+                                       FontWeight="Medium"
+                                       Margin="3,3,3,3"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Foreground="White"/>
                         </Border>
-                        <Border Grid.Column="1" Background="Gray">
-                            <TextBlock Text="Time" Foreground="White"/>
+                        <Border Grid.Column="1"  Background="#222222"
+                                RequestedTheme="Dark">
+                            <TextBlock Text="Time" 
+                                       FontSize="15"
+                                       FontWeight="Medium"
+                                       Margin="3,3,3,3"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Foreground="White"/>
                         </Border>
-                        <Border Grid.Column="2" Background="Gray">
-                            <TextBlock Text="Note" Foreground="White"/>
+                        <Border Grid.Column="2"  Background="#222222"
+                                RequestedTheme="Dark">
+                            <TextBlock Text="Note" 
+                                       FontSize="15"
+                                       FontWeight="Medium"
+                                       Margin="3,3,3,3"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Foreground="White"/>
                         </Border>
                     </Grid>
 
-
                     <!--详情列表-->
-                    <ListView Grid.Row="2" 
+                    <ListView Grid.Row="1" 
                           x:Name="walletDetailIncome" 
                           Margin="0,8,0,8" 
                           IsItemClickEnabled="False"
@@ -84,22 +115,26 @@
                         </ListView.ItemContainerStyle>
 
                     </ListView>
+
                 </Grid>
             </PivotItem>
 
-            <PivotItem Header="Outgoing">
-                <Grid x:Name="ContentPanel2" 
-                  Grid.Row="1">
 
+
+            <!--outgoing-->
+            <PivotItem Header="Outgoing"
+                       FontSize="18"
+                       FontWeight="Medium">
+                <Grid x:Name="contentPanel2">
                     <Grid.RowDefinitions>
                         <!--<RowDefinition Height="20"></RowDefinition>-->
                         <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
+                        <!--<RowDefinition Height="Auto"></RowDefinition>-->
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
 
                     <!--记账记录列表头项目-->
-                    <Grid Grid.Row="1">
+                    <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <!--<ColumnDefinition Width="4*"></ColumnDefinition>-->
                             <ColumnDefinition Width="2.5*"></ColumnDefinition>
@@ -109,20 +144,42 @@
                         <!--<Border Grid.Column="0" Background="Gray">
                         <TextBlock Text="Wallet Name" Foreground="White" />
                     </Border>-->
-                        <Border Grid.Column="0" Background="Gray">
-                            <TextBlock Text="Amount" Foreground="White"/>
+
+                        <Border Grid.Column="0" Background="#222222"
+                                RequestedTheme="Dark">
+                            <TextBlock Text="Amount" 
+                                       FontSize="15"
+                                       FontWeight="Medium"
+                                       Margin="3,3,3,3"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Foreground="White"/>
                         </Border>
-                        <Border Grid.Column="1" Background="Gray">
-                            <TextBlock Text="Time" Foreground="White"/>
+                        <Border Grid.Column="1"  Background="#222222"
+                                RequestedTheme="Dark">
+                            <TextBlock Text="Time" 
+                                       FontSize="15"
+                                       FontWeight="Medium"
+                                       Margin="3,3,3,3"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Foreground="White"/>
                         </Border>
-                        <Border Grid.Column="2" Background="Gray">
-                            <TextBlock Text="Note" Foreground="White"/>
+                        <Border Grid.Column="2"  Background="#222222"
+                                RequestedTheme="Dark">
+                            <TextBlock Text="Note" 
+                                       FontSize="15"
+                                       FontWeight="Medium"
+                                       Margin="3,3,3,3"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Foreground="White"/>
                         </Border>
                     </Grid>
 
 
                     <!--详情列表-->
-                    <ListView Grid.Row="2" 
+                    <ListView Grid.Row="1" 
                           x:Name="walletDetailOutgoing" 
                           Margin="0,8,0,8" 
                           IsItemClickEnabled="False"
@@ -135,20 +192,10 @@
                         </ListView.ItemContainerStyle>
 
                     </ListView>
+
                 </Grid>
             </PivotItem>
         </Pivot>
-
-        <StackPanel>
-            <TextBlock x:Name="walletName"
-                           FontSize="20" 
-                           HorizontalAlignment="Center" VerticalAlignment="Center" 
-                           Opacity="0.6">
-            </TextBlock>
-        </StackPanel>
-
-
-
 
         <Border x:Name="ErrorBorder" Background="Red" Grid.Row="2"/>
         <TextBlock x:Name="StatusBlock" Grid.Row="2" Margin="12, 10, 12, 10" Visibility="Collapsed"/>

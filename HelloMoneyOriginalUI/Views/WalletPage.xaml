@@ -11,11 +11,24 @@
 
     <Page.Resources>
         <DataTemplate  x:DataType="data:Wallet" x:Key="walletTemplate">
-            <StackPanel HorizontalAlignment="Center">
+            <StackPanel HorizontalAlignment="Center"
+                        Margin="10,10,10,10">
                 <Image Width="150" Height="150" Source="{x:Bind walletImg}"/>
-                <TextBlock FontSize="16" Text="{x:Bind walletName}" HorizontalAlignment="Center"/>
-                <TextBlock FontSize="12" Text="{x:Bind walletDescription}" HorizontalAlignment="Center"/>
-                <TextBlock FontSize="14" Text="{x:Bind walletValue}"  HorizontalAlignment="Center"/>
+                <TextBlock FontSize="16" 
+                           FontWeight="SemiBold" 
+                           Text="{x:Bind walletName}" 
+                           HorizontalAlignment="Center"
+                           Margin="15,10,15,10"/>
+                <TextBlock FontSize="12" 
+                           FontWeight="SemiBold"
+                           Text="{x:Bind walletDescription}" 
+                           HorizontalAlignment="Center"
+                            Margin="15,3,15,3"/>
+                <TextBlock FontSize="14" 
+                           FontWeight="SemiBold"
+                           Text="{x:Bind walletValue}" 
+                           HorizontalAlignment="Center"
+                           Margin="15,3,15,3"/>
             </StackPanel>
 
         </DataTemplate>
@@ -23,6 +36,8 @@
             
         </DataTemplate>-->
     </Page.Resources>
+    
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"  EntranceNavigationTransitionInfo.IsTargetElement="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -36,23 +51,52 @@
             </ctl:PageHeader.HeaderContent>
         </ctl:PageHeader>-->
 
-        <StackPanel>
-            <TextBlock Text="WALLET" HorizontalAlignment="Center" Style="{StaticResource SampleHeaderTextStyle}" Opacity="0.6" VerticalAlignment="Center"/>
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="WALLET" HorizontalAlignment="Center"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       Style="{ThemeResource PageTitleTextBlockStyle}" 
+                       Opacity="0.6" VerticalAlignment="Center"
+                       Margin="10,10,10,10"/>
         </StackPanel>
-        <GridView Grid.Row="1" Header="Click A Wallet To Show Detail"
-                   x:Name="Wallets"
+        
+        <GridView Grid.Row="1"
+                  Margin="10,10,10,10"
+                  Header="Click For Detail"
+                  FontSize="18"
+                  FontWeight="SemiBold"
+                  x:Name="Wallets"
                   IsItemClickEnabled="True"
                   ItemClick="ListView_ItemClick"
                   ItemTemplate="{StaticResource walletTemplate}">
         </GridView>
-        <GridView Grid.Row="2" Header="余额"
-                  IsItemClickEnabled="False">
 
-            <StackPanel HorizontalAlignment="Left">
-                <!--<TextBlock FontSize="15" Text="{x:Bind Balance}" HorizontalAlignment="Center"/>-->
-                <TextBlock FontSize="15" x:Name="Balance" HorizontalAlignment="Center"/>
-            </StackPanel>
-        </GridView>
+        <Grid Grid.Row="2"
+              Background="#222222"
+              RequestedTheme="Dark">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Total Balance: "
+                       FontSize="20"
+                       FontWeight="Black"
+                       HorizontalAlignment="Right"
+                       Margin="10,15,10,15"     
+                       Grid.Column="0"
+                       Style="{ThemeResource BodyTextBlockStyle}">
+            </TextBlock>
+            <TextBlock x:Name="Balance"
+                       FontSize="20"
+                       FontWeight="Black"
+                       HorizontalAlignment="Left"
+                       Margin="10,15,10,15"     
+                       Grid.Column="1"
+                       Style="{ThemeResource BodyTextBlockStyle}">
+            </TextBlock>
+
+        </Grid>
 
 
     </Grid>

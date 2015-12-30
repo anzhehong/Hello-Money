@@ -135,6 +135,9 @@
     <Compile Include="Views\RecordPage.xaml.cs">
       <DependentUpon>RecordPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SettingPage.xaml.cs">
+      <DependentUpon>SettingPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\WalletPage.xaml.cs">
       <DependentUpon>WalletPage.xaml</DependentUpon>
     </Compile>
@@ -216,6 +219,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\RecordPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

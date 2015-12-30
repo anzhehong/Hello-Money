@@ -1,0 +1,189 @@
+﻿<Page
+    x:Class="NavigationMenuSample.Views.SettingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NavigationMenuSample"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"  EntranceNavigationTransitionInfo.IsTargetElement="True">
+        <Grid x:Name="RootGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0">
+                <TextBlock Text="SETTINGS" HorizontalAlignment="Center"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       Style="{ThemeResource PageTitleTextBlockStyle}" 
+                       Opacity="0.6" VerticalAlignment="Center"
+                       Margin="10,10,10,10"/>
+            </StackPanel>
+
+            <!--make some buttons-->
+            <Grid x:Name="ButtonGrid"
+                  Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Set New Buget"
+                               Grid.Column="0"
+                               HorizontalAlignment="Left"
+                               FontSize="10"
+                               FontWeight="Bold"
+                               Margin="3,3,3,3"></TextBlock>
+                    <TextBox Grid.Column="1"
+                             MinWidth="150"
+                             Margin="3,3,3,3"
+                             x:Name="NewBuget"></TextBox>
+                    <AppBarButton Grid.Column="2"
+                                  Icon="Accept"
+                                  Click="AppBarButton_Click_SetBuget"></AppBarButton>
+                                  
+                </Grid>
+                
+                <ListView Grid.Row="1" SelectionMode="None">
+                    <StackPanel>
+                         <AppBarButton Icon="Clear" Label="Delete Data" Click="AppBarButton_Click_Delete"></AppBarButton>
+                    </StackPanel>
+                </ListView>
+                <ListView Grid.Row="2" SelectionMode="None">
+                    <StackPanel>
+                         <AppBarButton Icon="Pictures" Label="Change Theme" Click="AppBarButton_Click_ChangeTheme"></AppBarButton>
+                    </StackPanel>
+                </ListView>
+                <ListView Grid.Row="3" SelectionMode="None">
+                    <StackPanel>
+                        <AppBarButton Icon="WebCam" Label="OneDrive" Click="AppBarButton_Click_OneDrive"></AppBarButton>
+                    </StackPanel>
+                </ListView>
+
+            </Grid>
+            
+            <!--about us using hub-->
+            <StackPanel Grid.Row="2">
+                <TextBlock Text="About Us" HorizontalAlignment="Center"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       Style="{ThemeResource PageTitleTextBlockStyle}" 
+                       Opacity="0.6" VerticalAlignment="Center"
+                       Margin="10,10,10,10"/>
+            </StackPanel>
+            
+            <SemanticZoom Grid.Row="3" Margin="0,0,20,20">
+                <SemanticZoom.ZoomedInView>
+                    <Hub x:Name="AboutUs">
+                        <HubSection MinWidth="300" Header="Our Quote">
+                            <DataTemplate>
+                                <Grid>
+                                    <TextBlock Text="Coding makes happiness."
+                                               Style="{ThemeResource BodyTextBlockStyle}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </HubSection>
+
+                        <HubSection Header="Hermans" IsHeaderInteractive="True" Background="#222222" Width="200" RequestedTheme="Dark">
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="Rich content goes here."
+                           Style="{ThemeResource BodyTextBlockStyle}" />
+                                    <TextBlock Text="Click the &quot;See more&quot; button to go to the Sports news page." 
+                           Style="{ThemeResource BodyTextBlockStyle}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </HubSection>
+
+                        <HubSection Header="Chris" IsHeaderInteractive="True" Background="#444444" Width="200" RequestedTheme="Dark">
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="Rich content goes here."
+                           Style="{ThemeResource BodyTextBlockStyle}" />
+                                    <TextBlock Text="Click the &quot;See more&quot; button to go to the Local news page." 
+                           Style="{ThemeResource BodyTextBlockStyle}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </HubSection>
+
+                        <HubSection Header="Fowafolo" IsHeaderInteractive="True" Background="#222222" Width="200" RequestedTheme="Dark">
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="Do you wanna know me more? You can visit my github and find something more interesting!"
+                           Style="{ThemeResource BodyTextBlockStyle}" />
+                                    <TextBlock Text="Click the &quot;See more&quot; button to go to the Tech news page."
+                           Style="{ThemeResource BodyTextBlockStyle}" />
+                                    <HyperlinkButton Content="My Github Page " NavigateUri="https://github.com/anzhehong"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </HubSection>
+
+                        <HubSection Header="Kimin" IsHeaderInteractive="True" Background="#444444" Width="200" RequestedTheme="Dark">
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="Rich content goes here."
+                           Style="{ThemeResource BodyTextBlockStyle}" />
+                                    <TextBlock Text="Click the &quot;See more&quot; button to go to the World news page." 
+                           Style="{ThemeResource BodyTextBlockStyle}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </HubSection>
+                    </Hub>
+                </SemanticZoom.ZoomedInView>
+                <SemanticZoom.ZoomedOutView>
+                    <ListView x:Name="ZoomedOutList"/>
+                </SemanticZoom.ZoomedOutView>
+            </SemanticZoom>
+            
+        </Grid>
+        <Popup x:Name="helpPopup" IsOpen="False" IsLightDismissEnabled="True">
+            <Popup.ChildTransitions>
+                <TransitionCollection>
+                    <PaneThemeTransition Edge="Right" />
+                </TransitionCollection>
+            </Popup.ChildTransitions>
+            <Border BorderBrush="{StaticResource SystemControlForegroundAccentBrush}" BorderThickness="1" Background="{StaticResource SystemControlBackgroundChromeMediumLowBrush}" x:Name="rootPopupBorder">
+                <Grid Margin="12">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{x:Bind Item.Title}" />
+                    <WebView x:Name="contentWebView" Grid.Row="1" Margin="0,10,0,0"/>
+                </Grid>
+            </Border>
+        </Popup>
+    </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar x:Name="bottomCommandBar" x:FieldModifier="Protected" Grid.Row="2" IsOpen="False" ClosedDisplayMode="Compact" IsSticky="False">
+           
+            <AppBarToggleButton Label="Theme" Checked="ThemeToggleButton_Checked" Unchecked="ThemeToggleButton_Unchecked">
+                <AppBarToggleButton.Icon>
+                    <FontIcon Glyph="&#xE771;" />
+                </AppBarToggleButton.Icon>
+            </AppBarToggleButton>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Label="Help" Icon="Help" Click="Customer_HelpButton_Click"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+    
+    
+
+</Page>

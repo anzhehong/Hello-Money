@@ -31,10 +31,19 @@
                 </TextBlock>
             </StackPanel>
  -->
-            <StackPanel>
+            <!--<StackPanel>
                 <TextBlock Text="ADD" HorizontalAlignment="Center" Style="{StaticResource SampleHeaderTextStyle}" Opacity="0.6" VerticalAlignment="Center"/>
+            </StackPanel>-->
+
+            <StackPanel Grid.Row="0">
+                <TextBlock Text="ADD" HorizontalAlignment="Center"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       Style="{ThemeResource PageTitleTextBlockStyle}" 
+                       Opacity="0.6" VerticalAlignment="Center"
+                       Margin="10,10,10,10"/>
             </StackPanel>
-            
+
             <Pivot x:Name="PivotIndex" Grid.Row="1">
                 <PivotItem Header="Income" Margin="12,-2,12,2">
                     
