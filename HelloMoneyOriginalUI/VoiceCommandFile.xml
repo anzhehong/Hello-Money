@@ -6,7 +6,7 @@
 
     <Command Name="showWallet">
       <Example>Show my wallet</Example>
-      <ListenFor RequireAppName="BeforeOrAfterPhrase">[show] wallet</ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">Hey {builtin:AppName}</ListenFor>
       <Feedback>Showing your wallet</Feedback>
       <Navigate/>
     </Command>
@@ -32,7 +32,7 @@
 
     <Command Name="showWallet">
       <Example>打开钱包</Example>
-      <ListenFor RequireAppName="BeforeOrAfterPhrase">[打开]钱包</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">打开 {builtin:AppName}</ListenFor>
       <Feedback>正在打开钱包</Feedback>
       <Navigate/>
     </Command>
