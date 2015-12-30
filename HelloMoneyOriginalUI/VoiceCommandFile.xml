@@ -6,7 +6,7 @@
 
     <Command Name="showWallet">
       <Example>Show my wallet</Example>
-      <ListenFor RequireAppName="BeforeOrAfterPhrase">Hey {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">Open {builtin:AppName}</ListenFor>
       <Feedback>Showing your wallet</Feedback>
       <Navigate/>
     </Command>
@@ -15,40 +15,40 @@
       <Example>Add a new record</Example>
       <ListenFor RequireAppName="BeforeOrAfterPhrase">add record</ListenFor>
       <Feedback>Add a new record</Feedback>
-      <VoiceCommandService Target="HelloMoneyVoiceCommandService"/>
+      <Navigate/>
     </Command>
 
     <Command Name="showBill">
       <Example>Show bill for this month</Example>
       <ListenFor RequireAppName="BeforeOrAfterPhrase">show [my] bill</ListenFor>
       <Feedback>Showing your bill</Feedback>
-      <VoiceCommandService Target="HelloMoneyVoiceCommandService"/>
+      <Navigate/>
     </Command>
   </CommandSet>
 
   <CommandSet xml:lang="zh-cn" Name="HelloMoneyCommandSet_zh-cn">
-    <AppName>测试</AppName>
-    <Example>打开钱包或者记账</Example>
+    <AppName>账本</AppName>
+    <Example>打开账本页面</Example>
 
     <Command Name="showWallet">
-      <Example>打开钱包</Example>
-      <ListenFor RequireAppName="ExplicitlySpecified">打开 {builtin:AppName}</ListenFor>
+      <Example>打开账本钱包</Example>
+      <ListenFor RequireAppName="ExplicitlySpecified">打开 {builtin:AppName} 钱包</ListenFor>
       <Feedback>正在打开钱包</Feedback>
       <Navigate/>
     </Command>
 
-    <!--<Command Name="addRecord">
-      <Example>Add a new record</Example>
-      <ListenFor RequireAppName="BeforeOrAfterPhrase">add record</ListenFor>
-      <Feedback>Add a new record</Feedback>
-      <VoiceCommandService Target="HelloMoneyVoiceCommandService"/>
+    <Command Name="addRecord">
+      <Example>打开账本记账</Example>
+      <ListenFor RequireAppName="ExplicitlySpecified">打开 {builtin:AppName} 记账</ListenFor>
+      <Feedback>正在打开记账</Feedback>
+      <Navigate/>
     </Command>
 
     <Command Name="showBill">
-      <Example>Show bill for this month</Example>
-      <ListenFor RequireAppName="BeforeOrAfterPhrase">show [my] bill</ListenFor>
-      <Feedback>Showing your bill</Feedback>
-      <VoiceCommandService Target="HelloMoneyVoiceCommandService"/>
-    </Command>-->
+      <Example>打开账本账单</Example>
+      <ListenFor RequireAppName="ExplicitlySpecified">打开 {builtin:AppName} 账单</ListenFor>
+      <Feedback>正在打开账单</Feedback>
+      <Navigate/>
+    </Command>
   </CommandSet>
  </VoiceCommands>

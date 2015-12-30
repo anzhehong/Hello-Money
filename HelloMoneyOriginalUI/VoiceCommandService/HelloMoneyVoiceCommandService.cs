@@ -16,6 +16,7 @@ using Windows.ApplicationModel.AppService;
 using Windows.ApplicationModel.Background;
 using Windows.ApplicationModel.Resources.Core;
 using Windows.ApplicationModel.VoiceCommands;
+using Windows.Media.SpeechRecognition;
 
 namespace HelloMoney.VoiceCommands
 {
@@ -120,6 +121,12 @@ namespace HelloMoney.VoiceCommands
                     // perform the appropriate command.
                     switch (voiceCommand.CommandName)
                     {
+                        case "showBill":
+                            
+                            break;
+                        case "addRecord":
+                            
+                            break;
                         default:
                             // As with app activation VCDs, we need to handle the possibility that
                             // an app update may remove a voice command that is still registered.

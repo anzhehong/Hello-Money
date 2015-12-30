@@ -278,7 +278,7 @@ namespace NavigationMenuSample
             {
                 // When the navigation stack isn't restored, navigate to the first page
                 // suppressing the initial entrance animation.
-                shell.AppFrame.Navigate(typeof(WalletPage));
+                shell.AppFrame.Navigate(navigationToPageType);
             }
 
             // Ensure the current window is active
