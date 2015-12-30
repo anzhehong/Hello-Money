@@ -13,8 +13,8 @@ namespace NavigationMenuSample.Views
     public sealed partial class WalletPage : Page
     {
         private double tempBalance = 0;
-        
-        public  WalletPage()
+
+        public WalletPage()
         {
             this.InitializeComponent();
         }
@@ -39,7 +39,7 @@ namespace NavigationMenuSample.Views
             int walletIndex = ((GridView)sender).Items.IndexOf(e.ClickedItem);
             Debug.WriteLine("目前点选的是:" + walletIndex);
             this.Frame.Navigate(
-                typeof(BasicSubPage),
+                typeof(WalletSubPage),
                 walletIndex,
                 new Windows.UI.Xaml.Media.Animation.DrillInNavigationTransitionInfo());
             //var wallet = (Wallet)e.ClickedItem;

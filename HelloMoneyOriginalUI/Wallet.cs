@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace NavigationMenuSample.Models
 {
+
     public class Wallet
     {
         // 账户名称
@@ -18,7 +19,6 @@ namespace NavigationMenuSample.Models
         public string walletImg { get; set; }
         // TODO:未完待续
     }
-
 
     public class WalletHelper
     {
@@ -125,7 +125,7 @@ namespace NavigationMenuSample.Models
         //read wallet record by wallet name
         public static async Task<IEnumerable<Record>> getAllWalletRecordByName(int thisIndex)
         {
-            List<Wallet> tempWalletList =( from c in await App.walletHelper.GetData() select c).ToList();
+            List<Wallet> tempWalletList = (from c in await App.walletHelper.GetData() select c).ToList();
             string name = tempWalletList[thisIndex].walletName;
             return (from c in await App.recordHelper.GetData()
                     where c.RecordSource == name
@@ -172,4 +172,6 @@ namespace NavigationMenuSample.Models
         }
 
     }
+
+
 }

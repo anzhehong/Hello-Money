@@ -138,6 +138,9 @@
     <Compile Include="Views\WalletPage.xaml.cs">
       <DependentUpon>WalletPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\WalletSubPage.xaml.cs">
+      <DependentUpon>WalletSubPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Wallet.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +220,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\WalletPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WalletSubPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

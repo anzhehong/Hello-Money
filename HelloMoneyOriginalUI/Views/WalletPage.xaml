@@ -47,13 +47,13 @@
         </GridView>
         <GridView Grid.Row="2" Header="余额"
                   IsItemClickEnabled="False">
-            
+
             <StackPanel HorizontalAlignment="Left">
                 <!--<TextBlock FontSize="15" Text="{x:Bind Balance}" HorizontalAlignment="Center"/>-->
                 <TextBlock FontSize="15" x:Name="Balance" HorizontalAlignment="Center"/>
             </StackPanel>
         </GridView>
-        
+
 
     </Grid>
 </Page>
