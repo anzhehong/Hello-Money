@@ -8,7 +8,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NavigationMenuSample</RootNamespace>
     <AssemblyName>NavigationMenuSample</AssemblyName>
-    <DefaultLanguage>en-US</DefaultLanguage>
+    <DefaultLanguage>en-us</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
@@ -158,7 +158,9 @@
     <Content Include="Assets\StoreLogo.scale-100.png" />
     <Content Include="Assets\zhifubao.png" />
     <Content Include="Properties\Default.rd.xml" />
-    <Content Include="VoiceCommandFile.xml" />
+    <Content Include="VoiceCommandFile.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

@@ -25,4 +25,30 @@
       <VoiceCommandService Target="HelloMoneyVoiceCommandService"/>
     </Command>
   </CommandSet>
+
+  <CommandSet xml:lang="zh-cn" Name="HelloMoneyCommandSet_zh-cn">
+    <AppName>测试</AppName>
+    <Example>打开钱包或者记账</Example>
+
+    <Command Name="showWallet">
+      <Example>打开钱包</Example>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">[打开]钱包</ListenFor>
+      <Feedback>正在打开钱包</Feedback>
+      <Navigate/>
+    </Command>
+
+    <!--<Command Name="addRecord">
+      <Example>Add a new record</Example>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">add record</ListenFor>
+      <Feedback>Add a new record</Feedback>
+      <VoiceCommandService Target="HelloMoneyVoiceCommandService"/>
+    </Command>
+
+    <Command Name="showBill">
+      <Example>Show bill for this month</Example>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase">show [my] bill</ListenFor>
+      <Feedback>Showing your bill</Feedback>
+      <VoiceCommandService Target="HelloMoneyVoiceCommandService"/>
+    </Command>-->
+  </CommandSet>
  </VoiceCommands>

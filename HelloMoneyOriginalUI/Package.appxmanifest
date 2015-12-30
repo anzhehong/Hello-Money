@@ -8,7 +8,7 @@
     <Logo>Assets\Dollar_Sign_512px_1177551_easyicon.net.png</Logo>
   </Properties>
   <Dependencies>
-    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.10240.0" MaxVersionTested="10.0.10240.0" />
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.10240.0" MaxVersionTested="10.0.10586.0" />
   </Dependencies>
   <Resources>
     <Resource Language="x-generate" />
@@ -24,10 +24,10 @@
         <uap:SplashScreen Image="Assets\openPic.jpg" />
       </uap:VisualElements>
       <Extensions>
-        <uap:Extension Category="windows.personalAssistantLaunch" />
         <uap:Extension Category="windows.appService" EntryPoint="HelloMoney.VoiceCommands.HelloMoneyVoiceCommandService">
           <uap:AppService Name="HelloMoneyVoiceCommandService" />
         </uap:Extension>
+        <uap:Extension Category="windows.personalAssistantLaunch"/>
       </Extensions>
     </Application>
   </Applications>

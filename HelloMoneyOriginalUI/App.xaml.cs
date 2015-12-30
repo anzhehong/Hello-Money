@@ -104,6 +104,7 @@ namespace NavigationMenuSample
                 //this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
+            // register voice commands
 
             AppShell shell = Window.Current.Content as AppShell;
 
@@ -138,12 +139,11 @@ namespace NavigationMenuSample
             // Ensure the current window is active
             Window.Current.Activate();
 
-            // register voice commands
             try
             {
                 // Install the main VCD. Since there's no simple way to test that the VCD has been imported, or that it's your most recent
                 // version, it's not unreasonable to do this upon app load.
-                StorageFile vcdStorageFile = await Package.Current.InstalledLocation.GetFileAsync(@"VoiceCommandFile.xml");
+                var vcdStorageFile = await Package.Current.InstalledLocation.GetFileAsync(@"VoiceCommandFile.xml");
 
                 await Windows.ApplicationModel.VoiceCommands.VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(vcdStorageFile);
             }
@@ -151,6 +151,7 @@ namespace NavigationMenuSample
             {
                 System.Diagnostics.Debug.WriteLine("Installing Voice Commands Failed: " + ex.ToString());
             }
+
         }
 
         /// <summary>
