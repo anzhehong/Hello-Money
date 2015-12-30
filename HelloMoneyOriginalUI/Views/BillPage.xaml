@@ -50,13 +50,13 @@
                                 <ColumnDefinition Width="3*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Border Grid.Column="0" Background="Gray">
-                                <TextBlock Text="Type" Foreground="White" />
+                                <TextBlock Text="Type" Foreground="White" HorizontalAlignment="Center" />
                             </Border>
                             <Border Grid.Column="1" Background="Gray">
                                 <TextBlock Text="Amount" Foreground="White"/>
                             </Border>
                             <Border Grid.Column="2" Background="Gray">
-                                <TextBlock Text="Time" Foreground="White"/>
+                                <TextBlock Text="Time" Foreground="White" HorizontalAlignment="Center"/>
                             </Border>
                             <Border Grid.Column="3" Background="Gray">
                                 <TextBlock Text="Category" Foreground="White"/>
@@ -81,9 +81,9 @@
                                         </Grid.ColumnDefinitions>
 
                                         <TextBlock Grid.Column="0" Text="{Binding Type,Converter={StaticResource RecordTypeConverter}}" Opacity="0.7" />
-                                        <TextBlock Grid.Column="1" Text="{Binding Amount}" Opacity="0.7"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding Amount}" Opacity="0.7" HorizontalAlignment="Center"/>
                                         <TextBlock Grid.Column="2" Text="{Binding RecordTime}" Opacity="0.7" />
-                                        <TextBlock Grid.Column="3" Text="{Binding Category}" Opacity="0.7"/>
+                                        <TextBlock Grid.Column="3" Text="{Binding Category}" Opacity="0.7" HorizontalAlignment="Center"/>
 
                                     </Grid>
                                 </DataTemplate>
@@ -128,13 +128,13 @@
                                 <ColumnDefinition Width="3*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Border Grid.Column="0" Background="Gray">
-                                <TextBlock Text="Type" Foreground="White" />
+                                <TextBlock Text="Type" Foreground="White" HorizontalAlignment="Center" />
                             </Border>
                             <Border Grid.Column="1" Background="Gray">
                                 <TextBlock Text="Amount" Foreground="White"/>
                             </Border>
                             <Border Grid.Column="2" Background="Gray">
-                                <TextBlock Text="Time" Foreground="White"/>
+                                <TextBlock Text="Time" Foreground="White" HorizontalAlignment="Center"/>
                             </Border>
                             <Border Grid.Column="3" Background="Gray">
                                 <TextBlock Text="Category" Foreground="White"/>
@@ -158,9 +158,9 @@
                                             <ColumnDefinition Width="3*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Grid.Column="0" Text="{Binding Type, Converter={StaticResource RecordTypeConverter}}" Opacity="0.7" />
-                                        <TextBlock Grid.Column="1" Text="{Binding Amount}" Opacity="0.7"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding Amount}" Opacity="0.7" HorizontalAlignment="Center"/>
                                         <TextBlock Grid.Column="2" Text="{Binding RecordTime}" Opacity="0.7" />
-                                        <TextBlock Grid.Column="3" Text="{Binding Category}" Opacity="0.7"/>
+                                        <TextBlock Grid.Column="3" Text="{Binding Category}" Opacity="0.7" HorizontalAlignment="Center"/>
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>

@@ -32,7 +32,7 @@
             </StackPanel>
  -->
             <StackPanel>
-                <TextBlock Text="ADD" HorizontalAlignment="Center" Style="{StaticResource SampleHeaderTextStyle}" Opacity="0.6" RequestedTheme="Light" VerticalAlignment="Center"/>
+                <TextBlock Text="ADD" HorizontalAlignment="Center" Style="{StaticResource SampleHeaderTextStyle}" Opacity="0.6" VerticalAlignment="Center"/>
             </StackPanel>
             
             <Pivot x:Name="PivotIndex" Grid.Row="1">

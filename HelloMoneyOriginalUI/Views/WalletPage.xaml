@@ -37,7 +37,7 @@
         </ctl:PageHeader>-->
 
         <StackPanel>
-            <TextBlock Text="WALLET" HorizontalAlignment="Center" Style="{StaticResource SampleHeaderTextStyle}" Opacity="0.6" RequestedTheme="Light" VerticalAlignment="Center"/>
+            <TextBlock Text="WALLET" HorizontalAlignment="Center" Style="{StaticResource SampleHeaderTextStyle}" Opacity="0.6" VerticalAlignment="Center"/>
         </StackPanel>
         <GridView Grid.Row="1" Header="Click A Wallet To Show Detail"
                    x:Name="Wallets"

@@ -22,11 +22,11 @@ namespace NavigationMenuSample.Views
     /// </summary>
     public sealed partial class ChartPage : Page
     {
-        private RecordHelper rh;
+        //private RecordHelper rh;
         public ChartPage()
         {
             this.InitializeComponent();
-            rh = new RecordHelper();
+           // rh = new RecordHelper();
         }
 
         // 导航进入界面的事件处理程序

@@ -53,7 +53,7 @@
             </StackPanel>-->
 
             <StackPanel>
-                <TextBlock Text="CHART" HorizontalAlignment="Center" Style="{StaticResource SampleHeaderTextStyle}" Opacity="0.6" RequestedTheme="Light" VerticalAlignment="Center"/>
+                <TextBlock Text="CHART" HorizontalAlignment="Center" Style="{StaticResource SampleHeaderTextStyle}" Opacity="0.6" VerticalAlignment="Center"/>
             </StackPanel>
             <Pivot Grid.Row="1">
                 
