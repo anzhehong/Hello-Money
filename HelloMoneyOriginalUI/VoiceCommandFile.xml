@@ -1,26 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
 <VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.2">
   <CommandSet xml:lang="en-us" Name="HelloMoneyCommandSet_en-us">
-    <AppName>Hello-Money</AppName>
+    <AppName>MyMoney</AppName>
     <Example>Open Hello-Money</Example>
 
     <Command Name="showWallet">
       <Example>Show my wallet</Example>
-      <ListenFor RequireAppName="BeforeOrAfterPhrase">Open {builtin:AppName}</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">{builtin:AppName} wallet</ListenFor>
       <Feedback>Showing your wallet</Feedback>
       <Navigate/>
     </Command>
     
     <Command Name="addRecord">
-      <Example>Add a new record</Example>
-      <ListenFor RequireAppName="BeforeOrAfterPhrase">add record</ListenFor>
-      <Feedback>Add a new record</Feedback>
+      <Example>Turn to record page</Example>
+      <ListenFor RequireAppName="ExplicitlySpecified">{builtin:AppName} new record</ListenFor>
+      <Feedback>Turning to record page</Feedback>
       <Navigate/>
     </Command>
 
     <Command Name="showBill">
       <Example>Show bill for this month</Example>
-      <ListenFor RequireAppName="BeforeOrAfterPhrase">show [my] bill</ListenFor>
+      <ListenFor RequireAppName="ExplicitlySpecified">{builtin:AppName} bill</ListenFor>
       <Feedback>Showing your bill</Feedback>
       <Navigate/>
     </Command>
