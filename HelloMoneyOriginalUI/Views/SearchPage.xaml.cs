@@ -26,8 +26,6 @@ namespace NavigationMenuSample.Views
         {
             this.InitializeComponent();
             listReport.IsItemClickEnabled = true;
-            DatePickerBegin.Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, DateTime.Now.Day);
-            DatePickerEnd.Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day + 1);
         }
 
         private async void SearchButton_Click(object sender, RoutedEventArgs e)
