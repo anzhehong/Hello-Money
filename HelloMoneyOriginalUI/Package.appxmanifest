@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="Microsoft.SDKSamples.Navigation.CS" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="1.0.0.0" />
+  <Identity Name="47635.HelloMoney" Publisher="CN=FFBE7FD6-6F41-4D19-9530-F1C64909D8D4" Version="1.1.0.0" />
   <mp:PhoneIdentity PhoneProductId="bdf9127b-7e32-469b-a6ed-f57a0a80ae23" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>XAML Navigation Menu CS Sample</DisplayName>
-    <PublisherDisplayName>Microsoft Corporation</PublisherDisplayName>
+    <DisplayName>HelloMoney</DisplayName>
+    <PublisherDisplayName>天气不错</PublisherDisplayName>
     <Logo>Assets\Dollar_Sign_512px_1177551_easyicon.net.png</Logo>
   </Properties>
   <Dependencies>
@@ -24,10 +24,10 @@
         <uap:SplashScreen Image="Assets\openPic.jpg" />
       </uap:VisualElements>
       <Extensions>
+        <uap:Extension Category="windows.personalAssistantLaunch" />
         <uap:Extension Category="windows.appService" EntryPoint="HelloMoney.VoiceCommands.HelloMoneyVoiceCommandService">
           <uap:AppService Name="HelloMoneyVoiceCommandService" />
         </uap:Extension>
-        <uap:Extension Category="windows.personalAssistantLaunch"/>
       </Extensions>
     </Application>
   </Applications>
