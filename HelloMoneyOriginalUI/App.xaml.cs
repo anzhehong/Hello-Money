@@ -35,6 +35,14 @@ namespace NavigationMenuSample
         /// </summary>
         public static WalletHelper walletHelper; 
         public static RecordHelper recordHelper;
+        public static double myBuget;
+
+        // About buget
+        // loadfile
+        //public async Task<bool> LoadFromFile()
+        //{
+        //    this.myBuget = await DataStorageHelper.ReadAsync < double >> ("buget.dat");
+        //}
 
         // Income types
         private static List<string> _incomeCategory = new List<string>()

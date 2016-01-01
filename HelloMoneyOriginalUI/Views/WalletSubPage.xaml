@@ -59,16 +59,16 @@
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <Grid Grid.Row="0">
+                    <!--<Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
-                            <!--<ColumnDefinition Width="4*"></ColumnDefinition>-->
+                            --><!--<ColumnDefinition Width="4*"></ColumnDefinition>--><!--
                             <ColumnDefinition Width="2.5*"></ColumnDefinition>
                             <ColumnDefinition Width="5*"></ColumnDefinition>
                             <ColumnDefinition Width="5*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <!--<Border Grid.Column="0" Background="Gray">
+                        --><!--<Border Grid.Column="0" Background="Gray">
                         <TextBlock Text="Wallet Name" Foreground="White" />
-                    </Border>-->
+                    </Border>--><!--
                         <Border Grid.Column="0" Background="#222222"
                                 RequestedTheme="Dark">
                             <TextBlock Text="Amount" 
@@ -99,6 +99,31 @@
                                        VerticalAlignment="Center"
                                        Foreground="White"/>
                         </Border>
+                    </Grid>-->
+                    <Grid x:Name="ContentPanel2" Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <!--记账wallet列表头项目-->
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                                <ColumnDefinition Width="5*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Background="Gray">
+                                <TextBlock Text="Amount" Foreground="White" HorizontalAlignment="Center" />
+                            </Border>
+                            <Border Grid.Column="1" Background="Gray">
+                                <TextBlock Text="Time" Foreground="White"/>
+                            </Border>
+                            <Border Grid.Column="2" Background="Gray">
+                                <TextBlock Text="Note" Foreground="White" HorizontalAlignment="Center"/>
+                            </Border>
+
+                        </Grid>
                     </Grid>
 
                     <!--详情列表-->
@@ -115,7 +140,6 @@
                         </ListView.ItemContainerStyle>
 
                     </ListView>
-
                 </Grid>
             </PivotItem>
 
@@ -134,16 +158,16 @@
                     </Grid.RowDefinitions>
 
                     <!--记账记录列表头项目-->
-                    <Grid Grid.Row="0">
+                    <!--<Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
-                            <!--<ColumnDefinition Width="4*"></ColumnDefinition>-->
+                            --><!--<ColumnDefinition Width="4*"></ColumnDefinition>--><!--
                             <ColumnDefinition Width="2.5*"></ColumnDefinition>
                             <ColumnDefinition Width="5*"></ColumnDefinition>
                             <ColumnDefinition Width="5*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <!--<Border Grid.Column="0" Background="Gray">
+                        --><!--<Border Grid.Column="0" Background="Gray">
                         <TextBlock Text="Wallet Name" Foreground="White" />
-                    </Border>-->
+                    </Border>--><!--
 
                         <Border Grid.Column="0" Background="#222222"
                                 RequestedTheme="Dark">
@@ -175,8 +199,23 @@
                                        VerticalAlignment="Center"
                                        Foreground="White"/>
                         </Border>
+                    </Grid>-->
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition Width="5*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Background="Gray">
+                            <TextBlock Text="Amount" Foreground="White" HorizontalAlignment="Center" />
+                        </Border>
+                        <Border Grid.Column="1" Background="Gray">
+                            <TextBlock Text="Time" Foreground="White"/>
+                        </Border>
+                        <Border Grid.Column="2" Background="Gray">
+                            <TextBlock Text="Note" Foreground="White" HorizontalAlignment="Center"/>
+                        </Border>
                     </Grid>
-
 
                     <!--详情列表-->
                     <ListView Grid.Row="1" 

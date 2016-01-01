@@ -266,8 +266,20 @@ namespace AmCharts.Windows.QuickCharts
             {
                 for (int i = 0; i < _graphs.Count; i++)
                 {
-                    string tooltipContent = _graphs[i].Title + ": " + _categoryValues[index] + " | "
-                        + (string.IsNullOrEmpty(ValueFormatString) ? _values[_graphs[i].ValueMemberPath][index].ToString() : _values[_graphs[i].ValueMemberPath][index].ToString(ValueFormatString));
+                    //string tooltipContent = _graphs[i].Title + ": " + _categoryValues[index] + " | "
+                        //+ (string.IsNullOrEmpty(ValueFormatString) ? _values[_graphs[i].ValueMemberPath][index].ToString() : _values[_graphs[i].ValueMemberPath][index].ToString(ValueFormatString));
+                    string tooltipContent = "123";
+                    //string categoryValue = _categoryValues[index];
+                    string addText;
+                    if (string.IsNullOrEmpty(ValueFormatString))
+                    {
+                        addText = _values[_graphs[i].ValueMemberPath][index].ToString();
+                    }
+                    else
+                    {
+                        addText = _values[_graphs[i].ValueMemberPath][index].ToString(ValueFormatString);
+                    }
+                    tooltipContent = _graphs[i].Title  + (string.IsNullOrEmpty(ValueFormatString) ? _values[_graphs[i].ValueMemberPath][index].ToString() : _values[_graphs[i].ValueMemberPath][index].ToString(ValueFormatString));
                     //ToolTipService.SetToolTip(_indicators[_graphs[i]], tooltipContent);
                     //ToolTipService.SetToolTip(_graphs[i], tooltipContent);
                     _indicators[_graphs[i]].Text = tooltipContent;

@@ -66,8 +66,8 @@
             </StackPanel>
 
 
-            <Pivot Grid.Row="1">
-                <PivotItem Header="Pie Chart">
+            <Pivot Grid.Row="1" >
+                <PivotItem Header="Pie Chart" IsTapEnabled="False">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*"/>
@@ -93,7 +93,7 @@
                     </Grid>
                 </PivotItem>
                 
-                <PivotItem Header="Bar Chart">
+                <PivotItem Header="Bar Chart" IsTapEnabled="False">
                     <!--<TextBlock x:Name="ShowBlock" Text="" />-->
                     <!--<Grid>
                     <amq:SerialChart x:Name="chart1" DataSource="{Binding SData}" CategoryValueMemberPath="cat1"
@@ -135,7 +135,7 @@
                     </Grid>
                 </PivotItem>
                 
-                <PivotItem Header="Line Chart">
+                <PivotItem Header="Line Chart" IsTapEnabled="False">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="12*"/>

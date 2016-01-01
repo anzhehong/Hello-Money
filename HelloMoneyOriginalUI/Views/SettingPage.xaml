@@ -7,16 +7,26 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"  EntranceNavigationTransitionInfo.IsTargetElement="True">
-        <Grid x:Name="RootGrid">
+    
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"  
+          EntranceNavigationTransitionInfo.IsTargetElement="True"
+          HorizontalAlignment="Stretch">
+        
+        
+        <Grid x:Name="RootGrid" HorizontalAlignment="Stretch"
+              
+              Margin="5,5,5,5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
+                <!--<RowDefinition Height="Auto"></RowDefinition>-->
+                <!--<RowDefinition Height="*"></RowDefinition>-->
             </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row="0">
+            <StackPanel Grid.Row="0" HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Margin="5,5,5,5">
                 <TextBlock Text="SETTINGS" HorizontalAlignment="Center"
                        FontSize="20"
                        FontWeight="Bold"
@@ -27,7 +37,10 @@
 
             <!--make some buttons-->
             <Grid x:Name="ButtonGrid"
-                  Grid.Row="1">
+                  Margin="5,5,5,5"
+                  Grid.Row="1"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
@@ -36,49 +49,121 @@
                 </Grid.RowDefinitions>
 
 
-                <Grid Grid.Row="0">
+                
+                <Grid Grid.Row="0"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch">
+                    
+                    
+                    
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <!--<ColumnDefinition Width="*"></ColumnDefinition>-->
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <!--<ColumnDefinition Width="*"></ColumnDefinition>-->
                     </Grid.ColumnDefinitions>
-
-                    <TextBlock Text="Set New Buget"
-                               Grid.Column="0"
+                    <Grid Grid.Column="0"
+                          Margin="15,5,5,5">
+                        <Grid.RowDefinitions>
+                            <!--<RowDefinition Height="2*"></RowDefinition>-->
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <!--<TextBlock FontSize="18" 
+                           FontWeight="SemiBold"
+                           x:Name="xmalOldBuget"
+                           HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                           Margin="15,3,15,3"
+                               Grid.Column="0"/>-->
+                        <TextBlock Text="Set Buget"
+                               Grid.Column="1"
                                HorizontalAlignment="Left"
-                               FontSize="10"
-                               FontWeight="Bold"
-                               Margin="3,3,3,3"></TextBlock>
-                    <TextBox Grid.Column="1"
-                             MinWidth="150"
+                               TextWrapping="Wrap"
+                               VerticalAlignment="Center"
+                               FontSize="30"></TextBlock>
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBox 
+                            Grid.Column="0"
+                             MinWidth="100"
+                             MinHeight="20"
                              Margin="3,3,3,3"
+                             VerticalAlignment="Center"
+                            HorizontalAlignment="Stretch"
                              x:Name="NewBuget"></TextBox>
-                    <AppBarButton Grid.Column="2"
+                        <AppBarButton 
+                            Grid.Column="1"
+                            HorizontalAlignment="Center"
                                   Icon="Accept"
+                                  VerticalAlignment="Center"
                                   Click="AppBarButton_Click_SetBuget"></AppBarButton>
-                                  
+                    </Grid>
+                  
+                   
                 </Grid>
                 
-                <ListView Grid.Row="1" SelectionMode="None">
+
+
+                <ListView Grid.Row="1" SelectionMode="None"
+                          ItemClick="ListView_ItemClick_Delete"
+                          IsItemClickEnabled="True"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Center">
+                    <!--<StackPanel HorizontalAlignment="Stretch"
+                                Background="Blue"
+                                VerticalAlignment="Center">
+                         --><!--<AppBarButton Label="Delete Data"
+                                       HorizontalAlignment="Center"
+                                       Click="AppBarButton_Click_Delete"></AppBarButton>--><!--
+                        
+                    </StackPanel>-->
+                    <TextBlock Text="Delete Records"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Center"
+                               FontSize="30"
+                               Foreground="Brown"
+                               ></TextBlock>
+                </ListView>
+                
+                <ListView Grid.Row="2" SelectionMode="None"
+                          IsItemClickEnabled="True"
+                          ItemClick="ListView_ItemClick_Theme"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Center">
                     <StackPanel>
-                         <AppBarButton Icon="Clear" Label="Delete Data" Click="AppBarButton_Click_Delete"></AppBarButton>
+                         <!--<AppBarButton Label="Change Theme" 
+                                       HorizontalAlignment="Center"
+                                       Click="AppBarButton_Click_ChangeTheme"></AppBarButton>-->
+                        <TextBlock Text="Change Theme"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Center"
+                                   FontSize="30"></TextBlock>
                     </StackPanel>
                 </ListView>
-                <ListView Grid.Row="2" SelectionMode="None">
+                <ListView Grid.Row="3" SelectionMode="None"
+                          IsItemClickEnabled="True"
+                          ItemClick="ListView_ItemClickOneDrive"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Center">
                     <StackPanel>
-                         <AppBarButton Icon="Pictures" Label="Change Theme" Click="AppBarButton_Click_ChangeTheme"></AppBarButton>
-                    </StackPanel>
-                </ListView>
-                <ListView Grid.Row="3" SelectionMode="None">
-                    <StackPanel>
-                        <AppBarButton Icon="WebCam" Label="OneDrive" Click="AppBarButton_Click_OneDrive"></AppBarButton>
+                        <!--<AppBarButton HorizontalAlignment="Center"
+                                      Label="OneDrive" Click="AppBarButton_Click_OneDrive"></AppBarButton>-->
+                        <TextBlock Text="OneDrive"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Center"
+                                   FontSize="30"></TextBlock>
                     </StackPanel>
                 </ListView>
 
             </Grid>
             
             <!--about us using hub-->
-            <StackPanel Grid.Row="2">
+            <!--<StackPanel Grid.Row="2">
                 <TextBlock Text="About Us" HorizontalAlignment="Center"
                        FontSize="20"
                        FontWeight="Bold"
@@ -148,7 +233,7 @@
                 <SemanticZoom.ZoomedOutView>
                     <ListView x:Name="ZoomedOutList"/>
                 </SemanticZoom.ZoomedOutView>
-            </SemanticZoom>
+            </SemanticZoom>-->
             
         </Grid>
         <Popup x:Name="helpPopup" IsOpen="False" IsLightDismissEnabled="True">

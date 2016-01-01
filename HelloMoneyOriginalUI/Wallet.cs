@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NavigationMenuSample.Models
 {
-
+    
     public class Wallet
     {
         // 账户名称
@@ -27,6 +27,8 @@ namespace NavigationMenuSample.Models
         public List<Record> _recordData;
         public RecordHelper recordHelper;
 
+        public double buget = -999;
+
         // load record.dat to read data
 
 
@@ -36,12 +38,22 @@ namespace NavigationMenuSample.Models
             this._walletData = await DataStorageHelper.ReadAsync<List<Wallet>>("Wallet.dat");
             return (this._walletData != null);
         }
+        public async Task<bool> LoadBugetFromFile()
+        {
+            this.buget = await DataStorageHelper.ReadAsync<double>("Buget.dat");
+            return (this.buget != -999);
+        }
 
 
         // save to wallet.dat
         public async void SaveToFile()
         {
             await DataStorageHelper.WriteAsync<List<Wallet>>(this._walletData, "Wallet.dat");
+        }
+
+        public async void SaveBugetToFile()
+        {
+            await DataStorageHelper.WriteAsync<double>(this.buget, "Buget.dat");
         }
 
         // data initial func
@@ -82,6 +94,25 @@ namespace NavigationMenuSample.Models
             }
 
             return this._walletData;
+        }
+        // func to return buget
+        public async Task<double> GetBuget()
+        {
+           if( -999 == this.buget)
+            {
+                bool isExist = await LoadBugetFromFile();
+                if (!isExist)
+                {
+                    this.buget = -999;
+                }
+            }
+            return this.buget;
+        }
+        // func to set buget
+        public async void SetBuget(double newBuget)
+        {
+            this.buget = newBuget;
+            this.SaveBugetToFile();
         }
 
         public void addFunc()

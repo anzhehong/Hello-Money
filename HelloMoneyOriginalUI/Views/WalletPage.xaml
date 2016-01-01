@@ -71,8 +71,8 @@
                   ItemTemplate="{StaticResource walletTemplate}">
         </GridView>
 
-        <Grid Grid.Row="2"
-              Background="#222222"
+        <!--<Grid Grid.Row="2"
+              Background="Gray"
               RequestedTheme="Dark">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -80,22 +80,39 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="Total Balance: "
-                       FontSize="20"
-                       FontWeight="Black"
+                       FontSize="15"
                        HorizontalAlignment="Right"
                        Margin="10,15,10,15"     
                        Grid.Column="0"
                        Style="{ThemeResource BodyTextBlockStyle}">
             </TextBlock>
             <TextBlock x:Name="Balance"
-                       FontSize="20"
+                       FontSize="15"
                        FontWeight="Black"
+                       Foreground="Brown"
                        HorizontalAlignment="Left"
                        Margin="10,15,10,15"     
                        Grid.Column="1"
                        Style="{ThemeResource BodyTextBlockStyle}">
             </TextBlock>
 
+        </Grid>-->
+
+        <Grid Grid.Row="2" Background="Gray">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Background="Gray">
+                <TextBlock  Text="Balance: "
+                            HorizontalAlignment="Right"
+                            Foreground="White"/>
+            </Border>
+            <Border Grid.Column="1" Background="Gray">
+                <TextBlock x:Name="Balance"
+                           HorizontalAlignment="Left"
+                           Foreground="White"/>
+            </Border>
         </Grid>
 
 

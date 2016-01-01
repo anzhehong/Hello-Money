@@ -67,6 +67,13 @@ namespace NavigationMenuSample
 
         }
 
+        // delete specified file
+        public static async Task DeleteFileAsync(string fileName)
+        {
+            StorageFolder applicationFolder = await GetDataFolder();
+            
+        }
+
         // Serialize entity objects into xml format and stored into given file
         public static async Task WriteAsync<T>(T data, string fileName)
         {

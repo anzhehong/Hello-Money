@@ -20,21 +20,30 @@ namespace NavigationMenuSample.Views
         public SettingPage()
         {
             this.InitializeComponent();
+
+        }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            double oldBuget = await App.walletHelper.GetBuget();
+            System.Diagnostics.Debug.WriteLine("old:" + oldBuget);
+            //xmalOldBuget.Text = oldBuget.ToString();
+            base.OnNavigatedFrom(e);
         }
 
         void HubPage_Loaded(object sender, RoutedEventArgs e)
         {
-            List<string> sections = new List<string>();
+            //List<string> sections = new List<string>();
 
-            foreach (HubSection section in AboutUs.Sections)
-            {
-                if (section.Header != null)
-                {
-                    sections.Add(section.Header.ToString());
-                }
-            }
+            //foreach (HubSection section in AboutUs.Sections)
+            //{
+            //    if (section.Header != null)
+            //    {
+            //        sections.Add(section.Header.ToString());
+            //    }
+            //}
 
-            ZoomedOutList.ItemsSource = sections;
+            //ZoomedOutList.ItemsSource = sections;
         }
 
 
@@ -71,26 +80,55 @@ namespace NavigationMenuSample.Views
                 this.RequestedTheme = ElementTheme.Default;
             }
         }
-        private void AppBarButton_Click_Delete(object sender, RoutedEventArgs e)
+        private async void AppBarButton_Click_Delete(object sender, RoutedEventArgs e)
         {
             // DELETE FILE
-            var dialog = new MessageDialog("Warning", "还没做");
-            dialog.Commands.Add(new UICommand("Ok, I've known.", cmd => { }, commandId: 0));
+            //var dialog = new MessageDialog("Warning", "还没做");
+            //dialog.Commands.Add(new UICommand("Ok, I've known.", cmd => { }, commandId: 0));
+            IEnumerable<Record> allRecords = await LINQ.GetAllRecords();
+            foreach (var item in allRecords.ToList())
+            {
+                App.recordHelper.DeleteRecord(item);
+            }
+            MessageDialog msg = new MessageDialog("You have deleted Record successfully!");
+            msg.Title = "Notice";
+            var msginfo = await msg.ShowAsync();
+
         }
-        private void AppBarButton_Click_OneDrive(object sender, RoutedEventArgs e)
+        private async void AppBarButton_Click_OneDrive(object sender, RoutedEventArgs e)
         {
             // one drive
-            var dialog = new MessageDialog("Warning", "还没做");
-            dialog.Commands.Add(new UICommand("Ok, I've known.", cmd => { }, commandId: 0));
+
+            MessageDialog msg = new MessageDialog("Not yet...");
+            msg.Title = "Sorry";
+            var msginfo = await msg.ShowAsync();
+
         }
-        private void AppBarButton_Click_SetBuget(object sender, RoutedEventArgs e)
+        private async void AppBarButton_Click_SetBuget(object sender, RoutedEventArgs e)
         {
-            // one drive
-            var dialog = new MessageDialog("Warning", "还没做");
-            dialog.Commands.Add(new UICommand("Ok, I've known.", cmd => { }, commandId: 0));
+            // buget
+            double oldBuget = await App.walletHelper.GetBuget();
+            System.Diagnostics.Debug.WriteLine("old:" + oldBuget);
+
+            if (!NewBuget.Text.Equals(null) && !NewBuget.Text.Equals(""))
+            {
+                double newBugetT = double.Parse(NewBuget.Text);
+                App.walletHelper.SetBuget(newBugetT);
+                MessageDialog msg = new MessageDialog("You have change buget to:" + NewBuget.Text.ToString());
+                msg.Title = "Notice";
+                var msginfo = await msg.ShowAsync();
+                
+            }else
+            {
+                MessageDialog msg = new MessageDialog("Please input a digt!");
+                msg.Title = "Notice";
+                var msginfo = await msg.ShowAsync();
+            }
+
+
         }
 
-        
+
 
 
         private ControlInfoDataItem item;
@@ -155,7 +193,21 @@ namespace NavigationMenuSample.Views
                 helpPopup.IsOpen = true;
             }
         }
-        
+
+        private void ListView_ItemClick_Delete(object sender, ItemClickEventArgs e)
+        {
+            AppBarButton_Click_Delete(sender, e);
+        }
+
+        private void ListView_ItemClick_Theme(object sender, ItemClickEventArgs e)
+        {
+            AppBarButton_Click_ChangeTheme(sender, e);
+        }
+
+        private void ListView_ItemClickOneDrive(object sender, ItemClickEventArgs e)
+        {
+            AppBarButton_Click_OneDrive(sender, e);
+        }
     }
 
     
