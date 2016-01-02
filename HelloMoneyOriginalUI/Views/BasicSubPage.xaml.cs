@@ -24,11 +24,14 @@ namespace NavigationMenuSample.Views
     {
         public BasicSubPage()
         {
+
             this.InitializeComponent();
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            this.RequestedTheme = await App.walletHelper.GetTheme();
+
             int walletIndex = (int)e.Parameter;
             List<Record> walletRecord = new List<Record>();
             walletRecord = (await WalletManager.getAllWalletRecordByName(walletIndex)).ToList();

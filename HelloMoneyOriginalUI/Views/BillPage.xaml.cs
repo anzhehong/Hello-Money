@@ -44,8 +44,10 @@ namespace NavigationMenuSample.Views
         // 当前记录的年份
         private int year;
         // 导航进入界面的事件处理程序
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            this.RequestedTheme = await App.walletHelper.GetTheme();
+
             day = DateTime.Now.Day;
             month = DateTime.Now.Month;
             year = DateTime.Now.Year;

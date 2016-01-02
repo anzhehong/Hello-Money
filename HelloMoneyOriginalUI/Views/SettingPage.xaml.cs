@@ -25,9 +25,11 @@ namespace NavigationMenuSample.Views
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            this.RequestedTheme = await App.walletHelper.GetTheme();
+
             double oldBuget = await App.walletHelper.GetBuget();
             System.Diagnostics.Debug.WriteLine("old:" + oldBuget);
-            //xmalOldBuget.Text = oldBuget.ToString();
+            xmalOldBuget.Text = "Present Buget: "+ oldBuget.ToString();
             base.OnNavigatedFrom(e);
         }
 
@@ -69,16 +71,32 @@ namespace NavigationMenuSample.Views
 
             var result = dialog.ShowAsync();
         }
-        private void AppBarButton_Click_ChangeTheme(object sender, RoutedEventArgs e)
+        private async void AppBarButton_Click_ChangeTheme(object sender, RoutedEventArgs e)
         {
             // change theme
-            if (this.RequestedTheme.Equals(ElementTheme.Default))
+            //if (this.RequestedTheme.Equals(ElementTheme.Default))
+            //{
+            //    this.RequestedTheme = ElementTheme.Dark;
+            //}else if (this.RequestedTheme.Equals(ElementTheme.Dark))
+            //{
+            //    this.RequestedTheme = ElementTheme.Default;
+            //}
+            ElementTheme temp = await App.walletHelper.GetTheme();
+            if (temp.Equals(ElementTheme.Dark))
             {
-                this.RequestedTheme = ElementTheme.Dark;
-            }else if (this.RequestedTheme.Equals(ElementTheme.Dark))
-            {
-                this.RequestedTheme = ElementTheme.Default;
+                App.walletHelper.SetTheme(ElementTheme.Light);
             }
+            else if (temp.Equals(ElementTheme.Light))
+            {
+                App.walletHelper.SetTheme(ElementTheme.Dark);
+
+            }
+            else
+            {
+                App.walletHelper.SetTheme(ElementTheme.Light);
+            }
+
+            Frame.Navigate(typeof(SettingPage));
         }
         private async void AppBarButton_Click_Delete(object sender, RoutedEventArgs e)
         {
@@ -106,9 +124,7 @@ namespace NavigationMenuSample.Views
         }
         private async void AppBarButton_Click_SetBuget(object sender, RoutedEventArgs e)
         {
-            // buget
-            double oldBuget = await App.walletHelper.GetBuget();
-            System.Diagnostics.Debug.WriteLine("old:" + oldBuget);
+            
 
             if (!NewBuget.Text.Equals(null) && !NewBuget.Text.Equals(""))
             {
@@ -125,12 +141,8 @@ namespace NavigationMenuSample.Views
                 var msginfo = await msg.ShowAsync();
             }
 
-
+            Frame.Navigate(typeof(SettingPage));
         }
-
-
-
-
         private ControlInfoDataItem item;
         public class ControlInfoDataItem
         {
@@ -207,6 +219,24 @@ namespace NavigationMenuSample.Views
         private void ListView_ItemClickOneDrive(object sender, ItemClickEventArgs e)
         {
             AppBarButton_Click_OneDrive(sender, e);
+        }
+
+        private void About_SectionHeaderClick(object sender, HubSectionHeaderClickEventArgs e)
+        {
+            switch(e.Section.Name)
+            {
+                case "WalletHub":
+                    this.Frame.Navigate(typeof(WalletPage));
+                    break;
+                case "BillHub":
+                    this.Frame.Navigate(typeof(BillPage));
+                    break;
+                case "ChartHub":
+                    this.Frame.Navigate(typeof(ChartPage));
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

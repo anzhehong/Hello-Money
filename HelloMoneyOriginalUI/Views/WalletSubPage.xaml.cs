@@ -30,6 +30,8 @@ namespace NavigationMenuSample.Views
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
 
+            this.RequestedTheme = await App.walletHelper.GetTheme();
+
             base.OnNavigatedTo(e);
             detailsIn = new List<WalletSubDetail>();
             detailsOut = new List<WalletSubDetail>();

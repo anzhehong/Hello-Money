@@ -60,5 +60,12 @@ namespace NavigationMenuSample.Views
         {
             Frame.Navigate(typeof(DetailsPage), e.ClickedItem);
         }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            this.RequestedTheme = await App.walletHelper.GetTheme();
+
+            base.OnNavigatedFrom(e);
+        }
     }
 }

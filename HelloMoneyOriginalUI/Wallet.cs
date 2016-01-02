@@ -28,6 +28,7 @@ namespace NavigationMenuSample.Models
         public RecordHelper recordHelper;
 
         public double buget = -999;
+        public Windows.UI.Xaml.ElementTheme themeStyle = Windows.UI.Xaml.ElementTheme.Dark;
 
         // load record.dat to read data
 
@@ -38,10 +39,15 @@ namespace NavigationMenuSample.Models
             this._walletData = await DataStorageHelper.ReadAsync<List<Wallet>>("Wallet.dat");
             return (this._walletData != null);
         }
-        public async Task<bool> LoadBugetFromFile()
+        public async Task<double> LoadBugetFromFile()
         {
             this.buget = await DataStorageHelper.ReadAsync<double>("Buget.dat");
-            return (this.buget != -999);
+            return (this.buget);
+        }
+        public async Task<Windows.UI.Xaml.ElementTheme> LoadTheme()
+        {
+            this.themeStyle = await DataStorageHelper.ReadAsync<Windows.UI.Xaml.ElementTheme>("Theme.dat");
+            return (this.themeStyle);
         }
 
 
@@ -54,6 +60,10 @@ namespace NavigationMenuSample.Models
         public async void SaveBugetToFile()
         {
             await DataStorageHelper.WriteAsync<double>(this.buget, "Buget.dat");
+        }
+        public async void SaveThemeToFile()
+        {
+            await DataStorageHelper.WriteAsync<Windows.UI.Xaml.ElementTheme>(this.themeStyle, "Theme.dat");
         }
 
         // data initial func
@@ -100,10 +110,14 @@ namespace NavigationMenuSample.Models
         {
            if( -999 == this.buget)
             {
-                bool isExist = await LoadBugetFromFile();
-                if (!isExist)
+                double fileBuget = await LoadBugetFromFile();
+                if (fileBuget.Equals(null)||fileBuget.Equals(0))
                 {
                     this.buget = -999;
+                }
+                else
+                {
+                    this.buget = fileBuget;
                 }
             }
             return this.buget;
@@ -113,6 +127,33 @@ namespace NavigationMenuSample.Models
         {
             this.buget = newBuget;
             this.SaveBugetToFile();
+        }
+
+        //func to get theme
+        public async Task<Windows.UI.Xaml.ElementTheme> GetTheme()
+        {
+
+            
+            if (this.themeStyle.Equals(null))
+            {
+                Windows.UI.Xaml.ElementTheme fileTheme = await LoadTheme();
+                if(fileTheme.Equals(null))
+                {
+                    this.themeStyle = Windows.UI.Xaml.ElementTheme.Light;
+                }
+                this.themeStyle = fileTheme;
+            }
+            else
+            {
+                //Windows.UI.Xaml.ElementTheme fileTheme = await LoadTheme();
+                //this.themeStyle = fileTheme;
+            }
+            return this.themeStyle;
+        }
+        public async void SetTheme(Windows.UI.Xaml.ElementTheme newTheme)
+        {
+            this.themeStyle = newTheme;
+            this.SaveThemeToFile();
         }
 
         public void addFunc()

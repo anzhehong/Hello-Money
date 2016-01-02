@@ -21,6 +21,8 @@ namespace NavigationMenuSample.Views
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            this.RequestedTheme = await App.walletHelper.GetTheme();
+
             IEnumerable<Wallet> allWallets = await WalletManager.GetAllWallets();
             // read wallets
             Wallets.ItemsSource = (await WalletManager.GetAllWallets()).ToList();
@@ -33,6 +35,7 @@ namespace NavigationMenuSample.Views
             }
             base.OnNavigatedFrom(e);
         }
+       
 
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {

@@ -21,14 +21,16 @@ namespace NavigationMenuSample.Views
         private Record _item;
 
         // enter process
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            this.RequestedTheme = await App.walletHelper.GetTheme();
+
             base.OnNavigatedTo(e);
 
             this._item = e.Parameter as Record;
 
             // set item sources
-            if(_item.Type == 0)
+            if (_item.Type == 0)
             {
                 DetailType.ItemsSource = App.IncomeCategory;
             }

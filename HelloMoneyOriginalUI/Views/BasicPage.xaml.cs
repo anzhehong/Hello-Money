@@ -29,6 +29,7 @@ namespace NavigationMenuSample.Views
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            this.RequestedTheme = await App.walletHelper.GetTheme();
             //var wallet = (wallet)e.
             //var test = (string)e.Parameter;
         }

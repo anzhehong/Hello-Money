@@ -12,7 +12,8 @@
         <converter:RecordTypeConverter  x:Key="RecordTypeConverter"/>
     </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"  EntranceNavigationTransitionInfo.IsTargetElement="True">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" 
+          EntranceNavigationTransitionInfo.IsTargetElement="True">
         <Grid x:Name="RootGrid" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>

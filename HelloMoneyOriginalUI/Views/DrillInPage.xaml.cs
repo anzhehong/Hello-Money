@@ -29,5 +29,12 @@ namespace NavigationMenuSample.Views
                 e.ClickedItem,
                 new Windows.UI.Xaml.Media.Animation.DrillInNavigationTransitionInfo());
         }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            this.RequestedTheme = await App.walletHelper.GetTheme();
+
+            base.OnNavigatedFrom(e);
+        }
     }
 }

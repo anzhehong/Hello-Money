@@ -37,6 +37,7 @@ namespace NavigationMenuSample
         public static RecordHelper recordHelper;
         public static double myBuget;
 
+
         // About buget
         // loadfile
         //public async Task<bool> LoadFromFile()

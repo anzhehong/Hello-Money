@@ -14,9 +14,7 @@
           HorizontalAlignment="Stretch">
         
         
-        <Grid x:Name="RootGrid" HorizontalAlignment="Stretch"
-              
-              Margin="5,5,5,5">
+        <Grid x:Name="RootGrid" HorizontalAlignment="Stretch">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
@@ -26,48 +24,53 @@
 
             <StackPanel Grid.Row="0" HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Margin="5,5,5,5">
+                        
+                  Margin="3,3,3,3">
                 <TextBlock Text="SETTINGS" HorizontalAlignment="Center"
                        FontSize="20"
                        FontWeight="Bold"
                        Style="{ThemeResource PageTitleTextBlockStyle}" 
                        Opacity="0.6" VerticalAlignment="Center"
-                       Margin="10,10,10,10"/>
+                       Margin="3,3,3,3"/>
             </StackPanel>
 
             <!--make some buttons-->
             <Grid x:Name="ButtonGrid"
-                  Margin="5,5,5,5"
+                  Margin="3,3,3,3"
                   Grid.Row="1"
                   HorizontalAlignment="Stretch"
                   VerticalAlignment="Stretch">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="1.5*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="3*"></RowDefinition>
+                    
                 </Grid.RowDefinitions>
 
 
                 
                 <Grid Grid.Row="0"
                       HorizontalAlignment="Stretch"
-                      VerticalAlignment="Stretch">
+                      VerticalAlignment="Stretch"
+                      Padding="0,0,0,0"
+                  Margin="3,3,3,3">
                     
                     
                     
                     <Grid.ColumnDefinitions>
                         <!--<ColumnDefinition Width="*"></ColumnDefinition>-->
-                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                        <ColumnDefinition Width="1.4*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                         <!--<ColumnDefinition Width="*"></ColumnDefinition>-->
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0"
-                          Margin="15,5,5,5">
-                        <Grid.RowDefinitions>
+                    <Grid Grid.Column="0" 
+                          Margin="3,3,3,3">
+                        <Grid.ColumnDefinitions>
                             <!--<RowDefinition Height="2*"></RowDefinition>-->
-                            <RowDefinition Height="*"></RowDefinition>
-                        </Grid.RowDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
                         <!--<TextBlock FontSize="18" 
                            FontWeight="SemiBold"
                            x:Name="xmalOldBuget"
@@ -76,11 +79,21 @@
                            Margin="15,3,15,3"
                                Grid.Column="0"/>-->
                         <TextBlock Text="Set Buget"
-                               Grid.Column="1"
-                               HorizontalAlignment="Left"
+                               Grid.Column="0"
+                                   HorizontalAlignment="Center"
                                TextWrapping="Wrap"
+                                   VerticalAlignment="Center"
+                                   Style="{ThemeResource BodyTextBlockStyle}"
+                               />
+                        <TextBlock x:Name="xmalOldBuget"
+                               Grid.Column="1"
+                               TextWrapping="Wrap"
+                                   FontSize="10"
+                                   FontStyle="Italic"
                                VerticalAlignment="Center"
-                               FontSize="30"></TextBlock>
+                                   HorizontalAlignment="Right"
+                                   Style="{ThemeResource ScenarioDescriptionTextStyle}"
+                               />
                     </Grid>
 
                     <Grid Grid.Column="1">
@@ -106,14 +119,17 @@
                   
                    
                 </Grid>
-                
+
 
 
                 <ListView Grid.Row="1" SelectionMode="None"
                           ItemClick="ListView_ItemClick_Delete"
                           IsItemClickEnabled="True"
                           HorizontalAlignment="Stretch"
-                          VerticalAlignment="Center">
+                          VerticalAlignment="Center"
+                          Margin="3,3,3,3"
+                          
+                          >
                     <!--<StackPanel HorizontalAlignment="Stretch"
                                 Background="Blue"
                                 VerticalAlignment="Center">
@@ -125,8 +141,8 @@
                     <TextBlock Text="Delete Records"
                                    HorizontalAlignment="Stretch"
                                    VerticalAlignment="Center"
-                               FontSize="30"
-                               Foreground="Brown"
+                               Foreground="Red"
+                              Style="{ThemeResource BodyTextBlockStyle}"
                                ></TextBlock>
                 </ListView>
                 
@@ -134,7 +150,8 @@
                           IsItemClickEnabled="True"
                           ItemClick="ListView_ItemClick_Theme"
                           HorizontalAlignment="Stretch"
-                          VerticalAlignment="Center">
+                          VerticalAlignment="Top"
+                          Margin="3,3,3,3">
                     <StackPanel>
                          <!--<AppBarButton Label="Change Theme" 
                                        HorizontalAlignment="Center"
@@ -142,23 +159,159 @@
                         <TextBlock Text="Change Theme"
                                    HorizontalAlignment="Stretch"
                                    VerticalAlignment="Center"
-                                   FontSize="30"></TextBlock>
+                                   Style="{ThemeResource BodyTextBlockStyle}"></TextBlock>
                     </StackPanel>
                 </ListView>
-                <ListView Grid.Row="3" SelectionMode="None"
+                <!--<ListView Grid.Row="3" SelectionMode="None"
                           IsItemClickEnabled="True"
                           ItemClick="ListView_ItemClickOneDrive"
                           HorizontalAlignment="Stretch"
                           VerticalAlignment="Center">
                     <StackPanel>
-                        <!--<AppBarButton HorizontalAlignment="Center"
-                                      Label="OneDrive" Click="AppBarButton_Click_OneDrive"></AppBarButton>-->
+                        --><!--<AppBarButton HorizontalAlignment="Center"
+                                      Label="OneDrive" Click="AppBarButton_Click_OneDrive"></AppBarButton>--><!--
                         <TextBlock Text="OneDrive"
                                    HorizontalAlignment="Stretch"
                                    VerticalAlignment="Center"
-                                   FontSize="30"></TextBlock>
+                                   FontSize="20"></TextBlock>
                     </StackPanel>
-                </ListView>
+                </ListView>-->
+
+                <Hub x:Name="About" Grid.Row="4" Margin="-1,-1,-1,-1"
+                     MinHeight="230"
+                     SectionHeaderClick="About_SectionHeaderClick"
+                     >
+                    <Hub.Resources>
+                        <Style x:Key="AboutHubStyle" TargetType="Hub">
+                            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                            <Setter Property="Padding" Value="12,12,12,0"/>
+                            <Setter Property="IsTabStop" Value="False"/>
+                            <Setter Property="Foreground" Value="{ThemeResource SystemControlPageTextBaseHighBrush}"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Hub">
+                                        <Grid BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <VisualStateManager.VisualStateGroups>
+                                                <VisualStateGroup x:Name="OrientationStates">
+                                                    <VisualState x:Name="Horizontal"/>
+                                                    <VisualState x:Name="Vertical">
+                                                        <Storyboard>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="HorizontalScrollMode" Storyboard.TargetName="ScrollViewer">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Disabled"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="HorizontalScrollBarVisibility" Storyboard.TargetName="ScrollViewer">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Hidden"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="VerticalScrollMode" Storyboard.TargetName="ScrollViewer">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Auto"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="VerticalScrollBarVisibility" Storyboard.TargetName="ScrollViewer">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Auto"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.Row)" Storyboard.TargetName="ScrollViewer">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="1"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.RowSpan)" Storyboard.TargetName="ScrollViewer">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="1"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" Storyboard.TargetName="ScrollViewer">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="0,20,0,0"/>
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                        </Storyboard>
+                                                    </VisualState>
+                                                </VisualStateGroup>
+                                            </VisualStateManager.VisualStateGroups>
+                                            <ScrollViewer x:Name="ScrollViewer" HorizontalScrollMode="Auto" HorizontalSnapPointsAlignment="Near" HorizontalSnapPointsType="OptionalSingle" HorizontalScrollBarVisibility="Auto" Grid.RowSpan="2" VerticalSnapPointsType="OptionalSingle" VerticalScrollBarVisibility="Disabled" VerticalScrollMode="Disabled" VerticalSnapPointsAlignment="Near" ZoomMode="Disabled">
+                                                <ItemsStackPanel x:Name="Panel" CacheLength="20" Orientation="{TemplateBinding Orientation}"/>
+                                            </ScrollViewer>
+                                            <Border x:Name="HeaderHost" Padding="{TemplateBinding Padding}" Grid.Row="0">
+                                                <ContentPresenter ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}" Foreground="{TemplateBinding Foreground}" FontWeight="{ThemeResource HubHeaderThemeFontWeight}" FontSize="{ThemeResource HubHeaderThemeFontSize}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" OpticalMarginAlignment="TrimSideBearings"/>
+                                            </Border>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Hub.Resources>
+                    <Hub.Style>
+                        <StaticResource ResourceKey="AboutHubStyle"/>
+                    </Hub.Style>
+                    <HubSection MaxWidth="300" MinWidth="200" Header="About">
+                        <DataTemplate>
+                            <Grid>
+                                <TextBlock Text="Hello-Money is your good assistan to manage your money! "
+                                           TextWrapping="WrapWholeWords"
+                                               Style="{ThemeResource BodyTextBlockStyle}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </HubSection>
+
+                    <HubSection Header="Wallet" IsHeaderInteractive="True"
+                                Name="WalletHub"
+                                Background="#222222" Width="200" RequestedTheme="Dark"
+                                >
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="You can see every wallet in or out detail here."
+                           Style="{ThemeResource BodyTextBlockStyle}"
+                                            Foreground="Aqua"/>
+                                <!--<TextBlock Text="Click the &quot;See more&quot; button to go to the Sports news page." 
+                           Style="{ThemeResource BodyTextBlockStyle}" />-->
+                            </StackPanel>
+                        </DataTemplate>
+                    </HubSection>
+
+                    <HubSection Header="Bill" Name="BillHub"
+                                IsHeaderInteractive="True" Background="#444444" Width="200" RequestedTheme="Dark">
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="This part shows you all your bill recorded!"
+                           Style="{ThemeResource BodyTextBlockStyle}"
+                                            Foreground="Aqua"/>
+                                <!--<TextBlock Text="Click the &quot;See more&quot; button to go to the Local news page." 
+                           Style="{ThemeResource BodyTextBlockStyle}" />-->
+                            </StackPanel>
+                        </DataTemplate>
+                    </HubSection>
+
+                    <HubSection Header="Chart" Name="ChartHub"
+                                IsHeaderInteractive="True" 
+                                Background="#222222" Width="200" RequestedTheme="Dark">
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="View more directly? Come to the chart!"
+                           Style="{ThemeResource BodyTextBlockStyle}" 
+                                           Foreground="Aqua"/>
+                                <!--<TextBlock Text="Click the &quot;See more&quot; button to go to the Tech news page."
+                           Style="{ThemeResource BodyTextBlockStyle}" />
+                                <HyperlinkButton Content="My Github Page " NavigateUri="https://github.com/anzhehong"/>-->
+                            </StackPanel>
+                        </DataTemplate>
+                    </HubSection>
+
+                    <HubSection Header="Others" IsHeaderInteractive="False" Background="#444444" Width="200" RequestedTheme="Dark">
+                        <DataTemplate>
+                            <StackPanel>
+                                <!--<TextBlock Text="You can search the key word in your record!"
+                           Style="{ThemeResource BodyTextBlockStyle}" 
+                                           Foreground="Aqua"/>-->
+                                <!--<TextBlock Text="You can maintain your data!" 
+                           Style="{ThemeResource BodyTextBlockStyle}" 
+                                           Foreground="Aquamarine"/>
+                                <TextBlock Text="You can start the app with Cortana!" 
+                           Style="{ThemeResource BodyTextBlockStyle}" 
+                                           Foreground="Azure"/>-->
+                                <TextBlock Text="Cortana~Data Maintance~Theme~Buget"
+                           Style="{ThemeResource BodyTextBlockStyle}" 
+                                           Foreground="Aqua"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </HubSection>
+                </Hub>
 
             </Grid>
             

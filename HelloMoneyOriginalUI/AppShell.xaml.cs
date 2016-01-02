@@ -25,6 +25,12 @@ namespace NavigationMenuSample
     /// </summary>
     public sealed partial class AppShell : Page
     {
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            this.RequestedTheme = await App.walletHelper.GetTheme();
+            base.OnNavigatedTo(e);
+        }
         // Declare the top level nav items
         private List<NavMenuItem> navlist = new List<NavMenuItem>(
             new[]

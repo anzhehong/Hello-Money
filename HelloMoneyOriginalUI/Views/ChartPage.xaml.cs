@@ -32,6 +32,8 @@ namespace NavigationMenuSample.Views
         // 导航进入界面的事件处理程序
         protected async override void OnNavigatedTo (NavigationEventArgs e)
         {
+            this.RequestedTheme = await App.walletHelper.GetTheme();
+
             // 创建图表的数据源对象
             ObservableCollection<ChartData> collection = new ObservableCollection<ChartData>();
             ObservableCollection<ChartData> collectionForExpend = new ObservableCollection<ChartData>();

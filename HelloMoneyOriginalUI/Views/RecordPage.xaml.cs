@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 namespace NavigationMenuSample.Views
 {
@@ -13,15 +14,20 @@ namespace NavigationMenuSample.Views
         public RecordPage()
         {
             this.InitializeComponent();
-          //  rh = new RecordHelper();
+            //  rh = new RecordHelper();
             datePicker.MaxYear = DateTime.Now;
             IncomeType.SelectedValue = "Salary";
             RecordSource.SelectedValue = "Cash";
             ExpendType.SelectedValue = "Food";
             ExpendRecordSource.SelectedValue = "Cash";
         }
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            this.RequestedTheme = await App.walletHelper.GetTheme();
 
-       // private RecordHelper rh;
+            base.OnNavigatedFrom(e);
+        }
+        // private RecordHelper rh;
 
         // Income types
         private List<string> _incomeCategory = new List<string>()
@@ -112,7 +118,18 @@ namespace NavigationMenuSample.Views
                             };
 
                             App.recordHelper.AddNewRecord(rec);
-                            await new MessageDialog("Save success!").ShowAsync();
+
+                            // TODO:buget notice
+                            double allRecordOfThisMonthExpensens =  await LINQ.GetThismonthSummaryExpenses();
+                            double thisMonthBuget = await App.walletHelper.GetBuget();
+                            if (allRecordOfThisMonthExpensens > thisMonthBuget)
+                            {
+                                await new MessageDialog("Save success!\nPlease notice that you are out of buget this month!").ShowAsync();
+                            }else
+                            {
+                                await new MessageDialog("Save success!").ShowAsync();
+                            }
+                            
                             Frame.Navigate(typeof(BillPage));
                         }
                         break;
