@@ -28,7 +28,7 @@ namespace NavigationMenuSample.Models
         public RecordHelper recordHelper;
 
         public double buget = -999;
-        public Windows.UI.Xaml.ElementTheme themeStyle = Windows.UI.Xaml.ElementTheme.Dark;
+        public Windows.UI.Xaml.ElementTheme themeStyle = Windows.UI.Xaml.ElementTheme.Default;
 
         // load record.dat to read data
 
