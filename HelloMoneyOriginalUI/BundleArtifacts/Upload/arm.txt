@@ -1,0 +1,3 @@
+MainPackage=C:\Users\Chris\Documents\GitHub\Hello-Money\HelloMoneyOriginalUI\bin\ARM\Release\Upload\Hello-Money_1.1.16.0_ARM.appx
+SymbolPackage=C:\Users\Chris\Documents\GitHub\Hello-Money\HelloMoneyOriginalUI\AppPackages\Hello-Money_1.1.16.0\Hello-Money_1.1.16.0_ARM.appxsym
+ResourcePack=C:\Users\Chris\Documents\GitHub\Hello-Money\HelloMoneyOriginalUI\_scale-100.appx

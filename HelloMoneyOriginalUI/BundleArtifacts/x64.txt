@@ -1,0 +1,2 @@
+MainPackage=C:\Users\Chris\Documents\GitHub\Hello-Money\HelloMoneyOriginalUI\bin\x64\Release\Hello-Money_1.1.16.0_x64.appx
+SymbolPackage=C:\Users\Chris\Documents\GitHub\Hello-Money\HelloMoneyOriginalUI\AppPackages\Hello-Money_1.1.16.0_Test\Hello-Money_1.1.16.0_x64.appxsym

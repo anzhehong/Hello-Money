@@ -158,18 +158,20 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Package.StoreAssociation.xml" />
     <Content Include="Assets\cash.png" />
     <Content Include="Assets\creditcard.png" />
     <Content Include="Assets\Dollar_Sign_512px_1177551_easyicon.net.png" />
-    <Content Include="Assets\icon1.png" />
-    <Content Include="Assets\openPic.jpg" />
+    <Content Include="Assets\Dollar_Sign_512px_1177551_easyicon.net_2.png" />
+    <Content Include="Assets\icon1.scale-100.png" />
+    <Content Include="Assets\icon1.scale-200.png" />
+    <Content Include="Assets\open.jpg" />
     <Content Include="Assets\others.png" />
-    <Content Include="Assets\smalltile-sdk.png" />
-    <Content Include="Assets\splash-sdk.png" />
-    <Content Include="Assets\squaretile-sdk.png" />
-    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-100.jpg" />
+    <Content Include="Assets\SplashScreen.scale-200.jpg" />
+    <Content Include="Assets\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
     <Content Include="Assets\zhifubao.png" />
-    <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="VoiceCommandFile.xml">
       <SubType>Designer</SubType>
@@ -255,6 +257,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

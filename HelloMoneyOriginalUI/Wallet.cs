@@ -123,7 +123,7 @@ namespace NavigationMenuSample.Models
             return this.buget;
         }
         // func to set buget
-        public async void SetBuget(double newBuget)
+        public void SetBuget(double newBuget)
         {
             this.buget = newBuget;
             this.SaveBugetToFile();
@@ -150,7 +150,7 @@ namespace NavigationMenuSample.Models
             }
             return this.themeStyle;
         }
-        public async void SetTheme(Windows.UI.Xaml.ElementTheme newTheme)
+        public void SetTheme(Windows.UI.Xaml.ElementTheme newTheme)
         {
             this.themeStyle = newTheme;
             this.SaveThemeToFile();
