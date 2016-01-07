@@ -1,86 +1,69 @@
 
 
-#Windows Course Project
+#Hello Money
 #2015年同济大学Windows期末课程项目设计
-###Hello Money——一款轻便易用的Windows平台记账工具
 
 
-## 项目规划
+## 项目简介
 
-###已经实现的功能
-
-- 添加支出或者收入
-- 展示今日数据
-- 月报表（年报表与月报表内容几乎一样，涉嫌重复）
-- 查询功能（可以通过时间段进行查询，也可以通过关键字查询）
-- 柱状图和饼状图展示（现在是把所有支出和收入放到一个表里面了）
-
-###接下来的任务
-
-- 添加和完善功能
-    - 完善entity,可以考虑重写实体类，可以考虑是否通过HTTP请求进行数据备份或者恢复。也可以通过微软onedrive来进行：
-        - [one drive sdk home page](https://dev.onedrive.com/sdks.htm)
-
-        - [one drive doc](https://msdn.microsoft.com/library/windows/apps/br207847?cs-save-lang=1&cs-lang=csharp#code-snippet-1)
-
-        - [one drive cs sdk](https://github.com/onedrive/onedrive-sdk-csharp)
-
-    - 收入支出分类可以用户定义
-        - 现有的支出
-            - 房租
-            - 娱乐
-            - 餐饮
-            - 交通
-            - 转账
-            - 其它
-        - 收入
-            - 工资
-            - 股票
-            - 投资
-            - 其它
-    - 分开明细，现金？银行卡？支付宝？（可扩展）
-    - 细化图表分析
-        - 收入和支出是否应该分开按照类别进行绘图分析？
-        - 是否应该对支出或者收入画折线图预测走势？
-        - 开源库（非原先的）
-            - [Live-Charts](https://github.com/beto-rodriguez/Live-Charts)  can't fit in Win10
-            - [WinRTXamlToolkit](https://github.com/xyzzer/WinRTXamlToolkit)
-
-    - 定时提醒记账功能
-    - 预算？
-    - 账户（余额--分为现金、银行卡、支付宝等）
-    - 是否接入语音SDK？不过能用语音干啥？（系统有API可以用！）
-        - 可以说：『帮我打开巴拉巴拉』
-        - 可以说：『我刚刚巴拉巴拉花了￥￥￥』
-        - 可以说：『我刚刚巴拉巴拉赚了$$$』
-        - 也可以放到description中
-        - 。。。无限遐想中
-    - 账本分类？
-    - 消费阈值？ 警报？
-    - 未来消费预测？
-    - 您本月消费打败了99%的人？？
-    - 接一些理财的页面做理财推荐？太扯了
-- UI界面重构，界面元素设计
-    - 主页放些什么？
-    - 设计哪几个界面？
-    - 逻辑上怎么连接各个页面？
+#### Hello-Money是一款轻便易用的UWP平台记账工具，初衷是帮助『月光族』管理个人账务。同时，UWP平台还没有比较好的类似软件，因此选择UWP平台开发。
 
 
 ##开发环境：
-* <strong>Windows OS(Parallel Desktop)</strong>
+* <strong>Windows 10</strong>
 * <strong>Visual studio 2015 </strong>
 
 
 
 ## 使用方法
+#### 将项目clone到本地，配置好所需要的环境（VS会提示）
+```
+# cd到期望路径，然后执行
+$ git clone https://github.com/anzhehong/Hello-Money
+```
+
 
 ## 基本功能
+### 1.记录收入支出
+#### 可分类记，也可分账本记
+
+### 2.显示账单（分为月账单和年账单）
+### 3.图表显示收入支出状况
+- pie chart
+![](Pictures/piechart.png)
+- bar chart
+![](Pictures/linechart.png)
+- line chart
 
 
+### 4.分类记账，显示每个账本的收入支出情况
+![](Pictures/wallet.png)
+### 5.搜索账单
+![](Pictures/search.png)
+### 6.Cortana唤醒
+##### 启动命令：
+> 打开账本记账
 
+### 7.设置界面
+![](pictures/settings.png)
+#### 通过设置界面可以
+- 设置预算
+- 更改黑白两种主题
+- 清空数据
+- 功能简介
+
+
+## TODO
+1. 引入OneDrive SDK作为云同步方式
+2. 修复已知和未知BUG
+3. 用户可以自定义账本和收入支出方式
 
 
 ##Members:
 <strong><a href="https://github.com/Yiiinsh">鄞劭涵</a>,
 <strong><a href="https://github.com/yue9944882">金敏</a>,
 <strong><a href="https://github.com/HermanZzz">张航</a>
+
+## 致谢
+1. 感谢麦子学院相关winphone课程对我们Windows开发的启蒙
+2. 感谢何老师没喷我们！！！
