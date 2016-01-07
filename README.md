@@ -45,7 +45,7 @@ $ git clone https://github.com/anzhehong/Hello-Money
 > 打开账本记账
 
 ### 7.设置界面
-![](pictures/settings.png)
+![](pictures/setting.png)
 #### 通过设置界面可以
 - 设置预算
 - 更改黑白两种主题
