@@ -67,3 +67,7 @@ $ git clone https://github.com/anzhehong/Hello-Money
 ## 致谢
 1. 感谢麦子学院相关winphone课程对我们Windows开发的启蒙
 2. 感谢何老师没喷我们！！！
+
+## PS
+
+> 项目已经上架应用商店
